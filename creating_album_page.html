@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+  	<title>Create Album</title>
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+ 	<link rel='stylesheet' type="text/css" href='./stylesheets/creating_album_page.css' />
+  </head>
+  <body>
+  	<div class="jumbotron">  <!-- Navbar -->
+      <div class="container">
+        <h1>NAVBAR</h1>
+      </div>
+    </div> <!-- Navbar -->
+    <div class='container' id='main_container'>  <!-- Main Container -->
+    	<div class='row' id='albume_title_field'>  <!-- Ablum Title -->
+    		<div class='col-md-10'>
+    			<input id='album_name_input' placeholder="Album Name" type='text'>
+    		</div>
+    		<div class='col-md-2' id='add_photo_button'>
+    			<button class="btn btn-large btn-primary btn-circle" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    		</div>
+    	</div>  <!-- Album Title -->
+    	<hr>
+    	<div class='row' id='photo_grid'> <!-- Album Grid -->
+    		<div id='table_div' class='col-md-12'>	
+	    		<table>
+	    			<tbody>
+	    				<tr>
+	    					<td class='grid_cell'><a href="#"><img class='grid_image img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="#"><img class='grid_image img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="#"><img class='grid_image img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    				</tr>
+	    				<tr>
+	    					<td class='grid_cell'><a href="#"><img class='grid_image img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="#"><img class='grid_image img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="#"><img class='grid_image img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    				</tr>
+	    				<tr>
+	    					<td class='grid_cell'></td>
+	    					<td class='grid_cell'></td>
+	    					<td class='grid_cell'></td>
+	    				</tr>
+	    			</tbody>
+	    		</table>
+	    	</div>
+    	</div> <!-- Album Grid -->
+    	<hr>
+    	<div class='row' id='save_button_field'>
+    		<div class='col-md-12'>
+    			<button class="btn btn-large btn-primary" type="button">Save</button>
+    		</div>
+    	</div>
+    </div>  <!-- Main Container -->
+  </body>
+</html>
