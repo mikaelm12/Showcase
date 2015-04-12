@@ -30,7 +30,7 @@
 	height: 268px;
 }
 
-.grid_image:hover {
+.change_opacity:hover {
 	opacity: 0.7;
 }
 
