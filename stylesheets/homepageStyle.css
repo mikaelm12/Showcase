@@ -1,32 +1,10 @@
-.navbar{
-	background-color: #B0AEAE;
-	color:#B0AEAE;
-}
 
-.nav {
-		background-color: #B0AEAE;
-	color:#B0AEAE;
-}
-.container-fluid{
-			background-color: #B0AEAE;
-	color:#B0AEAE;
-}
-.active{
-		background-color: #B0AEAE;
-	color:#B0AEAE;
-
-}
 
 #searchBarDiv{
 	margin: 100px
 }
 
-.registrationLink{
-	border-radius: 10px;
-    border: 2px solid #FFFFFF;
-    margin-left: 3px;
-    margin-bottom: 2px
-}
+
 
 h3.centre {
     margin-left: auto;
