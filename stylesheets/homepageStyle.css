@@ -1,7 +1,18 @@
+body {
+	background-color: #B8B8B8;
+	color: grey;
+	background-image: url("./../images/crazy.gif");
+    background-size: cover;
+}
 
+body .btn {
+	background-color: #E0E0E0;
+	color: grey;
+}
 
 #searchBarDiv{
-	margin: 100px
+	width: 600px;
+	margin-top: 20%;
 }
 
 
@@ -17,4 +28,5 @@ h3.centre {
 	/*font-family: 'Alegreya SC', serif;*/
 	font-size: 30pt
 }
+
 	

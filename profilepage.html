@@ -5,6 +5,8 @@
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
   <script src="./javascripts/button_actions.js"></script>
  	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
   </head>
@@ -125,7 +127,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Showcase</a>
+            <a class="navbar-brand" href="./showcase.html">Showcase</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -138,10 +140,10 @@
               <button type="submit" class="btn btn-default">Search</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              <button type="button" class="btn btn-primary navbar-btn account" data-toggle="modal" data-target="#myModal">
+              <button type="button" class="btn btn-default navbar-btn account" data-toggle="modal" data-target="#myModal">
                 Log in
               </button>
-              <button type="button" class="btn btn-primary navbar-btn account" data-toggle="modal" data-target="#loginModal">
+              <button type="button" class="btn btn-default navbar-btn account" data-toggle="modal" data-target="#loginModal">
                 Register
               </button>
             </ul>
@@ -153,8 +155,8 @@
       <div class='row'> <!-- ROW -->
          <div class='col-md-5'> <!-- COL 1 -->
           <div id = "profile_container">
+            <img id='profile_pic' class='grid_image img-responsive' align="middle" src='./images/superman_profile.jpg'>
             <div id='artist_name'><h2>Super Man</h2></div>
-            <img id='profile_pic' class='grid_image change_opacity img-responsive' align="middle" src='./images/mona_lisa.jpg'>
             <div id='bio_div'>
               <h3>Bio</h3>
               <!--<textarea class="form-control" rows="3"> Add biography info...</textarea><br>-->
@@ -170,8 +172,8 @@
             </div>
 
             <div id='portfolio_div'>
-              <h3>Portfolio Links</h3>
-              <a href="url">Portfolio 1</a>
+              <h3>Current Portfolio</h3>
+              <a href="url">Portfolio</a>
             </div>
           </div>
         </div> <!-- COL 1 END -->
@@ -180,12 +182,12 @@
             <div id='export_button_div'> <!-- Export Button -->
 
                       
-             <button type="button" class="btn btn-primary large_button" data-toggle="modal" data-target="#myExport">Export to Portfolio</button>
+             <button type="button" class="btn btn-default large_button" data-toggle="modal" data-target="#myExport">Export to Portfolio</button>
             </div>
             <div class='row'>
                 <div class='col-md-4'>
                   <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <button class="btn btn-large btn-primary btn-circle" type="button" data-toggle="modal" data-target="#myShare"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></button>
+                  <button class="btn btn-default btn-large btn-circle" type="button" data-toggle="modal" data-target="#myShare"><span class="glyphicon glyphicon-share" aria-hidden="true"></span></button>
                 </div>
                 <div class='col-md-4'>
                   <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
@@ -193,7 +195,7 @@
                 </div>
                 <div class='col-md-4'>
                   <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <button class="btn btn-large btn-primary btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                  <button class="btn btn-default btn-large btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 
                 </div>
             </div>
@@ -203,12 +205,12 @@
         	    	<table>
         	    		<tbody>
         	    			<tr>
-        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
-        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
+        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/superman_album_one.jpg'></a></td>
+        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/superman_album_two.jpg'></a></td>
         	    			</tr>
         	    			<tr>
-        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
-        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
+        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/superman_album_three.jpg'></a></td>
+        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/superman_album_four.jpg'></a></td>
         	    			</tr>
         	    		</tbody>
         	    	</table>
