@@ -5,8 +5,9 @@
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="./javascripts/button_actions.js"></script>
  	<link rel='stylesheet' type="text/css" href='./stylesheets/creating_album_page.css' />
-      <link rel="stylesheet" type="text/css" href="homepageStyle.css">
+  <link rel="stylesheet" type="text/css" href="homepageStyle.css">
 
   </head>
   <body>
@@ -33,10 +34,10 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search for an Artist">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <button type="button" class="btn btn-primary btn-lg account" >
+        <button type="button" class="btn btn-primary navbar-btn account" >
           Log Out <!--Take the user to the home page and flip the logged in variable -->
         </button>
 
@@ -46,6 +47,27 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+    <!-- Modal  Add Pictures-->
+      <div class="modal fade" id="myAddPictures" tabindex="-1" role="dialog" aria-labelledby="myAddPictureLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myAddPictureLabel">Add Pictures</h4>
+            </div>
+            <div class="modal-body">
+              <!--<label for="exampleInputFile">Select Pictures</label>-->
+              <input type="file" id="exampleInputFile">
+              <p class="help-block">Browse for pictures to add.</p>   
+            </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button id='upload_button' type="button" class="btn btn-primary">Upload</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class='container' id='main_container'>  <!-- Main Container -->
       <center>
@@ -54,7 +76,7 @@
     			<input id='album_name_input' placeholder="Album Name" type='text'>
     		</div>
     		<div class='col-md-2' id='add_photo_button'>
-    			<button class="btn btn-large btn-primary btn-circle" type="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    			<button class="btn btn-large btn-primary btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     		</div>
     	</div>  <!-- Album Title -->
       </center>
@@ -64,14 +86,14 @@
 	    		<table>
 	    			<tbody>
 	    				<tr>
-	    					<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
 	    				</tr>
 	    				<tr>
-	    					<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
+	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
 	    				</tr>
 	    				<tr>
 	    					<td class='grid_cell'><img class='grid_image img-responsive' src='./images/no-image.jpg'></td>
@@ -85,7 +107,7 @@
     	<hr>
     	<div class='row' id='save_button_field'>
     		<div class='col-md-12'>
-    			<button class="btn btn-large btn-primary" type="button">Save</button>
+    			<button id='save_album_button' class="btn btn-large btn-primary" type="button">Save</button>
     		</div>
     	</div>
     </div>  <!-- Main Container -->
