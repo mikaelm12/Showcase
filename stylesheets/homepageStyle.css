@@ -11,7 +11,7 @@ body .btn {
 }
 
 #searchBarDiv{
-	width: 600px;
+	max-width: 600px;
 	margin-top: 20%;
 }
 
