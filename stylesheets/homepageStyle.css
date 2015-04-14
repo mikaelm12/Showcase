@@ -11,4 +11,10 @@ h3.centre {
     margin-right: auto;
     width: 70%;
 }
+
+.navbar-brand {
+	font-family: 'Lobster', cursive;
+	/*font-family: 'Alegreya SC', serif;*/
+	font-size: 30pt
+}
 	
