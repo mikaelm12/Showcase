@@ -41,3 +41,14 @@ $(document).on("click", ".home_button_after", function(){
 $(document).on("click", ".searchButton", function(){
 	window.location = "./profilepage.html"
 });
+$(document).on("click", ".portfolioClick", function(){
+	$('#portfolioPDF').modal('show');
+});
+
+// Listen for click on toggle checkbox
+$(document).on("click", ".select-all", function(){
+	$(".checkbox-1").prop('checked', $(this).prop('checked'));
+});
+
+
+
