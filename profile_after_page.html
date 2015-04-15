@@ -34,7 +34,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-default">Create Portfolio</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#portfolioPDF">Create Portfolio</button>
       </div>
     </div>
   </div>
@@ -102,6 +102,19 @@
     </div>
   </div>
 </div>
+
+
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#portfolioPDF">Large modal</button>
+
+<div class="modal fade bs-example-modal-lg" id = "portfolioPDF" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+     <iframe src="ShowcasePortFolio.pdf" style="width:900px; height:500px;" ></iframe>
+    </div>
+  </div>
+</div>
+
 
   <body>
       <nav class="navbar navbar-default">
