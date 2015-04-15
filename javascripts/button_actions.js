@@ -3,7 +3,7 @@ $(document).on("click", "#register_button", function(){
 });
 
 $(document).on("click", "#login_button", function(){
-	window.location = "./profilepage.html"
+	window.location = "./blank_profile_page.html"
 });
 
 $(document).on("click", "#upload_button", function(){
@@ -12,5 +12,9 @@ $(document).on("click", "#upload_button", function(){
 
 $(document).on("click", "#save_album_button", function(){
 	window.location = "./profilepage.html"
+});
+
+$(document).on("click", ".logout_button", function(){
+	window.location = "./showcase.html"
 });
 
