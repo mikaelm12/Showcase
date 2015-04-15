@@ -14,17 +14,23 @@
         $(document).ready(function() {
           //for pressing enter
          $(document).on('keypress',function(e){
-            console.log("Click");
+            //console.log("Click");
             //enter is 13
             if(e.which == 13){
-              e.preventDefault();
-              //input = $("#artistSearchBar"); //gets input text
-              //inputValue = $(input).val(); //gets value
-              //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-              
-              console.log("Enter");
-              //$( "#input_text" ).autocomplete("close");
-              window.location = "./profilepage.html";
+
+              //do this
+              if($("#artistSearchBar").val() != ""){
+                e.preventDefault();
+                //input = $("#artistSearchBar"); //gets input text
+                //inputValue = $(input).val(); //gets value
+                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
+                
+                //console.log("Enter");
+                //$( "#input_text" ).autocomplete("close");
+                window.location = "./profilepage.html";
+
+              }
+
             }
           });
         });
