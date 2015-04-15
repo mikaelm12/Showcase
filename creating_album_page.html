@@ -4,14 +4,14 @@
   	<title>Create Album</title>
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <script src="./javascripts/button_actions.js"></script>
- 	<link rel='stylesheet' type="text/css" href='./stylesheets/creating_album_page.css' />
-  <link rel="stylesheet" type="text/css" href="homepageStyle.css">
-  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
-
+   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="./javascripts/button_actions.js"></script>
+   	<link rel='stylesheet' type="text/css" href='./stylesheets/creating_album_page.css' />
+    <link rel="stylesheet" type="text/css" href="homepageStyle.css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+    <script src="./javascripts/button_actions.js"></script>
   </head>
   <body>
   <nav class="navbar navbar-default">
@@ -34,13 +34,15 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search for an Artist">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+              <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+          </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <button type="button" class="btn btn-primary navbar-btn account" >
+        <button type="button" class="btn btn-default navbar-btn account logout_button" >
           Log Out <!--Take the user to the home page and flip the logged in variable -->
         </button>
 
@@ -66,7 +68,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button id='upload_button' type="button" class="btn btn-primary">Upload</button>
+            <button id='upload_button' type="button" class="btn btn-default">Upload</button>
           </div>
         </div>
       </div>
@@ -79,7 +81,7 @@
     			<input id='album_name_input' placeholder="Album Name" type='text'>
     		</div>
     		<div class='col-md-2' id='add_photo_button'>
-    			<button class="btn btn-large btn-primary btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    			<button class="btn btn-large btn-default btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     		</div>
     	</div>  <!-- Album Title -->
       </center>
@@ -110,7 +112,7 @@
     	<hr>
     	<div class='row' id='save_button_field'>
     		<div class='col-md-12'>
-    			<button id='save_album_button' class="btn btn-large btn-primary" type="button">Save</button>
+    			<button id='save_album_button' class="btn btn-large btn-default" type="button">Save</button>
     		</div>
     	</div>
     </div>  <!-- Main Container -->
