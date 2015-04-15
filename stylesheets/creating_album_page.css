@@ -68,3 +68,12 @@ a {
 	/*font-family: 'Alegreya SC', serif;*/
 	font-size: 30pt
 }
+
+#search {
+    margin: auto;
+    width: 300px;
+}
+
+#search input {
+	width: 300px;
+}
