@@ -37,3 +37,7 @@ $(document).on("click", ".home_button_blank", function(){
 $(document).on("click", ".home_button_after", function(){
 	window.location = "./profile_after_page.html"
 });
+
+$(document).on("click", ".searchButton", function(){
+	window.location = "./profilepage.html"
+});
