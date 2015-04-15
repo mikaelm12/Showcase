@@ -1,16 +1,35 @@
 <html>
   <head>
-  	<head>
-  		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <head>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
       <link rel="stylesheet" type="text/css" href="./stylesheets/homepageStyle.css">
-  		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="./javascripts/button_actions.js"></script>
       <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
-  	<title>Showcase</title>
+      <script>
+        $(document).ready(function() {
+          //for pressing enter
+         $(document).on('keypress',function(e){
+            console.log("Click");
+            //enter is 13
+            if(e.which == 13){
+              e.preventDefault();
+              //input = $("#artistSearchBar"); //gets input text
+              //inputValue = $(input).val(); //gets value
+              //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
+              
+              console.log("Enter");
+              //$( "#input_text" ).autocomplete("close");
+              window.location = "./profilepage.html";
+            }
+          });
+        });
+      </script>
+    <title>Showcase</title>
   </head>
   <body>
 
@@ -58,10 +77,13 @@
               <br>
               <input type="text" class="form-control form_box" placeholder='Email'>
               <br>
-              <input type="text" class="form-control form_box" placeholder='Password'>
+              <input type="password" class="form-control form_box" placeholder='Password'>
+              <br>
+              <input type="password" class="form-control form_box" placeholder='Confirm password'>
 
           </div>
           <div class="modal-footer">
+
             <button id='register_button' type="button" class="btn btn-default">Register</button>
           </div>
         </div>
@@ -103,9 +125,9 @@
     <center>
       <div  id= "searchBarDiv"class="input-group input-group-lg">
         <div class="input-group-btn">
-                <button class="btn btn-default searchButton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <button id= "searchButton" class="btn btn-default searchButton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
-        <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artists" aria-describedby="sizing-addon1">
+        <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artists" aria-describedby="sizing-addon1" autofocus>
       </div>
     </center>
   </body>
