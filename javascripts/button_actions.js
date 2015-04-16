@@ -48,22 +48,32 @@ $(document).on("click", ".portfolioClick", function(){
 // Listen for click on toggle checkbox
 $(document).on("click", ".select-all", function(){
 	$(".checkbox-1").prop('checked', $(this).prop('checked'));
-	if($(".checkbox-1").prop('checked') != "checked"){
-		
+	if($(".checkbox-1").prop('checked') != true){
+		$("#createPortfolioButton").attr("disabled","true");
+	}else{
+		$("#createPortfolioButton").removeAttr("disabled");
 	}
 });
 
 // Listen for click on toggle checkbox
 $(document).on("click", ".checkbox-1", function(){
-	$(".select-all").prop('checked', $(this).prop('checked'));
-	if($(".checkbox-1").prop('checked') != "checked"){
+	
+	if($(".checkbox-1").prop('checked') != true){
+		$(".select-all").prop('checked', false);
+		console.log($(".checkbox-1").prop('checked'));
 		
+		$("#createPortfolioButton").attr("disabled","true");
+	}else{
+		//$(".select-all").prop('checked', $(this).prop('checked'));
+		//console.log("checked");
+		$("#createPortfolioButton").removeAttr("disabled");
 	}
 });
 
 $(document).on("click", "#exportButton", function(){
-	$(".select-all").prop('checked', "checked");
-	$(".checkbox-1").prop('checked', "checked");
+	$(".select-all").prop('checked', true);
+	$(".checkbox-1").prop('checked', true);
+	$("#createPortfolioButton").removeAttr("disabled");
 
 });
 
