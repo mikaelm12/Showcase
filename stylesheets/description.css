@@ -40,3 +40,12 @@ a {
 	border: 2px solid grey;
 	border-radius: 10px;
 }
+
+#search {
+    margin: auto;
+    width: 300px;
+}
+
+#search input {
+	width: 300px;
+}

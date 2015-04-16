@@ -85,15 +85,20 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-left" role="search">
-          <div class="input-group">
-              <input id= "artistSearchBar" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-              <div class="input-group-btn">
-                  <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-          </div>
-        </form>
+        <div id='search'>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="input-group">
+                <input id= "artistSearchBar" type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                <div class="input-group-btn">
+                    <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+          </form>
+        </div>
         <ul class="nav navbar-nav navbar-right">
+          <button type="button" class="btn btn-default navbar-btn account home_button_after" data-toggle="modal" data-target="#myModal">
+            Profile
+          </button>
           <button type="button" class="btn btn-default navbar-btn account logout_button">
             Log Out
           </button>     
