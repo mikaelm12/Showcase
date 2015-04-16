@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="./stylesheets/homepageStyle.css"> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+          <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
@@ -14,6 +17,7 @@
     <link rel='stylesheet' type="text/css" href='./stylesheets/description.css' />
       <script>
       $(document).ready(function() {
+        var availableTags = ["Super Man"];
         //for pressing enter
        $(document).on('keypress',function(e){
           //console.log("Click");
@@ -31,12 +35,30 @@
               
               //console.log("Enter");
               //$( "#input_text" ).autocomplete("close");
+              $( "#artistSearchBar" ).autocomplete("close");
               window.location = "./profilepage.html";
 
             }
 
           }
         });
+
+
+            //autocomplete widjet
+            $("#artistSearchBar").autocomplete({
+              autoFocus: true,
+              source: availableTags,
+              minLength: 1,
+              select: function(event,ui){
+                var inputValue = ui.item.value;
+                //console.log(inputValue);
+                $("#artistSearchBar").val(inputValue);
+                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
+                event.preventDefault();
+              }
+
+
+             });
       });
     </script>
     <script src="./javascripts/button_actions.js"></script>
@@ -116,7 +138,7 @@
                 <div class="col-md-12">
                     <div class="input-group input-group-lg">
          			        <button type="button" class='btn btn-default create_album'>Cancel</button>
-         			        <div class="input-group input-group-lg pull-right">&nbsp
+         			        <div class="input-group input-group-lg pull-right">
          			          <button class='btn btn-default create_album' type="button">Save</button>
                       </div>
                     </div>
