@@ -9,6 +9,33 @@
     <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
   <script src="./javascripts/button_actions.js"></script>
  	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
+
+  <script>
+      $(document).ready(function() {
+        //for pressing enter
+       $(document).on('keypress',function(e){
+          //console.log("Click");
+          //enter is 13
+          if(e.which == 13){
+
+            //do this
+            // Does the element have focus:
+            var hasFocus = $('#artistSearchBar').is(':focus');
+            if($("#artistSearchBar").val() != "" && hasFocus){
+              e.preventDefault();
+              //input = $("#artistSearchBar"); //gets input text
+              //inputValue = $(input).val(); //gets value
+              
+              //console.log("Enter");
+              //$( "#input_text" ).autocomplete("close");
+              window.location = "./profilepage.html";
+
+            }
+
+          }
+        });
+      });
+    </script>
   </head>
 
 <!-- Modal  Export-->
@@ -111,7 +138,7 @@
             <div id='search'>
               <form class="navbar-form navbar-left" role="search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
+                    <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
                     <div class="input-group-btn">
                         <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
                     </div>

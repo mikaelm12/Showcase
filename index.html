@@ -19,7 +19,9 @@
             if(e.which == 13){
 
               //do this
-              if($("#artistSearchBar").val() != ""){
+              // Does the element have focus:
+              var hasFocus = $('#artistSearchBar').is(':focus');
+              if($("#artistSearchBar").val() != "" && hasFocus){
                 e.preventDefault();
                 //input = $("#artistSearchBar"); //gets input text
                 //inputValue = $(input).val(); //gets value
@@ -133,7 +135,7 @@
         <div class="input-group-btn">
                 <button id= "searchButton" class="btn btn-default searchButton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
         </div>
-        <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artists" aria-describedby="sizing-addon1" autofocus>
+        <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" aria-describedby="sizing-addon1" autofocus>
       </div>
     </center>
   </body>
