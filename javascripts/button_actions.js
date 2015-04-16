@@ -48,17 +48,26 @@ $(document).on("click", ".portfolioClick", function(){
 // Listen for click on toggle checkbox
 $(document).on("click", ".select-all", function(){
 	$(".checkbox-1").prop('checked', $(this).prop('checked'));
+	if($(".checkbox-1").prop('checked') != "checked"){
+		
+	}
 });
 
 // Listen for click on toggle checkbox
 $(document).on("click", ".checkbox-1", function(){
 	$(".select-all").prop('checked', $(this).prop('checked'));
+	if($(".checkbox-1").prop('checked') != "checked"){
+		
+	}
 });
 
 $(document).on("click", "#exportButton", function(){
 	$(".select-all").prop('checked', "checked");
 	$(".checkbox-1").prop('checked', "checked");
+
 });
+
+
 
 
 
