@@ -32,10 +32,10 @@ a {
 	display: inline-block;
 }
 
-#table_div {
+/*#table_div {
 	height: 812px;
 	overflow: scroll;
-}
+}*/
 
 #album_name_input {
 	font-size: 35px;

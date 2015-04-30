@@ -6,13 +6,13 @@ $(document).on("click", "#login_button", function(){
 	window.location = "./profile_after_page.html"
 });
 
-$(document).on("click", "#upload_button", function(){
+$(document).on("click", "#create_album_button", function(){
 	window.location = "./creating_album_page.html"
 });
 
-$(document).on("click", "#save_album_button", function(){
-	window.location = "./profile_after_page.html"
-});
+// $(document).on("click", "#save_album_button", function(){
+// 	window.location = "./profile_after_page.html"
+// });
 
 $(document).on("click", "#cancel_album_button", function(){
 	window.location = "./blank_profile_page.html"

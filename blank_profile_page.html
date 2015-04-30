@@ -5,15 +5,13 @@
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-          <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-
- 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
-  <script src="./javascripts/button_actions.js"></script>
- 	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
-
+    <script src="./javascripts/button_actions.js"></script>
+   	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
   <script>
       $(document).ready(function() {
         var availableTags = ["Super Man"];
@@ -69,29 +67,6 @@
         <div class="modal-body">
           <p>You have no source material to create a portfolio</p>
         </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal  Add Pictures-->
-  <div class="modal fade" id="myAddPictures" tabindex="-1" role="dialog" aria-labelledby="myAddPictureLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myAddPictureLabel">Create New Album</h4>
-        </div>
-        <div class="modal-body">
-          <!--<label for="exampleInputFile">Select Pictures</label>-->
-          <input type="file" id="exampleInputFile">
-          <p class="help-block">Browse for pictures to add.</p>   
-        </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button id='upload_button' type="button" class="btn btn-default">Upload</button>
-      </div>
     </div>
   </div>
 </div>
@@ -220,7 +195,7 @@
                 </div>
                 <div class='col-md-4'>
                   <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <button class="btn btn-default btn-large btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                  <button class="btn btn-default btn-large btn-circle" type="button" id='create_album_button'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
 
                 </div>
             </div>
