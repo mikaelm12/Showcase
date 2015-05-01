@@ -44,7 +44,7 @@ $(document).ready(function(){
 					console.log("COL: " + colCount);
 			        return function(e) {
 				        var tableCell = $("#cell-"+i);
-				        var image = $("<img class='grid_image img-responsive img_details'>");
+				        var image = $("<img class='grid_image change_opacity img-responsive img_details'>");
 						image.attr("src", e.target.result);
 
 				        if (tableCell.length == 0){
@@ -98,6 +98,8 @@ $(document).ready(function(){
 
 		album_name = $("#album_name_input").val();
 
+		var photo_count = 0;
+
 	   var ShowcaseAlbum = Parse.Object.extend("ShowcaseAlbum");
        var album = new ShowcaseAlbum();
        album.set("owner", "1x2x3x4x5");
@@ -122,6 +124,7 @@ $(document).ready(function(){
 				        contentType: false,
 				        success: function(data) {
 				           // alert("File available at: " + data.url);
+				           // $('#Searching_Modal').modal('show');
 				    	   var photo_name;
 				    	   var file_name = data.name.substring(42, data.name.length);
 				    	   if (file_name.indexOf("jpeg") > -1){
@@ -135,10 +138,16 @@ $(document).ready(function(){
 				    	   photo.set('title', $("#title_" + photo_name).val());
 				    	   photo.set("description", $("#desc_" + photo_name).val());
 				    	   photo.set("photoUrl", data.url);
+				    	   
 				    	   photo.save(null, {
 							  success: function(photo) {
 							    // Execute any logic that should take place after the object is saved.
 							    // alert('New object created with objectId: ' + photo.id);
+							    photo_count++;
+							    if (photo_count === photos_array.length){
+							    	// $('#Searching_Modal').modal('hide');
+							    	window.location = "./blank_profile_page.html";
+							    }
 							  },
 							  error: function(gameScore, error) {
 							    // Execute any logic that should take place if the save fails.
@@ -146,21 +155,20 @@ $(document).ready(function(){
 							    alert('Failed to create new object, with error code: ' + error.message);
 							  }
 							});
-							           
-								    },
-								    
-								    error: function(data) {
+							},
+							error: function(data) {
 								          var obj = jQuery.parseJSON(data);
 								          alert(obj.error);
 								    }
-								});
+							});
 					};
+
 				  },
 				  error: function(gameScore, error) {
 				    // Execute any logic that should take place if the save fails.
 				    // error is a Parse.Error with an error code and message.
 				    alert('Failed to create new ablum, with error code: ' + error.message);
 				  }
-		});      
+		});
     });
 });

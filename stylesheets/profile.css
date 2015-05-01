@@ -24,13 +24,17 @@ a {
 	padding: 3px;
 }
 
-#album_title_field, #photo_grid {
+#album_title_field, #photo_grid{
 	display: inline-block;
 }
 
-#table_div {
-	height: 545px;
-	overflow: scroll;
+#table_div_album {
+	display: inline-block;
+	text-align: center;
+}
+
+#album_table {
+	display: inline-block;
 }
 
 #album_name_input {
@@ -79,6 +83,7 @@ a {
 .grid_image {
 	width: 268px;
 	height: 268px;
+	margin: 5px;
 }
 
 .change_opacity:hover {
@@ -86,7 +91,7 @@ a {
 }
 
 .grid_cell {
-	width: 270px;
+	width: 279px;
 	height: 270px;
 	border: 1px solid black;
 }
@@ -127,3 +132,4 @@ a {
 #search input {
 	width: 300px;
 }
+

@@ -127,6 +127,24 @@
       </div>
     </div>
 
+    <!-- Modal Spinner -->
+    <div id="Searching_Modal" class="modal fade" tabindex="-1" role="dialog" data-keyboard="false"
+         data-backdrop="static">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="text-align: center">
+                    <h3>Uploading Photos</h3>
+                </div>
+                <div class="modal-body" >
+                    <div style="height:200px">
+                      <span id="searching_spinner_center" style="position: absolute;display: block;top: 50%;left: 50%;"></span>
+                    </div>
+                </div>
+                <div class="modal-footer" style="text-align: center"></div>
+            </div>
+        </div>
+    </div>
+
     <div class='container' id='main_container'>  <!-- Main Container -->
       <center>
     	<div class='row' id='albume_title_field'>  <!-- Ablum Title -->
@@ -165,8 +183,8 @@
     	<hr>
     	<div class='row' id='save_button_field'>
     		<div class='col-md-12'>
+          <button id='save_album_button' class="btn btn-large btn-default" type="button">Create</button>
           <button id='cancel_album_button' class="btn btn-large btn-default" type="button">Cancel</button>
-    			<button id='save_album_button' class="btn btn-large btn-default" type="button">Save</button>
     		</div>
     	</div>
     </div>  <!-- Main Container -->

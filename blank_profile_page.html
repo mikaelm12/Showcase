@@ -11,6 +11,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
     <script src="./javascripts/button_actions.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script src="./javascripts/profile_setup.js"></script>
    	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
   <script>
       $(document).ready(function() {
@@ -219,5 +221,17 @@
           </div><!--End Album Container-->
         </div>
       </div>
+      <div><h2>Albums</h2></div>
+      <div id='table_div_album' class='col-md-12'>  
+          <table id='album_table'>
+            <tbody id='albumGrid'>
+              <tr id='row-0'>
+                <td id='cell-0' class='grid_cell'></td>
+                <td id='cell-1' class='grid_cell'></td>
+                <td id='cell-2' class='grid_cell'></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     </div>  <!-- Main Container -->
   </body>
