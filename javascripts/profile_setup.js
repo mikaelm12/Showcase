@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
 	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
@@ -20,9 +21,9 @@ $(document).ready(function(){
 			}
 
 			var tableCell = $("#cell-"+i);
-
-			var albumTitle = $("<h4>" + album.get("name") + "<h4>");
-			var image = $("<img class='grid_image img-responsive change_opacity img_details' src='./images/mona_lisa.jpg'>");
+			var albumName = album.get("name");
+			var albumTitle = $("<h4>" + albumName + "<h4>");
+			var image = $("<img class='grid_image album img-responsive change_opacity img_details' src='./images/mona_lisa.jpg' id='" + album.id + "' name='" + albumName + "'>");
 
 			if (tableCell.length == 0){
 	        	console.log("CELL UNDEFINED");
@@ -43,7 +44,7 @@ $(document).ready(function(){
 			}
 
 			if (!colDefined){
-			    tableRow.append(tableCell); 	
+			    tableRow.append(tableCell); 
 			}
 
 			if (!rowDefined){
@@ -58,5 +59,9 @@ $(document).ready(function(){
 	  error: function(error) {
 	    alert("Error: " + error.code + " " + error.message);
 	  }
+	});
+
+	$(document).on("click", ".album", function(){
+		window.location = "./album_page.html?id=" + this.id + "&name="+ this.name;
 	});
 });

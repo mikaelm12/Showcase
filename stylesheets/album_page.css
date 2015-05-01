@@ -1,0 +1,93 @@
+body {
+	background-color: #B8B8B8;
+	color: grey;
+}
+
+body .btn {
+	background-color: #E0E0E0;
+	color: grey;
+}
+
+a {
+	color: grey;
+}
+
+#main_container {
+	text-align: center;
+	border: 1px solid grey;
+	border-radius: 10px;
+	padding: 20px;
+	background-color: #F8F8F8;
+}
+
+#add_photo_button {
+	padding: 3px;
+}
+
+#album_title_field, #photo_grid {
+	display: inline-block;
+}
+
+/*#table_div {
+	height: 812px;
+	overflow: scroll;
+}*/
+
+#album_name_input {
+	font-size: 35px;
+	text-align: center;
+}
+
+.grid_image {
+	width: 420px;
+	height: 420px;
+	margin: 0px 3px 3px 3px;
+}
+
+.grid_cell {
+	width: 423px;
+	height: 423px;
+	border: 1px solid black;
+}
+
+.btn-circle {
+	border-radius: 100%;
+	width: 50px;
+	height: 50px;
+}
+
+.navbar-brand {
+	font-family: 'Lobster', cursive;
+	/*font-family: 'Alegreya SC', serif;*/
+	font-size: 30pt
+}
+
+#search {
+    margin: auto;
+    width: 300px;
+}
+
+#search input {
+	width: 300px;
+}
+
+.photoTitle {
+	margin: 3px;
+	width: 267px;
+	text-align: center;
+	font-size: 17px;
+}
+
+.photoDescription {
+	margin: 3px;
+	width: 267px;
+	font-size: 14px;
+}
+
+.photoTitle {
+	background: #B8B8B8;
+	padding: 2px;
+	margin: 3px;
+	width: 420px;
+	font-size: 25px;
+}

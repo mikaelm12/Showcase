@@ -44,7 +44,7 @@ $(document).ready(function(){
 					console.log("COL: " + colCount);
 			        return function(e) {
 				        var tableCell = $("#cell-"+i);
-				        var image = $("<img class='grid_image change_opacity img-responsive img_details'>");
+				        var image = $("<img class='grid_image img-responsive img_details'>");
 						image.attr("src", e.target.result);
 
 				        if (tableCell.length == 0){

@@ -1,21 +1,19 @@
  <!DOCTYPE html>
 <html>
   <head>
-  	<title>Create Album</title>
+  	<title>Album</title>
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-          <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
    	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="./javascripts/button_actions.js"></script>
-   	<link rel='stylesheet' type="text/css" href='./stylesheets/creating_album_page.css' />
-    <link rel="stylesheet" type="text/css" href="homepageStyle.css">
+   	<link rel='stylesheet' type="text/css" href='./stylesheets/album_page.css' />
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
-    <script src="./javascripts/button_actions.js"></script>
-      <script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script src="./javascripts/album_setup.js"></script>
+    <script>
       $(document).ready(function() {
         var availableTags = ["Super Man"];
         //for pressing enter
@@ -129,7 +127,7 @@
       <center>
     	<div class='row' id='albume_title_field'>  <!-- Ablum Title -->
     		<div class='col-md-10'>
-    			<input id='album_name_input' placeholder="Album Name" type='text' value="GR4 Test Album">
+          <h1 id='album_name_input'>Album Name </h1>
     		</div>
     		<div class='col-md-2' id='add_photo_button'>
     			<button class="btn btn-large btn-default btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
@@ -140,22 +138,11 @@
     	<div class='row' id='photo_grid'> <!-- Album Grid -->
     		<div id='table_div' class='col-md-12'>	
 	    		<table>
-	    			<tbody>
-	    				<tr>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    				</tr>
-	    				<tr>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    				</tr>
-	    				<tr>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    					<td class='grid_cell'><a href="./description_page.html"><img class='grid_image change_opacity img-responsive img_details' src='./images/mona_lisa.jpg'></a></td>
-	    				</tr>
+	    			<tbody id='photoGrid'>
+	    				<tr id='row-0'>
+                <td id='cell-0' class='grid_cell'></td>
+                <td id='cell-1' class='grid_cell'></td>
+              </tr>
 	    			</tbody>
 	    		</table>
 	    	</div>
