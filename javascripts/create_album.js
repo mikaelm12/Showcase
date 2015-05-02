@@ -1,11 +1,13 @@
 $(document).ready(function(){
 
 	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
-	var currentUser = Parse.User.current();
+	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
 	if (!currentUser) {
 	    // do stuff with the user
 	    window.location = "./index.html";
-	} 
+	}
+
 	var photos_array = [];
 
 	var files;
@@ -107,7 +109,7 @@ $(document).ready(function(){
 
 	   var ShowcaseAlbum = Parse.Object.extend("ShowcaseAlbum");
        var album = new ShowcaseAlbum();
-       album.set("owner", currentUser.id);
+       album.set("owner", currentUser.objectId);
        album.set("name", album_name);
        album.save(null, {
 		  success: function(album) {

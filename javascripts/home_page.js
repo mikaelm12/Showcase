@@ -60,6 +60,7 @@ $(document).ready(function(){
 		user.signUp(null, {
 			success: function(user) {
 			// Hooray! Let them use the app now.
+			localStorage.setItem('currentUser', JSON.stringify(user));
 			window.location = "./profile_page.html";
 			},
 			error: function(user, error) {
@@ -77,12 +78,101 @@ $(document).ready(function(){
 		Parse.User.logIn(username, password, {
 			success: function(user) {
 			// Do stuff after successful login.
+			localStorage.setItem('currentUser', JSON.stringify(user));
 			window.location = "./profile_page.html";
 			},
 			error: function(user, error) {
 			// The login failed. Check error to see why.
+
 			alert("Failed to login");
 			}
 		});
+	});
+
+	$("#password_login").keyup(function(event){
+		if(event.keyCode == 13){
+			var username = $("#email_login").val();
+			var password = $("#password_login").val();
+			Parse.User.logIn(username, password, {
+				success: function(user) {
+				// Do stuff after successful login.
+				localStorage.setItem('currentUser', JSON.stringify(user));
+				window.location = "./profile_page.html";
+				},
+				error: function(user, error) {
+				// The login failed. Check error to see why.
+				alert("Failed to login");
+				}
+			});
+		}
+	});
+
+	$("#confirmed_password").keyup(function(event){
+		if(event.keyCode == 13){
+			var re = /\w+/;
+		var first_name = $("#first_name").val();
+
+		if (re.exec(first_name) == null){
+			$("#general_alert").show();
+			return;
+		}
+
+		var last_name = $("#last_name").val();
+		if (re.exec(last_name) == null){
+			$("#general_alert").show();
+			return;
+		}
+		
+		var email = $("#email").val();
+		if (re.exec(email) == null){
+			$("#general_alert").show();
+			return;
+		}
+
+		var password = $("#password").val();
+		if (re.exec(password) == null){
+			$("#general_alert").show();
+			return;
+		}
+
+		var confirmed_password = $("#confirmed_password").val();
+		if (re.exec(confirmed_password) == null){
+			$("#general_alert").show();
+			return;
+		}
+
+		var reEmail = /\w+@\w+\.\w+/;
+		if (reEmail.exec(email) == null){
+			$("#email_alert").show();
+			return;
+		}
+
+		if (password != confirmed_password){
+			console.log("PASSWORD: " + password);
+			console.log("CONFIRMED: " + confirmed_password);
+			$("#password_alert").show();
+			return
+		}
+
+		var user = new Parse.User();
+		user.set("username", email);
+		user.set("password", password);
+		user.set("email", email);
+		user.set("first_name", first_name);
+		user.set("last_name", last_name);
+
+		user.signUp(null, {
+			success: function(user) {
+			// Hooray! Let them use the app now.
+			localStorage.setItem('currentUser', JSON.stringify(user));
+			window.location = "./profile_page.html";
+			},
+			error: function(user, error) {
+			// Show the error message somewhere and let the user try again.
+			alert("error");
+			
+			}
+		});
+		}
 	});
 });
