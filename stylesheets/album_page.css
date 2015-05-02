@@ -46,9 +46,10 @@ a {
 }
 
 .grid_cell {
-	width: 423px;
-	height: 423px;
+	/*width: 423px;
+	height: 423px;*/
 	border: 1px solid black;
+	vertical-align: top;
 }
 
 .btn-circle {
@@ -72,12 +73,7 @@ a {
 	width: 300px;
 }
 
-.photoTitle {
-	margin: 3px;
-	width: 267px;
-	text-align: center;
-	font-size: 17px;
-}
+
 
 .photoDescription {
 	margin: 3px;
@@ -88,18 +84,50 @@ a {
 .photoTitle {
 	background: #d7d7d7;
 	padding: 2px;
-	margin: 3px 0px 3px 3px;
-	width: 388.5px;
+	margin: 3px 3px 3px 3px;
+	width: 350px;
 	font-size: 20px;
-	border-radius: 5px 0px 0px 5px;
+	
+}
+
+.editBox {
+	padding: 2px;
+	margin: 3px 3px 3px 3px;
+	width: 350px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.editBoxTitle {
+	font-size: 35px;
+	text-align: center;
+}
+
+.editBoxDesc {
+	padding: 2px;
+	margin: 3px 3px 3px 3px;
+	width: 417px;
+	font-size: 17px;
+	text-align: left;
+}
+
+.remove, .edit {
+	border-radius: 10px;
+	height: 26px;
+	
+}
+
+.edit {
+	margin-left: 2px;
 }
 
 .remove {
-	border-radius: 10px;
-	height: 26px;
+	margin-right: 2px;
 }
 
 .desc {
 	text-align: left;
 	padding: 5px;
+	max-width: 420px;
 }
+

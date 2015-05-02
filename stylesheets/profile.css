@@ -148,7 +148,7 @@ a {
 .albumTitle {
 	background: #d7d7d7;
 	padding: 2px;
-	margin: 3px 0px 3px 3px;
+	margin: 3px 0px 0px 3px;
 	width: 240px;
 	font-size: 20px;
 	border-radius: 5px 0px 0px 5px;
@@ -157,5 +157,6 @@ a {
 .remove {
 	border-radius: 10px;
 	height: 25.5px;
+	margin-top: 3px;
 }
 

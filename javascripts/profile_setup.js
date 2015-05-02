@@ -67,7 +67,7 @@ $(document).ready(function(){
 	});
 
 	$(document).on("click", ".album", function(){
-		window.location = "./album_page.html?id=" + this.id + "&name="+ this.name;
+		window.location = "./album_page.html?id=" + this.id;
 	});
 
 	$(document).on("click", ".remove", function(){
