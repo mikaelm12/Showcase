@@ -146,7 +146,7 @@ $(document).ready(function(){
 							    photo_count++;
 							    if (photo_count === photos_array.length){
 							    	// $('#Searching_Modal').modal('hide');
-							    	window.location = "./blank_profile_page.html";
+							    	window.location = "./profile_page.html";
 							    }
 							  },
 							  error: function(gameScore, error) {

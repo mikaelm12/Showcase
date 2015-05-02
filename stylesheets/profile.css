@@ -91,8 +91,8 @@ a {
 }
 
 .grid_cell {
-	width: 279px;
-	height: 270px;
+	width: 273px;
+	height: 273px;
 	border: 1px solid black;
 }
 
@@ -131,5 +131,13 @@ a {
 
 #search input {
 	width: 300px;
+}
+
+.albumTitle {
+	background: #B8B8B8;
+	padding: 2px;
+	margin: 3px;
+	width: 268px;
+	font-size: 20px;
 }
 

@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 			var tableCell = $("#cell-"+i);
 			var albumName = album.get("name");
-			var albumTitle = $("<h4>" + albumName + "<h4>");
+			var albumTitle = $("<h2 class='albumTitle'>" + albumName + "</h2>");
 			var image = $("<img class='grid_image album img-responsive change_opacity img_details' src='./images/mona_lisa.jpg' id='" + album.id + "' name='" + albumName + "'>");
 
 			if (tableCell.length == 0){
