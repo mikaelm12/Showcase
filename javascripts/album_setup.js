@@ -48,8 +48,8 @@ $(document).ready(function(){
 
 					var tableCell = $("#cell-"+i);
 					var photoTitle = photo.get("title");
-					if (photoTitle == ""){
-						photoTitle = "No Title";
+					if (photoTitle == "" || photoTitle == undefined){
+						photoTitle = "** No Title Available **";
 					}
 					var photoTitle = $("<h2 class='photoTitle' id='title_" + photo.id + "'>" + photoTitle + "</h2>");
 					var editButton = $("<div class='input-group-btn'><button type='submit' class='btn btn-sm btn-default edit' id='" + photo.id + "'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></div>");
@@ -59,7 +59,11 @@ $(document).ready(function(){
 					titleField.append(editButton);
 					titleField.append(photoTitle);
 					titleField.append(removeButton);
-					var photoDesc = $("<p class='desc' id='desc_" + photo.id + "'>" + "<b>Description</b>: " + photo.get('description') + '</p>');
+					var photo_description = photo.get('description');
+					if (photo_description == "" || photo_description == undefined){
+						photo_description = "** No description available **";
+					}
+					var photoDesc = $("<p class='desc' id='desc_" + photo.id + "'>" + "<b>Description</b>: " + photo_description + '</p>');
 
 					if (tableCell.length == 0){
 			        	console.log("CELL UNDEFINED");
@@ -214,4 +218,74 @@ $(document).ready(function(){
 		}
 		});
 	});
+
+	var files; 
+	var photos_array = [];
+
+	$('#fileselect').bind("change", function(e) {
+      	files = e.target.files || e.dataTransfer.files;
+     });
+
+	$(document).on("click", "#upload_button", function() {
+		for (var i=0; i < files.length ; i++){
+			photo = files[i];
+			if (!photo.type.match('image.*')) {
+       			 continue;
+      		}
+      		console.log("UPLOADING");
+      		photos_array.push(photo);
+      	}
+
+      	var photo_count = 0;
+
+      	for (var i = 0; i < photos_array.length; i++){
+        	var file = photos_array[i];
+        	var file_name = file.name;
+        	var serverUrl = 'https://api.parse.com/1/files/' + encodeURIComponent(file_name.replace(/\s+/g, ''));
+
+		    $.ajax({
+		        type: "POST",
+		        beforeSend: function(request) {
+		          request.setRequestHeader("X-Parse-Application-Id", 'wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb');
+		          request.setRequestHeader("X-Parse-REST-API-Key", 'PxiTZfopXT5xaT2p8rgvpuyjSA3Tgq3OnqmxPTFY');
+		          request.setRequestHeader("Content-Type", file.type);
+		        },
+		        url: serverUrl,
+		        data: file,
+		        processData: false,
+		        contentType: false,
+		        success: function(data) {
+		    	   var photo_name;
+		    	   var file_name = data.name.substring(42, data.name.length);
+		    	   if (file_name.indexOf("jpeg") > -1){
+		    	   		photo_name = file_name.substring(0, file_name.length - 5).replace(/\s+/g, '')
+		    	   } else {
+		    	   		photo_name = file_name.substring(0, file_name.length - 4).replace(/\s+/g, '');
+		    	   }
+		    	   var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
+		    	   var photo = new ShowcasePhoto();
+		    	   photo.set("album", album_id);
+		    	   photo.set("photoUrl", data.url);
+		    	   
+		    	   photo.save(null, {
+					  success: function(photo) {
+					    // Execute any logic that should take place after the object is saved.
+					    // alert('New object created with objectId: ' + photo.id);
+					    photo_count++;
+					    
+					    if (photo_count === photos_array.length){
+					    	// $('#Searching_Modal').modal('hide');
+					    	window.location = "./album_page.html?id=" + album_id;
+					    }
+					  }
+					});
+					},
+					error: function(data) {
+						          var obj = jQuery.parseJSON(data);
+						          alert(obj.error);
+						    }
+					});
+		};
+	});
+
 });

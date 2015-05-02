@@ -2,10 +2,18 @@
 $(document).ready(function(){
 
 	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
+	var currentUser = Parse.User.current();
+	if (!currentUser) {
+	    // do stuff with the user
+	    window.location = "./index.html";
+	} 
+
+	$("#artist_name").html("<h2>" + currentUser.get("first_name") + " " + currentUser.get("last_name") + "</h2>");
+	$("#emailLink").html(currentUser.get("email"));
 
 	var ShowcaseAlbum = Parse.Object.extend("ShowcaseAlbum");
 	var query = new Parse.Query(ShowcaseAlbum);
-	query.equalTo("owner", "1x2x3x4x5");
+	query.equalTo("owner", currentUser.id);
 	query.find({
 	  success: function(results) {
 	    // Do something with the returned Parse.Object values
@@ -86,8 +94,20 @@ $(document).ready(function(){
 			album.destroy({
 			  success: function(myObject) {
 			    // The object was deleted from the Parse Cloud.
-			    $("#myDelete").modal("hide");
-				window.location = "./profile_page.html"
+			    var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
+				var query = new Parse.Query(ShowcasePhoto);
+				query.equalTo("album", albumId);
+				query.find({
+					success:function(list) {
+						for (var i=0; i < list.length; i++){
+							var photo = list[i];
+							photo.destroy();
+						}
+						$("#myDelete").modal("hide");
+						window.location = "./profile_page.html";
+					}
+				});
+			    
 			  },
 			  error: function(myObject, error) {
 			    // The delete failed.
