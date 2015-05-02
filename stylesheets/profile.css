@@ -90,6 +90,12 @@ a {
 	width: 268px;
 	height: 268px;
 	margin: 5px;
+	border-radius: 5px;
+
+}
+
+.grid_image:hover {
+	cursor: pointer;
 }
 
 .change_opacity:hover {
@@ -97,8 +103,8 @@ a {
 }
 
 .grid_cell {
-	width: 273px;
-	height: 273px;
+	width: 278px;
+	height: 278px;
 	border: 1px solid black;
 }
 
@@ -140,10 +146,16 @@ a {
 }
 
 .albumTitle {
-	background: #B8B8B8;
+	background: #d7d7d7;
 	padding: 2px;
-	margin: 3px;
-	width: 268px;
+	margin: 3px 0px 3px 3px;
+	width: 240px;
 	font-size: 20px;
+	border-radius: 5px 0px 0px 5px;
+}
+
+.remove {
+	border-radius: 10px;
+	height: 25.5px;
 }
 

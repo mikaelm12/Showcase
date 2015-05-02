@@ -13,6 +13,7 @@
     <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="./javascripts/album_setup.js"></script>
+    <script src="./javascripts/button_actions.js"></script>
     <script>
       $(document).ready(function() {
         var availableTags = ["Super Man"];
@@ -60,46 +61,45 @@
     </script>
   </head>
   <body>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+   <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
 
-    <!-- Navigation Bar -->
+          <!-- Navigation Bar -->
 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="./index.html">Showcase</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-      <form class="navbar-form navbar-left" role="search">
-          <div class="input-group">
-              <input id ="artistSearchBar" type="text" class="form-control" placeholder="Search for Artist" name="srch-term" id="srch-term">
-              <div class="input-group-btn">
-                  <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html">Showcase</a>
           </div>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <button type="button" class="btn btn-default navbar-btn account home_button_after" data-toggle="modal" data-target="#myModal">
-            Profile
-        </button>
-        <button type="button" class="btn btn-default navbar-btn account logout_button" >
-          Log Out <!--Take the user to the home page and flip the logged in variable -->
-        </button>
-
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div id='search'>
+              <form class="navbar-form navbar-left" role="search">
+                <div class="input-group">
+                    <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+              </form>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <button type="button" class="btn btn-default navbar-btn account home_button_blank" data-toggle="modal" data-target="#myModal">
+                Profile
+              </button>
+              <button type="button" class="btn btn-default navbar-btn account logout_button" data-toggle="modal" data-target="#myModal">
+                Log Out
+              </button>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
 
     <!-- Modal  Add Pictures-->
       <div class="modal fade" id="myAddPictures" tabindex="-1" role="dialog" aria-labelledby="myAddPictureLabel" aria-hidden="true">
@@ -122,6 +122,26 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal  Delete-->
+    <div class="modal fade" id="myDelete" tabindex="-1" role="dialog" aria-labelledby="myExportLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myExportLabel">Delete Photo</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this photo?</p>
+          </div>
+          <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button id="deletePhotoButton" type="button" class="btn btn-default">Yes</button>
+          </div>
+      </div>
+      </div>
+    </div>
+
 
     <div class='container' id='main_container'>  <!-- Main Container -->
       <center>

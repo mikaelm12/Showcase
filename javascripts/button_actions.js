@@ -31,11 +31,11 @@ $(document).on("click", ".go_to_album", function(){
 });
 
 $(document).on("click", ".home_button_blank", function(){
-	window.location = "./blank_profile_page.html"
+	window.location = "./profile_page.html"
 });
 
 $(document).on("click", ".home_button_after", function(){
-	window.location = "./profile_after_page.html"
+	window.location = "./profile_page.html"
 });
 
 $(document).on("click", ".searchButton", function(){

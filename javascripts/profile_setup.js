@@ -23,7 +23,12 @@ $(document).ready(function(){
 			var tableCell = $("#cell-"+i);
 			var albumName = album.get("name");
 			var albumTitle = $("<h2 class='albumTitle'>" + albumName + "</h2>");
-			var image = $("<img class='grid_image album img-responsive change_opacity img_details' src='./images/mona_lisa.jpg' id='" + album.id + "' name='" + albumName + "'>");
+			var removeButton = $("<div class='input-group-btn'><button type='submit' class='btn btn-sm btn-default remove' id='" + album.id + "'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></div>");
+			var titleField = $("<div class='input-group'></div>");
+			titleField.append(albumTitle);
+			titleField.append(removeButton);
+
+			var image = $("<img class='grid_image album img-responsive change_opacity img_details' src='" + album.get('cover') + "' id='" + album.id + "' name='" + albumName + "'>");
 
 			if (tableCell.length == 0){
 	        	console.log("CELL UNDEFINED");
@@ -31,7 +36,7 @@ $(document).ready(function(){
 	        	tableCell = $("<td class='grid_cell' id='cell-" + i + "'>");
 			}
 
-			tableCell.append(albumTitle);
+			tableCell.append(titleField);
 			tableCell.append(image);
 
 			var tableRow = $("#row-"+ rowCount);
@@ -63,5 +68,33 @@ $(document).ready(function(){
 
 	$(document).on("click", ".album", function(){
 		window.location = "./album_page.html?id=" + this.id + "&name="+ this.name;
+	});
+
+	$(document).on("click", ".remove", function(){
+		$("#deleteAlbumButton").attr("albumId", this.id);
+		$("#myDelete").modal("show");
+	});
+
+	$(document).on("click", "#deleteAlbumButton", function(){
+		var albumId = $("#deleteAlbumButton").attr("albumId");
+		var ShowcaseAlbum = Parse.Object.extend("ShowcaseAlbum");
+		var query = new Parse.Query(ShowcaseAlbum);
+		query.equalTo("objectId", albumId);
+		query.find({
+		success:function(list) {
+			var album = list[0];
+			album.destroy({
+			  success: function(myObject) {
+			    // The object was deleted from the Parse Cloud.
+			    $("#myDelete").modal("hide");
+				window.location = "./profile_page.html"
+			  },
+			  error: function(myObject, error) {
+			    // The delete failed.
+			    // error is a Parse.Error with an error code and message.
+			  }
+			}); 	
+		  }
+		});
 	});
 });

@@ -144,6 +144,10 @@ $(document).ready(function(){
 							    // Execute any logic that should take place after the object is saved.
 							    // alert('New object created with objectId: ' + photo.id);
 							    photo_count++;
+							    if (photo_count == 1){
+							    	album.set('cover', photo.get("photoUrl"));
+							    	album.save();
+							    }
 							    if (photo_count === photos_array.length){
 							    	// $('#Searching_Modal').modal('hide');
 							    	window.location = "./profile_page.html";

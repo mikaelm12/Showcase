@@ -43,6 +43,11 @@ $(document).ready(function(){
 			}
 			var photoTitle = $("<h2 class='photoTitle'>" + photoTitle + "</h2>");
 			var image = $("<img class='grid_image' src='" + photo.get("photoUrl") + "'>");
+			var removeButton = $("<div class='input-group-btn'><button type='submit' class='btn btn-sm btn-default remove' id='" + photo.id + "'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></div>");
+			var titleField = $("<div class='input-group'></div>");
+			titleField.append(photoTitle);
+			titleField.append(removeButton);
+			var photoDesc = $("<p class='desc'>" + "<b>Description</b>: " + photo.get('description') + '</p>');
 
 			if (tableCell.length == 0){
 	        	console.log("CELL UNDEFINED");
@@ -50,8 +55,9 @@ $(document).ready(function(){
 	        	tableCell = $("<td class='grid_cell' id='cell-" + i + "'>");
 			}
 
-			tableCell.append(photoTitle);
+			tableCell.append(titleField);
 			tableCell.append(image);
+			tableCell.append(photoDesc);
 
 			var tableRow = $("#row-"+ rowCount);
 
@@ -78,5 +84,37 @@ $(document).ready(function(){
 	  error: function(error) {
 	    alert("Error: " + error.code + " " + error.message);
 	  }
+	});
+	
+
+    $(document).on("click", ".remove", function(){
+    	console.log("HERE REMOVE");
+	    $("#deletePhotoButton").attr("photo_id", this.id);
+	    $("#myDelete").modal("show");
+	 });
+
+	$(document).on("click", "#deletePhotoButton", function(){
+		console.log("HERE DELETE");
+		var photoId = $("#deletePhotoButton").attr("photo_id");
+		var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
+		var query = new Parse.Query(ShowcasePhoto);
+		query.equalTo("objectId", photoId);
+		query.find({
+		success:function(list) {
+		  var photo= list[0];
+
+		photo.destroy({
+		  success: function(myObject) {
+		    // The object was deleted from the Parse Cloud.
+		    $("#myDelete").modal("hide");
+		  	window.location = "./album_page.html?id=" + $.getUrlVar("id") + "&name=" + $.getUrlVar("name");
+		  },
+		  error: function(myObject, error) {
+		    // The delete failed.
+		    // error is a Parse.Error with an error code and message.
+		  }
+		});  
+		}
+		});
 	});
 });
