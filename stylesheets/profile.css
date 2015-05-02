@@ -65,10 +65,16 @@ a {
 	margin-bottom: 20px;
 }
 
-#bio_div, #email_div, #portfolio_div {
+#bio_div, #portfolio_div {
 	padding: 5px;
 	text-align: left;
-	margin-top: 7px;
+	border-radius: 5px;
+}
+
+#email_div {
+	padding: 5px;
+	margin-top: 8px;
+	text-align: left;
 	border-radius: 5px;
 }
 
