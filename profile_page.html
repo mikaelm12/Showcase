@@ -11,11 +11,15 @@
     <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="./javascripts/profile_setup.js"></script>
+    <script src="./javascripts/public.js"></script>
    	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
     <script src="./javascripts/button_actions.js"></script>
   <script>
       $(document).ready(function() {
-        var availableTags = ["Super Man"];
+
+        findMatchingUsers("");
+        console.log("HI")
+        console.log(findMatchingUsers(""))
         //for pressing enter
        $(document).on('keypress',function(e){
           //console.log("Click");
@@ -39,7 +43,7 @@
 
           }
         });
-
+/*
         //autocomplete widjet
         $("#artistSearchBar").autocomplete({
           autoFocus: true,
@@ -53,7 +57,8 @@
             event.preventDefault();
           }
          });
-      });
+     */   });
+
     </script>
   </head>
 
