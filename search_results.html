@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+  	<title>Profile Page</title>
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+    <script src="./javascripts/button_actions.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script src="./javascripts/profile_setup.js"></script>
+    <script src="./javascripts/public.js"></script>
+   	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
+  <script>
+      $(document).ready(function() {
+
+        findMatchingUsers("");
+        var userPrefixFromURL = getParameterByName( "name",document.URL )
+        findMatchedUsersOnParseUpdateTable(userPrefixFromURL);
+
+
+   
+        //for pressing enter
+       $(document).on('keypress',function(e){
+          //console.log("Click");
+          //enter is 13
+          if(e.which == 13){
+
+            //do this
+            // Does the element have focus:
+            var hasFocus = $('#artistSearchBar').is(':focus');
+            if($("#artistSearchBar").val() != "" && hasFocus){
+              e.preventDefault();
+              //input = $("#artistSearchBar"); //gets input text
+              //inputValue = $(input).val(); //gets value
+              
+              //console.log("Enter");
+              //$( "#input_text" ).autocomplete("close");
+              $( "#artistSearchBar" ).autocomplete("close");
+              window.location = "./profilepage.html";
+
+            }
+
+          }
+        });
+
+        
+      });
+    </script>
+  </head>
+
+
+
+  <body>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+
+          <!-- Navigation Bar -->
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./index.html">Showcase</a>
+          </div>
+          
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div id='search'>
+              <form class="navbar-form navbar-left" role="search">
+                <div class="input-group">
+                    <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+              </form>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <button type="button" class="btn btn-default navbar-btn account home_button_blank" data-toggle="modal" data-target="#myModal">
+                Profile
+              </button>
+              <button type="button" class="btn btn-default navbar-btn account logout_button" data-toggle="modal" data-target="#myModal">
+                Log Out
+              </button>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+
+    <div class='container' id='main_container'>  <!-- Main Container -->
+
+      <table id="artistSearchResults" style="width:100%">
+
+
+
+      </table>
+
+    </div>  <!-- Main Container -->
+  </body>

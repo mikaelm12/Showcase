@@ -56,6 +56,8 @@ $(document).ready(function(){
 		user.set("email", email);
 		user.set("first_name", first_name);
 		user.set("last_name", last_name);
+		user.set("full_name",first_name + " " + last_name);
+		user.set("bio","");
 
 		user.signUp(null, {
 			success: function(user) {
@@ -86,3 +88,23 @@ $(document).ready(function(){
 		});
 	});
 });
+
+findMatchingUsers = function(prefix){
+	var query = new Parse.Query(Parse.User);
+	
+	query.find({
+	success: function(users) {
+    	console.log(users);
+    	var userFullNames = []
+    	for (var i = users.length - 1; i >= 0; i--) {
+    		console.log(users[i])
+    		var currentUser = users[i]
+    		var user_full_name = currentUser.attributes.first_name + " "+ currentUser.attributes.last_name;
+    		userFullNames.push(user_full_name);
+    		
+    	};
+    	console.log(prefix);
+		}
+	});
+	return userFullNames;
+}
