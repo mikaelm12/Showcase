@@ -1,16 +1,16 @@
  <!DOCTYPE html>
 <html>
   <head>
-  	<title>Profile Page</title>
-  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
           <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
- 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
   <script src="./javascripts/button_actions.js"></script>
- 	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
+  <link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
       <script>
         $(document).ready(function() {
             var availableTags = ["Super Man"];
@@ -121,7 +121,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myShareLabel">Share</h4>
 
-        </div> <span style="padding-left:33%">This will post a link to your profile</span>
+        </div> <span style="padding-left:33%">This will post a link to your portfolio</span>
           <div id = "share_buttons" style="padding-left:18%">
                        <!-- Facebook -->
             <!--<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html&redirect_uri=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html"-->
@@ -141,10 +141,8 @@
             <!-- Reddit -->
             <a href="http://reddit.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
                
-
             <!-- Pinterest -->
             <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="http://www.simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" /></a>
-               
                
             <!-- Email -->
             <a href="mailto:?Subject=Simple Share Buttons&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.simplesharebuttons.com"><img src="http://www.simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a>
@@ -245,41 +243,45 @@
             <div id='export_button_div'> <!-- Export Button -->
 
                   <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <button class="btn btn-default large_button " type="button" data-toggle="modal" data-target="#myShare" style="font-size:150%"><span class="glyphicon glyphicon-share" aria-hidden="true"  ></span>&nbspShare</button>
+                  <button class="btn btn-default large_button " type="button" data-toggle="modal" data-target="#myShare" style="font-size:150%" disabled></span>Albums</button>
           
                       
-             <button id = "exportButton" type="button" class="btn btn-default large_button" data-toggle="modal" data-target="#myExport" style="font-size:150%">Export to Portfolio</button>
-            </div>
-            <div class='row'>
-                <div class='col-md-4' ></div>
-                <div class='col-md-4'>
-                  <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <h1 id='album_name_input'>Albums</h1>
-                </div>
-                <div class='col-md-4'>
-                  <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <button class="btn btn-default btn-large btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-
-                </div>
+             <button id = "exportButton" type="button" class="btn btn-default large_button" id="view_portfolios" style="font-size:150%">Portfolios</button>
             </div>
             <hr>
+            <div class="row">
+
+            <div class='col-md-4'>
+                  
+            </div>
+            
+            <!-- Export portfolio -->
+            <div class='col-md-4'>
+            <button id = "exportButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#myExport" style="font-size:150%">Export portfolio</button>
+            </div>
+            <div class='col-md-4'></div>
+            <!-- Add album -->
+            
+
+            </div>
+           
             <div id='photo_grid'> <!-- Album Grid -->
-            	<div id='table_div' class='col-md-12'>	
-        	    	<table>
-        	    		<tbody>
-        	    			<tr>
-        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive go_to_album' src='./images/mona_lisa.jpg'></a></td>
-        	    				<td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
-        	    			</tr>
-        	    			<tr>
-        	    				<td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
-        	    				<td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
-        	    			</tr>
-        	    		</tbody>
-        	    	</table>
-        	    </div>
+              <div id='table_div' class='col-md-12'>  
+                <table>
+                  <tbody>
+                    <tr>
+                      <td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive go_to_album' src='./images/mona_lisa.jpg'></a></td>
+                      <td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
+                    </tr>
+                    <tr>
+                      <td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
+                      <td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div> <!-- Album Grid -->
-          	 
+             
 
           </div><!--End Album Container-->
         </div>

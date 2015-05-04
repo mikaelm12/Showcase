@@ -77,6 +77,23 @@ $(document).on("click", "#exportButton", function(){
 
 });
 
+$(document).on("click", "#scroll_to_albums", function() {
+	var parent =$('html,body');
+	var element =  document.getElementById('album_container');
+    // parent.animate({ scrollTop:1000}, 'slow');
+    parent.animate({ scrollTop: $(element).offset().top }, 'slow');
+})
+
+$(document).on("click", "#select_portfolio", function() {
+	var parent =$('html,body');
+	var element =  document.getElementById('current_portfolio');
+    // parent.animate({ scrollTop:1000}, 'slow');
+    parent.animate({ scrollTop: $(element).offset().top }, 'slow');
+    // console.log("this.text:"+$(this).text());
+    // console.log("current_text:"+$(document.getElementById('current_text')).text()); //.val());
+    $(document.getElementById('current_text')).text($(this).text()); //
+})
+
 
 
 
