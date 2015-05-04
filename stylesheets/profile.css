@@ -66,8 +66,9 @@ a {
 }
 
 #artist_name {
-	text-align: center;
+	text-align: left;
 	margin-bottom: 10px;
+	margin-left: 12px;
 }
 
 #bio_div, #portfolio_div, #email_div {
