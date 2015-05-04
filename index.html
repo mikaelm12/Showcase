@@ -5,18 +5,21 @@
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
       <link rel="stylesheet" type="text/css" href="./stylesheets/homepageStyle.css">
-
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="./javascripts/button_actions.js"></script>
       <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+      <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+      <script src="./javascripts/home_page.js"></script>
+      <script src="./javascripts/public.js"></script>
       <script>
         $(document).ready(function() {
-            var availableTags = ["Super Man"];
+           findMatchingUsers("");
+
+
           //for pressing enter
          $(document).on('keypress',function(e){
             //console.log("Click");
@@ -42,19 +45,6 @@
             }
           });
 
-             //autocomplete widjet
-            $("#artistSearchBar").autocomplete({
-              autoFocus: true,
-              source: availableTags,
-              minLength: 1,
-              select: function(event,ui){
-                var inputValue = ui.item.value;
-                //console.log(inputValue);
-                $("#artistSearchBar").val(inputValue);
-                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-                event.preventDefault();
-              }
-
 
              });
         });
@@ -72,17 +62,10 @@
             <h4 class="modal-title" id="myModalLabel">Log In to Showcase</h4>
           </div>
           <div class="modal-body">
-
-
             Email 
-
-              <input type="text" class="form-control" >
+              <input id='email_login' type="text" class="form-control" placeHolder='Email Address'>
             Password
-
-              <input type="password" class="form-control" >
-
-            
-         
+              <input id='password_login' type="password" class="form-control" placeHolder='Password' >
           </div>
           <div class="modal-footer">
             <button id='login_button' type="button" class="btn btn-default" data-dismiss="modal">Login</button>
@@ -100,16 +83,15 @@
             <h4 class="modal-title" id="myModalLabel">Register</h4>
           </div>
           <div class="modal-body">
-
-              <input type="text" class="form-control form_box" placeholder='First Name' >
+              <input id='first_name' type="text" class="form-control form_box" placeholder='First Name' required>
               <br>
-              <input type="text" class="form-control form_box" placeholder='Last Name' >
+              <input id='last_name' type="text" class="form-control form_box" placeholder='Last Name' required>
               <br>
-              <input type="text" class="form-control form_box" placeholder='Email'>
+              <input id='email' type="email" class="form-control form_box" placeholder='Email' required>
               <br>
-              <input type="password" class="form-control form_box" placeholder='Password'>
+              <input id='password' type="password" class="form-control form_box" placeholder='Password' required>
               <br>
-              <input type="password" class="form-control form_box" placeholder='Confirm password'>
+              <input id='confirmed_password' type="password" class="form-control form_box" placeholder='Confirm password' required>
 
           </div>
           <div class="modal-footer">

@@ -24,13 +24,17 @@ a {
 	padding: 3px;
 }
 
-#album_title_field, #photo_grid {
+#album_title_field, #photo_grid{
 	display: inline-block;
 }
 
-#table_div {
-	height: 545px;
-	overflow: scroll;
+#table_div_album {
+	display: inline-block;
+	text-align: center;
+}
+
+#album_table {
+	display: inline-block;
 }
 
 .scrollableportfolio {
@@ -66,10 +70,23 @@ a {
 	margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
 #bio_div, #email_div, #portfolio_div {
 	padding: 1px;
 	text-align: left;
 	margin-top: 5px;
+=======
+#bio_div, #portfolio_div {
+	padding: 5px;
+	text-align: left;
+	border-radius: 5px;
+}
+
+#email_div {
+	padding: 5px;
+	margin-top: 8px;
+	text-align: left;
+>>>>>>> e229940fd4a225ffd65a6c1a553a41e38579bda6
 	border-radius: 5px;
 }
 
@@ -132,6 +149,13 @@ a {
 .grid_image {
 	width: 268px;
 	height: 268px;
+	margin: 5px;
+	border-radius: 5px;
+
+}
+
+.grid_image:hover {
+	cursor: pointer;
 }
 
 .change_opacity:hover {
@@ -139,9 +163,15 @@ a {
 }
 
 .grid_cell {
+<<<<<<< HEAD
 	width: 270px;
 	height: 270px;
 	border: 10px solid rgba(0, 0, 0, 0);
+=======
+	width: 278px;
+	height: 278px;
+	border: 1px solid black;
+>>>>>>> e229940fd4a225ffd65a6c1a553a41e38579bda6
 }
 
 .btn-circle {
@@ -180,3 +210,19 @@ a {
 #search input {
 	width: 300px;
 }
+
+.albumTitle {
+	background: #d7d7d7;
+	padding: 2px;
+	margin: 3px 0px 0px 3px;
+	width: 240px;
+	font-size: 20px;
+	border-radius: 5px 0px 0px 5px;
+}
+
+.remove {
+	border-radius: 10px;
+	height: 25.5px;
+	margin-top: 3px;
+}
+

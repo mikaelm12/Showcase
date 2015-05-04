@@ -1,41 +1,11 @@
-$(document).on("click", "#register_button", function(){
-	window.location = "./blank_profile_page.html"
-});
 
-$(document).on("click", "#login_button", function(){
-	window.location = "./profile_after_page.html"
-});
-
-$(document).on("click", "#create_album_button", function(){
-	window.location = "./creating_album_page.html"
-});
-
-// $(document).on("click", "#save_album_button", function(){
-// 	window.location = "./profile_after_page.html"
-// });
-
-$(document).on("click", "#cancel_album_button", function(){
-	window.location = "./blank_profile_page.html"
+$(document).on("click", ".home_button", function(){
+	window.location = './profile_page.html';
 });
 
 $(document).on("click", ".logout_button", function(){
-	window.location = "./index.html"
-});
-
-$(document).on("click", ".create_album", function(){
-	window.location = "./creating_album_page.html"
-});
-
-$(document).on("click", ".go_to_album", function(){
-	window.location = "./album_page.html"
-});
-
-$(document).on("click", ".home_button_blank", function(){
-	window.location = "./blank_profile_page.html"
-});
-
-$(document).on("click", ".home_button_after", function(){
-	window.location = "./profile_after_page.html"
+	localStorage.removeItem("currentUser");
+	window.location = './index.html';
 });
 
 $(document).on("click", ".searchButton", function(){
@@ -98,3 +68,7 @@ $(document).on("click", "#select_portfolio", function() {
 
 
 
+$(document).on("click", "#create_album_button", function(){
+	Parse.User.logOut();
+	window.location = './creating_album_page.html';
+});

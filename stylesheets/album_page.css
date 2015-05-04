@@ -20,10 +20,6 @@ a {
 	background-color: #F8F8F8;
 }
 
-#album_title_field, #photo_grid, #save_button_field {
-	padding: 10px;
-}
-
 #add_photo_button {
 	padding: 3px;
 }
@@ -43,15 +39,17 @@ a {
 }
 
 .grid_image {
-	width: 268px;
-	height: 268px;
-	margin: 3px;
+	width: 420px;
+	height: 420px;
+	margin: 0px 3px 3px 3px;
+	border-radius: 5px;
 }
 
 .grid_cell {
-	width: 270px;
-	height: 270px;
+	/*width: 423px;
+	height: 423px;*/
 	border: 1px solid black;
+	vertical-align: top;
 }
 
 .btn-circle {
@@ -75,15 +73,61 @@ a {
 	width: 300px;
 }
 
-.photoTitle {
-	margin: 3px;
-	width: 267px;
-	text-align: center;
-	font-size: 17px;
-}
+
 
 .photoDescription {
 	margin: 3px;
 	width: 267px;
 	font-size: 14px;
 }
+
+.photoTitle {
+	background: #d7d7d7;
+	padding: 2px;
+	margin: 3px 3px 3px 3px;
+	width: 350px;
+	font-size: 20px;
+	
+}
+
+.editBox {
+	padding: 2px;
+	margin: 3px 3px 3px 3px;
+	width: 350px;
+	font-size: 20px;
+	text-align: center;
+}
+
+.editBoxTitle {
+	font-size: 35px;
+	text-align: center;
+}
+
+.editBoxDesc {
+	padding: 2px;
+	margin: 3px 3px 3px 3px;
+	width: 417px;
+	font-size: 17px;
+	text-align: left;
+}
+
+.remove, .edit {
+	border-radius: 10px;
+	height: 26px;
+	
+}
+
+.edit {
+	margin-left: 2px;
+}
+
+.remove {
+	margin-right: 2px;
+}
+
+.desc {
+	text-align: left;
+	padding: 5px;
+	max-width: 420px;
+}
+
