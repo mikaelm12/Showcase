@@ -14,14 +14,15 @@
     <script src="./javascripts/public.js"></script>
    	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
     <script src="./javascripts/button_actions.js"></script>
-    <link href="./bootstrap-editable-v1.1.4/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
-    <script src="./bootstrap-editable-v1.1.4/bootstrap-editable/js/bootstrap-editable.min.js"></script>
   <script>
       $(document).ready(function() {
 
         findMatchingUsers("");
-        console.log("HI")
-        console.log(findMatchingUsers(""))
+        console.log("HI");
+        console.log(findMatchingUsers(""));
+        $('#about_edit_button').hide();
+        $('#portfolio_edit_button').hide();
+        $('#email_edit_button').hide();
         //for pressing enter
        $(document).on('keypress',function(e){
           //console.log("Click");
@@ -61,40 +62,32 @@
          });
       });*/  
 
-    $('#about_div').hover(function() {
-      // mouseOver function
-      //console.log("hovering about");
-      $('#about_edit_button').show();
-    }, function() {
-      // mouseOut function
-      $('#about_edit_button').hide();
-    });
-    $('#email_div').hover(function() {
-      // mouseOver function
-      //console.log("hovering email");
-      $('#email_edit_button').show();
-    }, function() {
-      // mouseOut function
-      $('#email_edit_button').hide();
-    });
-    $('#portfolio_div').hover(function() {
-      // mouseOver function
-      //console.log("hovering portfolio");
-      $('#portfolio_edit_button').show();
-    }, function() {
-      // mouseOut function
-      $('#portfolio_edit_button').hide();
+      $('#about_div').hover(function() {
+        // mouseOver function
+        //console.log("hovering about");
+        $('#about_edit_button').show();
+      }, function() {
+        // mouseOut function
+        $('#about_edit_button').hide();
+      });
+      $('#email_div').hover(function() {
+        // mouseOver function
+        //console.log("hovering email");
+        $('#email_edit_button').show();
+      }, function() {
+        // mouseOut function
+        $('#email_edit_button').hide();
+      });
+      $('#portfolio_div').hover(function() {
+        // mouseOver function
+        //console.log("hovering portfolio");
+        $('#portfolio_edit_button').show();
+      }, function() {
+        // mouseOut function
+        $('#portfolio_edit_button').hide();
+      });
     });
 
-    $('#comments').editable({
-                           type:  'textarea',
-                           pk:    1,
-                           name:  'comments',
-                           url:   'post.php',  
-                           title: 'Enter comments'
-                        });
-
-  });
     </script>
   </head>
 
@@ -274,10 +267,6 @@
                    </div>
                 </div>
             </div>  
-            <div class ='row'>
-
-                <a href="#" id="comments" data-type="text" data-pk="1" data-url="/post" data-title="Enter username">superuser</a>
-            </div>    
         </div>
       </div>
       <hr>
