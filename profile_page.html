@@ -61,11 +61,18 @@
           }
          });
       });*/  
+      var aboutEdit= false;
+      var emailEdit= false;
 
       $('#about_div').hover(function() {
         // mouseOver function
         //console.log("hovering about");
-        $('#about_edit_button').show();
+        if (aboutEdit){
+          //do nothing
+        }else{
+          $('#about_edit_button').show();
+        }
+        
       }, function() {
         // mouseOut function
         $('#about_edit_button').hide();
@@ -73,7 +80,12 @@
       $('#email_div').hover(function() {
         // mouseOver function
         //console.log("hovering email");
-        $('#email_edit_button').show();
+        if (emailEdit){
+          //do nothing
+        }else{
+          $('#email_edit_button').show();
+        }
+        
       }, function() {
         // mouseOut function
         $('#email_edit_button').hide();
@@ -85,6 +97,24 @@
       }, function() {
         // mouseOut function
         $('#portfolio_edit_button').hide();
+      });
+
+
+      $('#about_edit_button').click(function(){
+        $('#about_edit_button').hide();
+        aboutEdit = true;
+        $('#user-about').hide();
+        $('#about_edit').show();
+        $('#about_edit_buttons').show();
+
+      });
+      $('#email_edit_button').click(function(){
+        $('#email_edit_button').hide();
+        emailEdit = true;
+        $('#emailLink').hide();
+        $('#email_edit').show();
+        $('#email_edit_buttons').show();
+
       });
     });
 
@@ -233,7 +263,7 @@
           <div id = "profile_container" style = 'width:100%;text-align:center;'>
               <div class='row'>
                 <div class='col-md-12' style="margin:0 auto;">
-                  <div id='artist_name'><h2>Your Name</h2></div>
+                  <div id='artist_name'style="margin:0 auto;"><h2>Your Name</h2></div>
                 </div>
             </div>
             <img id='profile_pic' class='grid_image img-responsive change_opacity' align="middle" src='./images/blank_profile.jpg'>
@@ -241,24 +271,29 @@
         </div>
         <div class='col-md-8'>
 
+
+            <div class='row'>
+                <div class='col-md-12' id="about_div">
+                    <div id='bio_div'>
+                      <h3>About <button type="submit" id= "about_edit_button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
+                      <p id = "user-about" style="margin:0;">Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.</p>
+                    </div>
+
+                    <textarea rows="4" cols="50" id = "about_edit" hidden style="width:100%;margin:0;"></textarea>
+                    <div id = "about_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "about_edit_accept" >Accept</button><button id = "about_edit_cancel">Cancel</button></div>
+                </div>       
+            </div>  
             <div class = 'row'>
               <div class='col-md-6'>
                  <div id='email_div'>
                     <h3>Email<button type="submit" class="btn btn-sm btn-default editButton" id="email_edit_button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
                     <a id='emailLink' href="mailto:#" aria-hidden="true">yourEmail@email.com </a> 
                   </div>
+
+                  <textarea rows="1" cols="50" id = "email_edit" hidden style="width:100%;margin:0;"></textarea>
+                  <div id = "email_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "email_edit_accept" >Accept</button><button id = "email_edit_cancel">Cancel</button></div>
               </div>
             </div>
-            <div class='row'>
-                <div class='col-md-12' id="about_div">
-                    <div id='bio_div'>
-                      <h3>About <button type="submit" class="btn btn-default editButton"  id = "about_edit_button" aria-hidden="true"><span class="glyphicon glyphicon-pencil"  aria-hidden="true"></span></button></h3>
-                      <p>Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.</p>
-                      
-                    </div>
-                    
-                </div>       
-            </div>  
             <div class='row'>
               <div class='col-md-12'>
                   <div id='portfolio_div'>
