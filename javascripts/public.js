@@ -34,7 +34,15 @@ findMatchingUsers = function(){
 $(document).on("click", ".searchButton", function(){
   var searchParam = $("#artistSearchBar").val() 
   var queryParam = "?name=" + searchParam 
-  window.location = "./search_results.html" + queryParam
+  window.location = "./search_results.html" + queryParam;
+});
+
+$(document).on("keyup", "#artistSearchBar", function(){
+  if (event.keyCode == 13){
+    var searchParam = $("#artistSearchBar").val() 
+    var queryParam = "?name=" + searchParam 
+    window.location = "./search_results.html" + queryParam;
+  }    
 });
 
 

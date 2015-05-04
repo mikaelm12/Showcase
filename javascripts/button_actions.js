@@ -11,6 +11,7 @@ $(document).on("click", ".logout_button", function(){
 $(document).on("click", ".searchButton", function(){
 	window.location = "./profilepage.html"
 });
+
 $(document).on("click", ".portfolioClick", function(){
 	$('#portfolioPDF').modal('show');
 });
