@@ -70,12 +70,11 @@ a {
 	margin-bottom: 10px;
 }
 
-<<<<<<< HEAD
 #bio_div, #email_div, #portfolio_div {
 	padding: 1px;
 	text-align: left;
-	margin-top: 5px;
-=======
+	margin-top: 5px; 
+}
 #bio_div, #portfolio_div {
 	padding: 5px;
 	text-align: left;
@@ -86,7 +85,6 @@ a {
 	padding: 5px;
 	margin-top: 8px;
 	text-align: left;
->>>>>>> e229940fd4a225ffd65a6c1a553a41e38579bda6
 	border-radius: 5px;
 }
 
@@ -163,15 +161,12 @@ a {
 }
 
 .grid_cell {
-<<<<<<< HEAD
 	width: 270px;
 	height: 270px;
 	border: 10px solid rgba(0, 0, 0, 0);
-=======
 	width: 278px;
 	height: 278px;
 	border: 1px solid black;
->>>>>>> e229940fd4a225ffd65a6c1a553a41e38579bda6
 }
 
 .btn-circle {
