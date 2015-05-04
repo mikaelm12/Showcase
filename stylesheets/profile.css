@@ -66,10 +66,10 @@ a {
 }
 
 #artist_name {
-	text-align: left;
+	text-align: center;
 	margin-bottom: 10px;
-	margin-left: 12px;
-}
+/*	margin-left: 12px;
+*/}
 
 #bio_div, #portfolio_div, #email_div {
 	padding: 1px;
@@ -77,9 +77,13 @@ a {
 }
 
 #bio_div, #portfolio_div {
-	padding: 5px;
+	padding: 1px;
 	text-align: left;
 	border-radius: 5px;
+}
+
+#bio_div {
+	margin-top: 80px;
 }
 
 #email_div {
@@ -143,6 +147,9 @@ a {
 
 #profile_pic {
 	border-radius: 10px;
+	width: 348px;
+	height: 348px;
+	margin: 5px;
 }
 
 .grid_image {
@@ -153,7 +160,7 @@ a {
 
 }
 
-.grid_image:hover {
+.grid_image, #profile_pic:hover {
 	cursor: pointer;
 }
 
@@ -224,6 +231,10 @@ a {
 
 .editButton {
 	margin-left: 5px;
+}
+
+a:hover{
+	cursor: pointer;
 }
 
 

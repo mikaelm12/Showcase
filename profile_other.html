@@ -1,0 +1,103 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+  	<title>Profile Page</title>
+  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script src="./javascripts/profile_other.js"></script>
+    <script src="./javascripts/public.js"></script>
+   	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
+    <script src="./javascripts/button_actions.js"></script>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+        <!-- Navigation Bar -->
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">Showcase</a>
+        </div>
+        
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div id='search'>
+            <form class="navbar-form navbar-left" role="search">
+              <div class="input-group">
+                  <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
+                  <div class="input-group-btn">
+                      <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+              </div>
+            </form>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <button type="button" class="btn btn-default navbar-btn account home_button" data-toggle="modal" data-target="#myModal">
+              Profile
+            </button>
+            <button type="button" class="btn btn-default navbar-btn account logout_button" data-toggle="modal" data-target="#myModal">
+              Log Out
+            </button>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class='container' id='main_container'>  <!-- Main Container -->
+      <div class='row'> <!-- ROW -->
+         <div class='col-md-4'> <!-- COL 1 -->
+          <div id = "profile_container" style = 'width:100%;text-align:center;'>
+              <div class='row'>
+                <div class='col-md-12' style="margin:0 auto;">
+                  <div id='artist_name'><h2>Your Name</h2></div>
+                </div>
+            </div>
+            <img id='profile_pic' class='img-responsive' align="middle" src='./images/blank_profile.jpg'>
+          </div> <!-- COL 1 END -->
+        </div>
+        <div class='col-md-8'>
+            <div class='row'>
+                <div class='col-md-12' id="about_div">
+                    <div id='bio_div'>
+                      <h3>About</h3>
+                      <p>Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.</p>
+                      
+                    </div>
+                    
+                </div>       
+            </div> 
+            <div class = 'row'>
+              <div class='col-md-12'>
+                 <div id='email_div'>
+                    <h3>Email</h3>
+                    <a id='emailLink' href="mailto:#" aria-hidden="true">yourEmail@email.com </a> 
+                  </div>
+              </div>
+            </div> 
+            <div class='row'>
+              <div class='col-md-12'>
+                  <div id='portfolio_div'>
+                    <h3>Portfolios</h3>
+                      You have no portfolio available
+                   </div>
+                </div>
+            </div>  
+        </div>
+      </div>
+      <hr>
+    </div>  <!-- Main Container -->
+  </body>
