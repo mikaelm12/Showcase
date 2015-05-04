@@ -34,6 +34,7 @@ findMatchingUsers = function(){
 $(document).on("click", ".searchButton", function(){
   var searchParam = $("#artistSearchBar").val() 
   var queryParam = "?name=" + searchParam 
+  $("#artistSearchBar").val("");
   window.location = "./search_results.html" + queryParam;
 });
 
@@ -41,6 +42,7 @@ $(document).on("keyup", "#artistSearchBar", function(){
   if (event.keyCode == 13){
     var searchParam = $("#artistSearchBar").val() 
     var queryParam = "?name=" + searchParam 
+    $("#artistSearchBar").val("");
     window.location = "./search_results.html" + queryParam;
   }    
 });
@@ -65,7 +67,7 @@ findMatchedUsersOnParseUpdateTable = function(prefix){
             var newArtistRow = table.insertRow(0);
             var artistInfoCell = newArtistRow.insertCell(0);
             var artistNamecell = newArtistRow.insertCell(0); 
-            artistNamecell.innerHTML = "<strong><a>"+currentUser.attributes.full_name+ "</a></strong>"
+            artistNamecell.innerHTML = "<strong><a class='userName' id='" + currentUser.id + "'>"+currentUser.attributes.full_name+ "</a></strong>"
             if(currentUser.attributes.bio){
                 artistInfoCell.innerHTML = currentUser.attributes.bio;
 
@@ -95,3 +97,7 @@ function getParameterByName( name,href )
   else
     return decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+$(document).on("click", ".userName", function(){
+    window.location = "./profile_other.html?id=" + this.id;
+});

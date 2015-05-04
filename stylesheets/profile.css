@@ -77,9 +77,13 @@ a {
 }
 
 #bio_div, #portfolio_div {
-	padding: 5px;
+	padding: 1px;
 	text-align: left;
 	border-radius: 5px;
+}
+
+#bio_div {
+	margin-top: 80px;
 }
 
 #email_div {
@@ -227,6 +231,10 @@ a {
 
 .editButton {
 	margin-left: 5px;
+}
+
+a:hover{
+	cursor: pointer;
 }
 
 
