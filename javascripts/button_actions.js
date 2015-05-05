@@ -20,41 +20,8 @@ $(document).on("click", ".portfolioClick", function(){
 
 // Listen for click on toggle checkbox
 $(document).on("click", ".select-all", function(){
-	$(".checkbox-1").prop('checked', $(this).prop('checked'));
-	// if($(".checkbox-1").prop('checked') != true){
-	// 	$("#createPortfolioButton").attr("disabled","true");
-	// }else{
-	// 	$("#createPortfolioButton").removeAttr("disabled");
-	// }
+	$(".check_all").prop('checked', $(this).prop('checked'));
 });
-
-var clickHandler = function(arg) {
-	return function() {
-		$(".check-image"+arg).prop('checked', $(this).prop('checked'));
-	};
-}
-
-// listen for click on album, check all photos in that album
-for (var i=1; i<=10; i++) {
-	console.log("i:"+i);
-	$(document).on("click", ".check-album"+i, clickHandler(i));
-}
-
-function checkHandler(num) {
-		$(".check-album"+num).click (
-			function() {$(".check-image"+num).prop('checked', $(this).prop('checked'));}
-			)
-	}
-
-
-
-// $(document).on("click", ".check-album"+1, function(){
-// 	$(".check-image"+1).prop('checked', $(this).prop('checked'));
-// });	
-// $(document).on("click", ".check-album"+2, function(){
-// 	$(".check-image"+2).prop('checked', $(this).prop('checked'));
-// });	
-
 
 
 // Listen for click on toggle checkbox
