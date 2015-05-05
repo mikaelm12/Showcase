@@ -31,6 +31,8 @@ var populate_portfolio = function(portfolioNameARG) {
 		query.find({
 			success: function(portfolioResults) {
 				if (portfolioResults.length === 0) {
+					$(".removePortfolio").hide();
+					console.log("no portfolios");
 					return;
 				} else {
 			
@@ -105,4 +107,34 @@ var populate_portfolio = function(portfolioNameARG) {
 };
 
 $(document).ready(populate_portfolio(""));
+
+
+$(document).on("click", "#confirm_delete_portfolio", function(){
+	var portfolio_name = $("#current_text").text();
+	var ShowcaseAlbum = Parse.Object.extend("ShowcasePortfolio");
+	var query = new Parse.Query(ShowcaseAlbum);
+	query.equalTo("name", portfolio_name);
+	query.find({
+		success:function(list) {
+			var portfolio = list[0];
+			portfolio.destroy({
+				success: function(myObject) {
+			    // The object was deleted from the Parse Cloud.
+				window.location = "./profile_page.html";
+
+			},
+			error: function(myObject, error) {
+			    // The delete failed.
+			    // error is a Parse.Error with an error code and message.
+			}
+		});
+		}
+	});
+});
+
+
+
+
+
+
 
