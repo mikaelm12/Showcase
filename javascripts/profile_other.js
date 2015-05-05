@@ -12,10 +12,17 @@ $(document).ready(function(){
 	   	$("#artist_name").html("<h2>" + currentUser.get('first_name') + " " + currentUser.get("last_name") + "</h2>");
 		$("#emailLink").html(currentUser.get("email"));
 		$("#profile_pic").attr("src", currentUser.get("profile_picture"));
+		$("#user-about").text(currentUser.attributes.bio);
 		findMatchingUsers("");
 	  },
 	  error: function(error) {
 	    alert("Error: " + error.code + " " + error.message);
 	  }
 	});	
+
+
+
+
+
+
 });
