@@ -16,10 +16,31 @@
     <script src="./javascripts/button_actions.js"></script>
   <script>
       $(document).ready(function() {
+        currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+
+
+        var query = new Parse.Query(Parse.User);
+        console.log("User id")
+        console.log(currentUser.objectId)
+          query.equalTo("full_name", currentUser.full_name);  // find all the women
+          query.find({
+            success: function(Users) {
+              // Do stuff
+             
+              var thisUser = Users[0]
+               console.log(thisUser.attributes.bio)
+              $("#user-about").text(thisUser.attributes.bio);
+              $("#emailLink").text(thisUser.attributes.email);
+
+              
+
+            }
+        });
 
         findMatchingUsers("");
         console.log("HI");
-        console.log(findMatchingUsers(""));
+        
         $('#about_edit_button').hide();
         $('#portfolio_edit_button').hide();
         $('#email_edit_button').hide();
@@ -125,6 +146,33 @@
         
         $('#about_edit_buttons').hide();
 
+
+
+
+
+        var query = new Parse.Query(Parse.User);
+        console.log("User id")
+        console.log(currentUser.objectId)
+          query.equalTo("full_name", currentUser.full_name);  // find all the women
+          query.find({
+            success: function(Users) {
+              // Do stuff
+              console.log(Users)
+              var thisUser = Users[0]
+              thisUser.set("bio", $("#user-about").text())
+              console.log("Current User New Bio")
+              console.log(thisUser.attributes.bio)
+
+              thisUser.save()
+
+            }
+        });
+
+
+
+
+
+
         
         aboutEdit = false;
         
@@ -134,17 +182,51 @@
 
       $('#email_edit_button').click(function(){
 
-
-        
+        $('#email_edit').show();  
+        $('#email_edit').val($("#emailLink").text())
 
         $('#email_edit_button').hide();
         emailEdit = true;
         $('#emailLink').hide();
-        $('#email_edit').show();
+       
         $('#email_edit_buttons').show();
 
       });
 
+
+      $('#email_edit_accept').click(function(){
+
+        
+        $('#emailLink').show();
+        $("#emailLink").text($('#email_edit').val());
+
+        var query = new Parse.Query(Parse.User);
+          console.log("User id")
+          console.log(currentUser.objectId)
+          query.equalTo("full_name", currentUser.full_name);  // find all the women
+          query.find({
+            success: function(Users) {
+              // Do stuff
+              console.log(Users)
+              var thisUser = Users[0]
+              thisUser.set("email", $("#emailLink").text())
+              console.log("Current User New Email")
+              console.log(thisUser.attributes.email)
+
+              thisUser.save()
+
+            }
+        });
+       
+        
+
+        $('#email_edit_button').hide();
+        emailEdit = true;
+       
+        $('#email_edit').hide(); 
+        $('#email_edit_buttons').hide();
+
+      });
 
 
 
@@ -309,7 +391,7 @@
                 <div class='col-md-12' id="about_div">
                     <div id='bio_div'>
                       <h3>About <button type="submit" id= "about_edit_button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
-                      <p id = "user-about" style="margin:0;">Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.</p>
+                      <p id = "user-about" style="margin:0;"></p>
                     </div>
 
                     <textarea rows="4" cols="50" id = "about_edit" hidden style="width:100%;margin:0;"></textarea>
