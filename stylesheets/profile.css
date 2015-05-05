@@ -246,6 +246,16 @@ a {
 	margin-top: 3px;
 }
 
+.removePortfolio {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	height: 44px;
+	margin-top: -1px;
+	margin-left: -5px;
+}
+
 .editButton {
 	margin-left: 5px;
 }
