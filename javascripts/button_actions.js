@@ -4,7 +4,7 @@ $(document).on("click", ".home_button", function(){
 });
 
 $(document).on("click", ".logout_button", function(){
-	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
+	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
 	Parse.User.logOut();
 	localStorage.removeItem("currentUser");
 	window.location = './index.html';
