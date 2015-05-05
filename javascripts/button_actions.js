@@ -56,11 +56,16 @@ $(document).on("click", "#scroll_to_albums", function() {
 $(document).on("click", "#select_portfolio", function() {
 	var parent =$('html,body');
 	var element =  document.getElementById('current_portfolio');
-    // parent.animate({ scrollTop:1000}, 'slow');
-    parent.animate({ scrollTop: $(element).offset().top }, 'slow');
-    // console.log("this.text:"+$(this).text());
-    // console.log("current_text:"+$(document.getElementById('current_text')).text()); //.val());
-    $(document.getElementById('current_text')).text($(this).text()); //
+	var selected_portfolio =$(this).text();
+    $(document.getElementById('current_text')).text(selected_portfolio); //
+
+    // parent.animate({ scrollTop: $(element).offset().top }, 'slow');
+
+    //empty current_portfolio
+    $(element).empty();
+    //set current_portfolio to selected portfolio
+    populate_portfolio(selected_portfolio);
+ 
 })
 
 
