@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
+	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
 	$(document).on('click', "#register_button", function(){
 		var re = /\w+/;
 		var first_name = $("#first_name").val();

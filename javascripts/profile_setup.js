@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
+	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
 	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	
   	if (!currentUser) {
@@ -11,6 +11,7 @@ $(document).ready(function(){
 		localStorage.setItem('currentUser', JSON.stringify(currentUser));
 		$("#artist_name").html("<h2>" + currentUser.first_name + " " + currentUser.last_name + "</h2>");
 		$("#emailLink").html(currentUser.email);
+		$("#profile_pic").attr("src", currentUser.profile_picture);
 		var ShowcaseAlbum = Parse.Object.extend("ShowcaseAlbum");
 		var query = new Parse.Query(ShowcaseAlbum);
 		query.equalTo("owner", currentUser.objectId);
@@ -120,4 +121,68 @@ $(document).ready(function(){
 		  }
 		});
 	});
+
+	$(document).on("click", "#profile_pic", function(){
+			$("#myAddProfile").modal("show");
+	});
+
+	var files =  []
+
+	$('#fileselect').bind("change", function(e) {
+      	files = e.target.files || e.dataTransfer.files;
+     });
+
+	$(document).on("click", "#upload_profile_button", function(){
+		if (files.length == 0){
+			alert("Please select a file!");
+			return;
+		}
+		for (var i=0; i < files.length ; i++){
+			file= files[i];
+			var file_name = file.name;
+			var serverUrl = 'https://api.parse.com/1/files/' + encodeURIComponent(file_name.replace(/\s+/g, ''));
+			if (!file.type.match('image.*')) {
+       			 break;
+       			 $("#myAddProfile").modal("hide");
+      		}
+
+      		var query = new Parse.Query(Parse.User);
+    		query.equalTo("objectId", currentUser.objectId);
+    		query.find({
+		    		success: function(users) {
+		      				console.log(currentUser.objectId);
+		      				var user = users[0];
+			      			$.ajax({
+						        type: "POST",
+						        beforeSend: function(request) {
+						          request.setRequestHeader("X-Parse-Application-Id", 'd2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH');
+						          request.setRequestHeader("X-Parse-REST-API-Key", 'MhIrAO8s3irJdIHTYX5AFBIAtZ95K7uCN02rx4U4');
+						          request.setRequestHeader("Content-Type", file.type);
+						        },
+						        url: serverUrl,
+						        data: file,
+						        processData: false,
+						        contentType: false,
+						        success: function(data) {
+						        	user.set("profile_picture", data.url);
+						        	user.save();
+						        	currentUser.profile_picture =  data.url;
+						        	localStorage.setItem('currentUser', JSON.stringify(currentUser));
+						        	$("#profile_pic").attr("src", data.url);
+						        	$("#myAddProfile").modal("hide");
+						        },
+								error: function(user, error) {
+									    alert("Failed to find user!");
+								}
+							});
+					}, error: function(user, error){
+						console.log("ERROR");
+					}
+							
+			});
+		 
+		}
+
+	});
+    
 });

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
+	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
 	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
 	if (!currentUser) {
@@ -121,8 +121,8 @@ $(document).ready(function(){
 				    $.ajax({
 				        type: "POST",
 				        beforeSend: function(request) {
-				          request.setRequestHeader("X-Parse-Application-Id", 'wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb');
-				          request.setRequestHeader("X-Parse-REST-API-Key", 'PxiTZfopXT5xaT2p8rgvpuyjSA3Tgq3OnqmxPTFY');
+				          request.setRequestHeader("X-Parse-Application-Id", 'd2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH');
+				          request.setRequestHeader("X-Parse-REST-API-Key", 'MhIrAO8s3irJdIHTYX5AFBIAtZ95K7uCN02rx4U4');
 				          request.setRequestHeader("Content-Type", file.type);
 				        },
 				        url: serverUrl,

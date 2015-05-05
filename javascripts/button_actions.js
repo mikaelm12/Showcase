@@ -4,6 +4,8 @@ $(document).on("click", ".home_button", function(){
 });
 
 $(document).on("click", ".logout_button", function(){
+	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
+	Parse.User.logOut();
 	localStorage.removeItem("currentUser");
 	window.location = './index.html';
 });
@@ -11,6 +13,7 @@ $(document).on("click", ".logout_button", function(){
 	$(document).on("click", ".searchButton", function(){
 	window.location = "./profilepage.html"
 });
+
 $(document).on("click", ".portfolioClick", function(){
 	$('#portfolioPDF').modal('show');
 });

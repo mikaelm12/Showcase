@@ -8,7 +8,7 @@ findMatchingUsers = function(){
     	for (var i = users.length - 1; i >= 0; i--) {
     		
     		var currentUser = users[i]
-    		var user_full_name = currentUser.attributes.first_name + " "+ currentUser.attributes.last_name;
+    		var user_full_name = currentUser.attributes.first_name + " " + currentUser.attributes.last_name;
     		userFullNames.push(user_full_name);
     		
     	};
@@ -34,7 +34,17 @@ findMatchingUsers = function(){
 $(document).on("click", ".searchButton", function(){
   var searchParam = $("#artistSearchBar").val() 
   var queryParam = "?name=" + searchParam 
-  window.location = "./search_results.html" + queryParam
+  $("#artistSearchBar").val("");
+  window.location = "./search_results.html" + queryParam;
+});
+
+$(document).on("keyup", "#artistSearchBar", function(){
+  if (event.keyCode == 13){
+    var searchParam = $("#artistSearchBar").val() 
+    var queryParam = "?name=" + searchParam 
+    $("#artistSearchBar").val("");
+    window.location = "./search_results.html" + queryParam;
+  }    
 });
 
 
@@ -57,7 +67,7 @@ findMatchedUsersOnParseUpdateTable = function(prefix){
             var newArtistRow = table.insertRow(0);
             var artistInfoCell = newArtistRow.insertCell(0);
             var artistNamecell = newArtistRow.insertCell(0); 
-            artistNamecell.innerHTML = "<strong><a>"+currentUser.attributes.full_name+ "</a></strong>"
+            artistNamecell.innerHTML = "<strong><a class='userName' id='" + currentUser.id + "'>"+currentUser.attributes.full_name+ "</a></strong>"
             if(currentUser.attributes.bio){
                 artistInfoCell.innerHTML = currentUser.attributes.bio;
 
@@ -87,3 +97,7 @@ function getParameterByName( name,href )
   else
     return decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+$(document).on("click", ".userName", function(){
+    window.location = "./profile_other.html?id=" + this.id;
+});
