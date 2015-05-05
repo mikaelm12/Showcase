@@ -132,12 +132,18 @@ a {
 	color:#fff;
 	font-size:19px;
 	text-align:left;
-	display:none;
+	/*height: 10px;*/
+	opacity:0;
+	transition: opacity 0.5s;
+	-webkit-transition: opacity 1.0s;
 	/*overflow:hidden;*/
 	/*z-index:9;*/
 }
 .thumb:hover .thumb_meta{
-	display:block;
+	/*height:100px;*/
+	opacity:1;
+	transition: opacity 0.5s;
+	-webkit-transition: opacity 1.0s;
 }
 
 #profile_container {

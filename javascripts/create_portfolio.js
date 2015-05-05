@@ -15,9 +15,7 @@ $.extend({
     }
 });
 
-$(document).ready(function(){
-	$("#no_portfolio").hide();
-
+var populate_portfolio = function(portfolioName) {
 	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
 	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -27,15 +25,19 @@ $(document).ready(function(){
 		var portContainer = $("#portfolio_container");
 		var ShowcasePortfolio = Parse.Object.extend("ShowcasePortfolio");
 		var query = new Parse.Query(ShowcasePortfolio);
-		query.equalTo("owner", currentUser);
+		query.equalTo("owner", currentUser.objectId);
+		if (portfolioName!==""&& portfolioName !==null && portfolioName !== undefined) { //selecting specific portfolio
+			query.equalTo("name", portfolioName);
+		}
 		query.find({
 			success: function(portfolioResults) {
 				if (portfolioResults.length === 0) {
-					// $(".portfolio_row").remove();
-					// $("#no_portfolio").show();
-					// return;
-				}
-				
+					console.log("num portfolios:"+0);
+					return;
+				} else {
+				console.log()
+				console.log("num portfolios:"+portfolioResults.length);
+
 				//fill in the dropdown
 				for (var p=0; p<portfolioResults.length; p++) {
 					var portfolio = portfolioResults[p];
@@ -44,15 +46,19 @@ $(document).ready(function(){
 				}
 
 				var portfolio = portfolioResults[0];
+
 				var portfolioName = portfolio.get("name");
-				var portfolioId = portfolio.get("objectId");
+				var portfolioId = portfolio.id;
 				var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
 				var query = new Parse.Query(ShowcasePhoto);
 				query.equalTo("portfolio", portfolioId );
 				query.find({ //photos that belong to this portfolio
 				  success: function(results) {
+				  	console.log("num pics in portfolio:"+results.length);
+
 				    for (var i = 0; i < results.length; i++) { 
 				    	var photo = results[i];
+				    	console.log("num pics in portfolio:"+results.length);
 				    	
 						var photoTitle = photo.get("title");
 						if (photoTitle == "" || photoTitle == undefined){
@@ -73,47 +79,21 @@ $(document).ready(function(){
 						+photo_description+'</div></div></div></div><br>';
 						
 						portContainer.append(photoStuff);
-						
+
 				    }
 				  },
 				  error: function(error) {
 				    alert("Error: " + error.code + " " + error.message);
 				  }
 				});
-
+				} //end else
 				},
 				error: function(error) {
 				alert("Error: " + error.code + " " + error.message);
 				}
 			});
 	}
+};
 
+$(document).ready(populate_portfolio());
 
-    // DELETE PORTFOLIO
-
-	// $(document).on("click", "#deletePhotoButton", function(){
-	// 	console.log("HERE DELETE");
-	// 	var photoId = $("#deletePhotoButton").attr("photo_id");
-	// 	var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
-	// 	var query = new Parse.Query(ShowcasePhoto);
-	// 	query.equalTo("objectId", photoId);
-	// 	query.find({
-	// 	success:function(list) {
-	// 	  var photo= list[0];
-
-	// 	photo.destroy({
-	// 	  success: function(myObject) {
-	// 	    // The object was deleted from the Parse Cloud.
-	// 	    $("#myDelete").modal("hide");
-	// 	  	window.location = "./album_page.html?id=" + $.getUrlVar("id") + "&name=" + $.getUrlVar("name");
-	// 	  },
-	// 	  error: function(myObject, error) {
-	// 	    // The delete failed.
-	// 	    // error is a Parse.Error with an error code and message.
-	// 	  }
-	// 	});  
-	// 	}
-	// 	});
-	// });
-
-});

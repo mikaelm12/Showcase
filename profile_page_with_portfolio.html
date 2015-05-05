@@ -1,0 +1,479 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title>Profile Page</title>
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+   <script src="./javascripts/profile_setup.js"></script>
+   <script src="./javascripts/public.js"></script>
+   <link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
+   <script src="./javascripts/create_portfolio.js"></script>
+   <script src="./javascripts/button_actions.js"></script>
+   
+   <script>
+   $(document).ready(function() {
+              currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+              var query = new Parse.Query(Parse.User);
+              console.log("User id")
+              console.log(currentUser.objectId)
+              query.equalTo("full_name", currentUser.full_name);  // find all the women
+              query.find({
+                success: function(Users) {
+                  // Do stuff
+
+                  var thisUser = Users[0]
+                  console.log(thisUser.attributes.bio)
+                  $("#user-about").text(thisUser.attributes.bio);
+                  $("#emailLink").text(thisUser.attributes.email);
+                }
+              });
+
+                findMatchingUsers("");
+                console.log("HI");
+
+                $('#about_edit_button').hide();
+                $('#portfolio_edit_button').hide();
+                $('#email_edit_button').hide();
+            //for pressing enter
+                $(document).on('keypress',function(e){
+                //console.log("Click");
+                //enter is 13
+                    if(e.which == 13){
+
+                      //do this
+                      // Does the element have focus:
+                      var hasFocus = $('#artistSearchBar').is(':focus');
+                      if($("#artistSearchBar").val() != "" && hasFocus){
+                        e.preventDefault();
+                        //input = $("#artistSearchBar"); //gets input text
+                        //inputValue = $(input).val(); //gets value
+                        
+                        //console.log("Enter");
+                        //$( "#input_text" ).autocomplete("close");
+                        $( "#artistSearchBar" ).autocomplete("close");
+                        window.location = "./profilepage.html";
+
+                      }
+                    }
+                });
+
+                var aboutEdit= false;
+                var emailEdit= false;
+
+                $('#about_div').hover(function() {
+                    // mouseOver function
+                    //console.log("hovering about");
+                    if (aboutEdit){
+                      //do nothing
+                    }else{
+                      $('#about_edit_button').show();
+                    }
+
+                    }, function() {
+                    // mouseOut function
+                    $('#about_edit_button').hide();
+                });
+
+                $('#email_div').hover(function() {
+                    // mouseOver function
+                    //console.log("hovering email");
+                    if (emailEdit){
+                    //do nothing
+                    }else{
+                    $('#email_edit_button').show();
+                    }
+
+                    }, function() {
+                    // mouseOut function
+                    $('#email_edit_button').hide();
+                });
+
+                $('#portfolio_div').hover(function() {
+                    // mouseOver function
+                    //console.log("hovering portfolio");
+                    $('#portfolio_edit_button').show();
+                    }, function() {
+                    // mouseOut function
+                    $('#portfolio_edit_button').hide();
+                });
+
+
+                $('#about_edit_button').click(function(){
+                    $("#about_edit").show()
+                    $("#about_edit_buttons").show()
+                    $("#about_edit").val($("#user-about").text())
+                    $('#user-about').hide();
+                    $('#about_edit_button').hide();
+                    aboutEdit = true;
+                });
+
+                $('#about_edit_accept').click(function(){
+                    //Take the text from the about-edit and save into the current users bio attribute
+                    $('#user-about').show();
+                    $("#user-about").text($("#about_edit").val());
+                    $("#about_edit").hide()
+                    $("#about_edit").val($("#user-about").text());
+                    $('#about_edit_buttons').hide();
+                    var query = new Parse.Query(Parse.User);
+                    console.log("User id")
+                    console.log(currentUser.objectId)
+                    query.equalTo("full_name", currentUser.full_name);  // find all the women
+                    query.find({
+                        success: function(Users) {
+                            // Do stuff
+                            console.log(Users);
+                            var thisUser = Users[0];
+                            thisUser.set("bio", $("#user-about").text());
+                            console.log("Current User New Bio");
+                            console.log(thisUser.attributes.bio);
+
+                            thisUser.save();
+
+                        }
+                    });
+                    aboutEdit = false;
+                });
+
+                $('#email_edit_button').click(function(){
+                      $('#email_edit').show();  
+                      $('#email_edit').val($("#emailLink").text())
+
+                      $('#email_edit_button').hide();
+                      emailEdit = true;
+                      $('#emailLink').hide();
+                      $('#email_edit_buttons').show();
+                      $('#email_edit_button').hide();
+                      emailEdit = true;
+                      $('#emailLink').hide();
+                      $('#email_edit').show();
+                      $('#email_edit_buttons').show();
+                });
+
+                $('#email_edit_accept').click(function(){
+
+
+                    $('#emailLink').show();
+                    $("#emailLink").text($('#email_edit').val());
+
+                    var query = new Parse.Query(Parse.User);
+                    console.log("User id");
+                    console.log(currentUser.objectId);
+                    query.equalTo("full_name", currentUser.full_name);  // find all the women
+                    query.find({
+                      success: function(Users) {
+                        // Do stuff
+                        console.log(Users);
+                        var thisUser = Users[0];
+                        thisUser.set("email", $("#emailLink").text());
+                        console.log("Current User New Email");
+                        console.log(thisUser.attributes.email)
+
+                        thisUser.save();
+
+                      }
+                    });
+
+                    $('#email_edit_button').hide();
+                    emailEdit = true;
+                    $('#email_edit').hide(); 
+                    $('#email_edit_buttons').hide();
+
+                });
+
+      });         
+ </script>
+</head>
+
+<body>
+
+ <!-- Modal  Add Profile Pic-->
+ <div class="modal fade" id="myAddProfile" tabindex="-1" role="dialog" aria-labelledby="myAddProfileLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myAddProfileLabel">Change Profile Picture</h4>
+      </div>
+      <div class="modal-body">
+        <!--<label for="exampleInputFile">Select Pictures</label>-->
+        <input type="file" multiple name="fileselect" id="fileselect">
+        <p class="help-block">Browse for picture to add.</p>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id='upload_profile_button' type="button" class="btn btn-default">Upload</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  Export-->
+<div class="modal fade" id="myExport" tabindex="-1" role="dialog" aria-labelledby="myExportLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myExportLabel">Create Portfolio</h4>
+      </div>
+      <div class="modal-body">
+        Portfolio Name: <input type="text" id='portfolioName' placeHolder='Portfolio Name'>
+        <br>
+        <br>
+        <div id='beforeSelected'>
+          <input id='selectAll' type="checkbox" name="select-all" checked="checked"> Select All
+        </div>
+        <br>
+        <div id='select-albums-div'></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id='createPortfolioButton' type="button" class="btn btn-default">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  Delete-->
+<div class="modal fade" id="myDelete" tabindex="-1" role="dialog" aria-labelledby="myExportLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myExportLabel">Delete Album</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this album?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        <button id='deleteAlbumButton' type="button" class="btn btn-default">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal  Share-->
+<div class="modal fade" id="myShare" tabindex="-1" role="dialog" aria-labelledby="myShareLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myShareLabel">Share</h4>
+
+        </div> <span style="padding-left:33%">This will post a link to your portfolio</span>
+          <div id = "share_buttons" style="padding-left:18%">
+                       <!-- Facebook -->
+            <!--<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html&redirect_uri=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html"-->
+            <a href="https://developers.facebook.com/docs/plugins/"
+            target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/></a>
+            <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>-->
+               
+            <!-- Twitter -->
+            <a href="http://twitter.com/share" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
+               
+            <!-- Google+ -->
+            <a href="https://plus.google.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/google.png" alt="Google" /></a>
+               
+            <!-- Digg -->
+            <a href="http://www.digg.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a>
+               
+            <!-- Reddit -->
+            <a href="http://reddit.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
+               
+            <!-- Pinterest -->
+            <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="http://www.simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" /></a>
+               
+            <!-- Email -->
+            <a href="mailto:?Subject=Simple Share Buttons&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.simplesharebuttons.com"><img src="http://www.simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a>
+
+          </div>
+          <br>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    <!-- Navigation Bar -->
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="./index.html">Showcase</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div id='search'>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="input-group">
+            <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+              <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <button type="button" class="btn btn-default navbar-btn account home_button" data-toggle="modal" data-target="#myModal">
+          Profile
+        </button>
+        <button type="button" class="btn btn-default navbar-btn account logout_button" data-toggle="modal" data-target="#myModal">
+          Log Out
+        </button>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class='container' id='main_container'>  <!-- Main Container -->
+  <div class='row'> <!-- ROW -->
+   <div class='col-md-4'> <!-- COL 1 -->
+    <div id = "profile_container" style = 'width:100%;text-align:center;'>
+      <div class='row'>
+        <div class='col-md-12' style="margin:0 auto;">
+          <div id='artist_name'style="margin:0 auto;"><h2>Your Name</h2></div>
+        </div>
+      </div>
+      <img id='profile_pic' class='img-responsive change_opacity' align="middle" src='./images/blank_profile.jpg'>
+    </div> <!-- COL 1 END -->
+  </div>
+  <div class='col-md-8'>
+
+
+    <div class='row'>
+      <div class='col-md-12' id="about_div">
+        <div id='bio_div'>
+          <h3>About <button type="submit" id= "about_edit_button" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
+          <p id = "user-about" style="margin:0;">Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.Edit this to include some information about yourself.</p>
+        </div>
+
+        <textarea rows="4" cols="50" id = "about_edit" hidden style="width:100%;margin:0;"></textarea>
+        <div id = "about_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "about_edit_accept" class="btn btn-default">Accept</button> <button id = "about_edit_cancel" class="btn btn-default">Cancel</button></div>
+      </div>       
+    </div>  
+    <div class = 'row'>
+      <div class='col-md-6'>
+       <div id='email_div'>
+        <h3>Email<button type="submit" class="btn btn-sm btn-default editButton" id="email_edit_button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
+        <a id='emailLink' href="mailto:#" aria-hidden="true">yourEmail@email.com </a> 
+      </div>
+
+      <textarea rows="1" cols="50" id = "email_edit" hidden style="width:100%;margin:0;"></textarea>
+      <div id = "email_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "email_edit_accept" class="btn btn-default">Accept</button> <button id = "email_edit_cancel" class="btn btn-default">Cancel</button></div>
+    </div>
+  </div>
+  <br>
+  <div class='row'>
+
+    <div class='col-md-12'>
+      <div id='portfolio_div'>
+             <button id = "scroll_to_albums" type="button" class="btn btn-default" style="font-size:150%" >Albums</button>
+            </div>
+    </div>
+  </div>  
+</div>
+</div>
+<hr>
+
+
+
+
+<div class='row portfolio_options'>
+
+  <div class="dropdown">
+    <button class="btn btn-default large_button " type="button" data-toggle="modal" data-target="#myShare" style="font-size:150%"><span class="glyphicon glyphicon-share" aria-hidden="true"  ></span>&nbspShare</button>
+    <button class="btn btn-default dropdown-toggle large_button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="font-size:150%">
+      <span id="current_text">Portfolios</span>
+      <span class="caret"></span>
+    </button>
+    <button id = "exportButton" type="button" class="btn btn-default large_button" data-toggle="modal" data-target="#myExport" style="font-size:150%">Create portfolio</button>
+
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+      
+
+    </ul>
+
+
+  </div>
+
+</div>
+<hr>
+
+
+<!--START PORTFOLIO-->
+
+<div class='row portfolio_row'>
+  
+<div id='current_portfolio'>
+  
+  <div class='style2'/>
+  <img src="images/hr4.png" width="100%">
+  </div> 
+
+  <div id='portfolio_container'>
+
+    <br>
+    <div class="row image_div" align='middle'>
+      <div class='col-md-12'>
+        <div class='thumb'>
+          <img class="img-responsive portfolio-item" src="images/mona_lisa.jpg" alt="Mona Lisa">
+          <div class='thumb_meta'>
+            <span style='font-size:150%'><b>Picture title</b></span><br>
+            Description text
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  </div>
+  <div class='style2'/>
+  <img src="images/hr4.png" width="100%">
+  </div>
+  <hr>
+</div>
+</div>
+<!--END PORTFOLIO-->
+
+
+
+
+<div class='row' id='album_container'>
+  <div class='col-md-4'></div>
+  <div class='col-md-4'>
+    <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
+    <h1 id='album_name_input'>Albums
+    <button class="btn btn-default btn-large btn-circle" type="button" id='create_album_button'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+    </h1>
+  </div>
+  
+</div>
+<div id='table_div_album' class='col-md-12'>  
+  <table id='album_table'>
+    <tbody id='albumGrid'>
+      <tr id='row-0'>
+        <td id='cell-0' class='grid_cell'></td>
+        <td id='cell-1' class='grid_cell'></td>
+        <td id='cell-2' class='grid_cell'></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>  <!-- Main Container -->
+</body>
