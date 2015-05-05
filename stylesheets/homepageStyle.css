@@ -30,27 +30,23 @@ h3.centre {
 }
 #trending_container {
 	text-align: center;
-	border: 1px solid grey;
+	
+
+    
 	border-radius: 10px;
 	padding: 10px;
 	width:50%;
-	background-color: #F8F8F8;
+	border: 2px solid white;
+	/*background-color: #F8F8F8;
+	*/
 }
 
-.trending{
-  border: 5px solid #fff;  
-  
-   display: block;
-   width:100%;
-    height: 100%;
-
-}
 
 .caption {
     position: relative;
   	overflow: hidden;
    
-
+  	float:left;
 	margin:20px;
     height:150px;
     width:150px;
@@ -58,9 +54,19 @@ h3.centre {
         box-shadow: 5px 5px 5px #111; 
 }
 
+.trending{
+  border: 5px solid #fff;  
+  border-radius:10px;
+   display: block;
+   width:100%;
+    height: 100%;
+
+}
+
 .caption_overlay {
     position: absolute;
     text-align:left;
+
     top: 0;
     right: 0;
     bottom: 0;
@@ -84,4 +90,12 @@ h3.centre {
 }
 .caption:hover .caption_overlay_title {
     transform: translateY(0);
+}
+.caption:hover #trending_container{
+	  border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+.trendingTitle{
+	color:white;
 }
