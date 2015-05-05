@@ -19,9 +19,7 @@ $(document).on("click", ".portfolioClick", function(){
 });
 
 // Listen for click on toggle checkbox
-$(document).on("click", ".select-all", function(){
-	$(".check_all").prop('checked', $(this).prop('checked'));
-});
+
 
 
 // Listen for click on toggle checkbox
