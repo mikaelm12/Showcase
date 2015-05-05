@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
+	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
 
 	var userId = getParameterByName( "id", document.URL );
 	var query = new Parse.Query(Parse.User);
