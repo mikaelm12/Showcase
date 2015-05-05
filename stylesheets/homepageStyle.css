@@ -28,5 +28,13 @@ h3.centre {
 	/*font-family: 'Alegreya SC', serif;*/
 	font-size: 30pt
 }
+#trending_container {
+	text-align: center;
+	border: 1px solid grey;
+	border-radius: 10px;
+	padding: 10px;
+	width:40%;
+	background-color: #F8F8F8;
+}
 
 	
