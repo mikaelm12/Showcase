@@ -64,7 +64,8 @@ $(document).ready(function(){
 			},
 			error: function(user, error) {
 			// Show the error message somewhere and let the user try again.
-			alert("error");
+			console.log(user);
+			alert("Could not create new account "  + error);
 			
 			}
 		});
