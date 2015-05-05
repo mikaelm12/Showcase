@@ -20,9 +20,20 @@ $(document).ready(function(){
 	  }
 	});	
 
-
-
-
-
+	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+	if (!currentUser){
+		console.log("HERE");
+		var profileButton = $(".home_button");
+		profileButton.removeClass("home_button");
+		console.log(profileButton);
+		profileButton.html("Log In");
+		profileButton.attr("data-toggle", "modal");
+		profileButton.attr("data-target", "#myModal");
+		var logoutButton = $(".logout_button");
+		logoutButton.removeClass("logout_button");
+		logoutButton.html("Register");
+		logoutButton.attr("data-toggle", "modal");
+		logoutButton.attr("data-target", "#loginModal");
+	}
 
 });
