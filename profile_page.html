@@ -16,140 +16,176 @@
    <script src="./javascripts/button_actions.js"></script>
    <script>
    $(document).ready(function() {
+              currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    findMatchingUsers("");
-    // console.log(findMatchingUsers(""));
-    $('#about_edit_button').hide();
-    $('#portfolio_edit_button').hide();
-    $('#email_edit_button').hide();
-        //for pressing enter
-        $(document).on('keypress',function(e){
-          //console.log("Click");
-          //enter is 13
-          if(e.which == 13){
+              var query = new Parse.Query(Parse.User);
+              console.log("User id")
+              console.log(currentUser.objectId)
+              query.equalTo("full_name", currentUser.full_name);  // find all the women
+              query.find({
+                success: function(Users) {
+                  // Do stuff
 
-            //do this
-            // Does the element have focus:
-            var hasFocus = $('#artistSearchBar').is(':focus');
-            if($("#artistSearchBar").val() != "" && hasFocus){
-              e.preventDefault();
-              //input = $("#artistSearchBar"); //gets input text
-              //inputValue = $(input).val(); //gets value
-              
-              //console.log("Enter");
-              //$( "#input_text" ).autocomplete("close");
-              $( "#artistSearchBar" ).autocomplete("close");
-              window.location = "./profilepage.html";
+                  var thisUser = Users[0]
+                  console.log(thisUser.attributes.bio)
+                  $("#user-about").text(thisUser.attributes.bio);
+                  $("#emailLink").text(thisUser.attributes.email);
+                }
+              });
 
-            }
+                findMatchingUsers("");
+                console.log("HI");
 
-          }
-        });
-/*
-        //autocomplete widjet
-        $("#artistSearchBar").autocomplete({
-          autoFocus: true,
-          source: availableTags,
-          minLength: 1,
-          select: function(event,ui){
-            var inputValue = ui.item.value;
-            //console.log(inputValue);
-            $("#artistSearchBar").val(inputValue);
-            //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-            event.preventDefault();
-          }
-         });
-});*/  
- var aboutEdit= false;
- var emailEdit= false;
+                $('#about_edit_button').hide();
+                $('#portfolio_edit_button').hide();
+                $('#email_edit_button').hide();
+            //for pressing enter
+                $(document).on('keypress',function(e){
+                //console.log("Click");
+                //enter is 13
+                    if(e.which == 13){
 
- $('#about_div').hover(function() {
-        // mouseOver function
-        //console.log("hovering about");
-        if (aboutEdit){
-          //do nothing
-        }else{
-          $('#about_edit_button').show();
-        }
-        
-      }, function() {
-        // mouseOut function
-        $('#about_edit_button').hide();
-      });
- $('#email_div').hover(function() {
-        // mouseOver function
-        //console.log("hovering email");
-        if (emailEdit){
-          //do nothing
-        }else{
-          $('#email_edit_button').show();
-        }
-        
-      }, function() {
-        // mouseOut function
-        $('#email_edit_button').hide();
-      });
- $('#portfolio_div').hover(function() {
-        // mouseOver function
-        //console.log("hovering portfolio");
-        $('#portfolio_edit_button').show();
-      }, function() {
-        // mouseOut function
-        $('#portfolio_edit_button').hide();
-      });
+                      //do this
+                      // Does the element have focus:
+                      var hasFocus = $('#artistSearchBar').is(':focus');
+                      if($("#artistSearchBar").val() != "" && hasFocus){
+                        e.preventDefault();
+                        //input = $("#artistSearchBar"); //gets input text
+                        //inputValue = $(input).val(); //gets value
+                        
+                        //console.log("Enter");
+                        //$( "#input_text" ).autocomplete("close");
+                        $( "#artistSearchBar" ).autocomplete("close");
+                        window.location = "./profilepage.html";
 
+                      }
+                    }
+                });
 
- $('#about_edit_button').click(function(){
-  $("#about_edit").show()
-  $("#about_edit_buttons").show()
-  $("#about_edit").val($("#user-about").text())
-  $('#user-about').hide();
+                var aboutEdit= false;
+                var emailEdit= false;
+
+                $('#about_div').hover(function() {
+                    // mouseOver function
+                    //console.log("hovering about");
+                    if (aboutEdit){
+                      //do nothing
+                    }else{
+                      $('#about_edit_button').show();
+                    }
+
+                    }, function() {
+                    // mouseOut function
+                    $('#about_edit_button').hide();
+                });
+
+                $('#email_div').hover(function() {
+                    // mouseOver function
+                    //console.log("hovering email");
+                    if (emailEdit){
+                    //do nothing
+                    }else{
+                    $('#email_edit_button').show();
+                    }
+
+                    }, function() {
+                    // mouseOut function
+                    $('#email_edit_button').hide();
+                });
+
+                $('#portfolio_div').hover(function() {
+                    // mouseOver function
+                    //console.log("hovering portfolio");
+                    $('#portfolio_edit_button').show();
+                    }, function() {
+                    // mouseOut function
+                    $('#portfolio_edit_button').hide();
+                });
 
 
-  $('#about_edit_button').hide();
-  aboutEdit = true;
+                $('#about_edit_button').click(function(){
+                    $("#about_edit").show()
+                    $("#about_edit_buttons").show()
+                    $("#about_edit").val($("#user-about").text())
+                    $('#user-about').hide();
+                    $('#about_edit_button').hide();
+                    aboutEdit = true;
+                });
+
+                $('#about_edit_accept').click(function(){
+                    //Take the text from the about-edit and save into the current users bio attribute
+                    $('#user-about').show();
+                    $("#user-about").text($("#about_edit").val());
+                    $("#about_edit").hide()
+                    $("#about_edit").val($("#user-about").text());
+                    $('#about_edit_buttons').hide();
+                    var query = new Parse.Query(Parse.User);
+                    console.log("User id")
+                    console.log(currentUser.objectId)
+                    query.equalTo("full_name", currentUser.full_name);  // find all the women
+                    query.find({
+                        success: function(Users) {
+                            // Do stuff
+                            console.log(Users);
+                            var thisUser = Users[0];
+                            thisUser.set("bio", $("#user-about").text());
+                            console.log("Current User New Bio");
+                            console.log(thisUser.attributes.bio);
+
+                            thisUser.save();
+
+                        }
+                    });
+                    aboutEdit = false;
+                });
+
+                $('#email_edit_button').click(function(){
+                      $('#email_edit').show();  
+                      $('#email_edit').val($("#emailLink").text())
+
+                      $('#email_edit_button').hide();
+                      emailEdit = true;
+                      $('#emailLink').hide();
+                      $('#email_edit_buttons').show();
+                      $('#email_edit_button').hide();
+                      emailEdit = true;
+                      $('#emailLink').hide();
+                      $('#email_edit').show();
+                      $('#email_edit_buttons').show();
+                });
+
+                $('#email_edit_accept').click(function(){
 
 
-});
+                    $('#emailLink').show();
+                    $("#emailLink").text($('#email_edit').val());
 
+                    var query = new Parse.Query(Parse.User);
+                    console.log("User id");
+                    console.log(currentUser.objectId);
+                    query.equalTo("full_name", currentUser.full_name);  // find all the women
+                    query.find({
+                      success: function(Users) {
+                        // Do stuff
+                        console.log(Users);
+                        var thisUser = Users[0];
+                        thisUser.set("email", $("#emailLink").text());
+                        console.log("Current User New Email");
+                        console.log(thisUser.attributes.email)
 
- $('#about_edit_accept').click(function(){
-        //Take the text from the about-edit and save into the current users bio attribute
-        $('#user-about').show();
-        $("#user-about").text($("#about_edit").val())
+                        thisUser.save();
 
-        $("#about_edit").hide()
+                      }
+                    });
 
-        $("#about_edit").val($("#user-about").text())
-        
-        $('#about_edit_buttons').hide();
+                    $('#email_edit_button').hide();
+                    emailEdit = true;
+                    $('#email_edit').hide(); 
+                    $('#email_edit_buttons').hide();
 
-        
-        aboutEdit = false;
-        
+                });
 
-      });
-
-
- $('#email_edit_button').click(function(){
-
-
-
-
-  $('#email_edit_button').hide();
-  emailEdit = true;
-  $('#emailLink').hide();
-  $('#email_edit').show();
-  $('#email_edit_buttons').show();
-
-});
-
-
-
-
-
-});
-
+      });         
  </script>
 </head>
 
