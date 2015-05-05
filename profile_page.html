@@ -101,14 +101,42 @@
 
 
       $('#about_edit_button').click(function(){
+        $("#about_edit").show()
+        $("#about_edit_buttons").show()
+        $("#about_edit").val($("#user-about").text())
+        $('#user-about').hide();
+
+
         $('#about_edit_button').hide();
         aboutEdit = true;
-        $('#user-about').hide();
-        $('#about_edit').show();
-        $('#about_edit_buttons').show();
+        
 
       });
+
+
+      $('#about_edit_accept').click(function(){
+        //Take the text from the about-edit and save into the current users bio attribute
+        $('#user-about').show();
+        $("#user-about").text($("#about_edit").val())
+
+        $("#about_edit").hide()
+      
+        $("#about_edit").val($("#user-about").text())
+        
+
+
+        $('#about_edit_button').hide();
+        aboutEdit = false;
+        
+
+      });
+
+
       $('#email_edit_button').click(function(){
+
+
+        
+
         $('#email_edit_button').hide();
         emailEdit = true;
         $('#emailLink').hide();
@@ -116,6 +144,11 @@
         $('#email_edit_buttons').show();
 
       });
+
+
+
+
+
     });
 
     </script>
