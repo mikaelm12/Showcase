@@ -82,6 +82,8 @@ a {
 	border-radius: 5px;
 }
 
+
+
 #bio_div {
 	margin-top: 80px;
 }
@@ -118,9 +120,17 @@ a {
 	
 }
 
+.portfolio-item {
+	width:100%;
+	border-radius:10px;
+}
+
 .thumb {
   display: inline-block;
   position: relative;
+  width: 85%;
+  border-radius:10px;
+
 }
 .thumb_meta {
 	position:absolute;
@@ -132,6 +142,7 @@ a {
 	color:#fff;
 	font-size:19px;
 	text-align:left;
+	border-radius:10px;
 	/*height: 10px;*/
 	opacity:0;
 	transition: opacity 0.5s;

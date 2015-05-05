@@ -15,7 +15,7 @@ $.extend({
     }
 });
 
-var populate_portfolio = function(portfolioName) {
+var populate_portfolio = function(portfolioNameARG) {
 	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
 	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -25,32 +25,37 @@ var populate_portfolio = function(portfolioName) {
 		var ShowcasePortfolio = Parse.Object.extend("ShowcasePortfolio");
 		var query = new Parse.Query(ShowcasePortfolio);
 		query.equalTo("owner", currentUser.objectId);
-		if (portfolioName!==""&& portfolioName !==null && portfolioName !== undefined) { //selecting specific portfolio
-			query.equalTo("name", portfolioName);
+		if (portfolioNameARG!==""&& portfolioNameARG !==null && portfolioNameARG !== undefined) { //selecting specific portfolio
+			query.equalTo("name", portfolioNameARG);
 		}
 		query.find({
 			success: function(portfolioResults) {
 				if (portfolioResults.length === 0) {
 					return;
 				} else {
-				console.log("num portfolios:"+portfolioResults.length);
-
-				//fill in the dropdown
-				for (var p=0; p<portfolioResults.length; p++) {
-					var portfolio = portfolioResults[p];
-					var portfolioName = portfolio.get("name");
-					$(".dropdown-menu").append('<li role="presentation" id="list-items"><a role="menuitem" tabindex="-1" id="select_portfolio">'+portfolioName+'</a></li>');
-				}
-
-
+			
 				var hr = '<div class="style2"/><img src="images/hr4.png" width="100%"></div>';
 				$("#current_portfolio").append(hr);
 
 				var portfolio = portfolioResults[0];
 
 				var portfolioName = portfolio.get("name");
-				console.log("showing:"+portfolioName);
+				// console.log("showing:"+portfolioName);
 				var portfolioId = portfolio.id;
+
+
+				//fill in the dropdown
+				$(document.getElementById('current_text')).text(portfolioName);
+				
+				if (portfolioNameARG==="" || portfolioNameARG ===null || portfolioNameARG === undefined) { //selecting specific portfolio
+						for (var p=0; p<portfolioResults.length; p++) {
+						var portfolio = portfolioResults[p];
+						var portfolioName = portfolio.get("name");
+						$(".dropdown-menu").append('<li role="presentation" id="list-items"><a role="menuitem" tabindex="-1" id="select_portfolio">'+portfolioName+'</a></li>');
+					}
+				}
+				
+
 				var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
 				var query = new Parse.Query(ShowcasePhoto);
 				query.equalTo("portfolio", portfolioId );
@@ -60,7 +65,6 @@ var populate_portfolio = function(portfolioName) {
 				    for (var i = 0; i < results.length; i++) { 
 				    	var photo = results[i];				    	
 						var photoTitle = photo.get("title");
-						console.log("photo title:"+photoTitle);
 						if (photoTitle == "" || photoTitle == undefined){
 							photoTitle = "No Title";
 						}
@@ -75,16 +79,16 @@ var populate_portfolio = function(portfolioName) {
 						}
 
 		
-						var photoStuff = '<br><div class="row image_div" align="middle">'
+						var photoStuff = '<br><br><div class="row image_div" align="middle">'
 						+'<div class="col-md-12"><div class="thumb">'+image
-						+'<div class="thumb_meta"><span style="font-size:150%"><u>'+photoTitle+'</u></span><br>'
-						+photo_description+'</div><hr></div></div></div><br>';
+						+'<div class="thumb_meta"><span style="font-size:150%"><b>'+photoTitle+'</b></span><br>'
+						+photo_description+'</div></div></div></div><br>';
 						
 						$("#current_portfolio").append(photoStuff);
 
 
 				    }
-				    $("#current_portfolio").append(hr+'<hr>');
+				    $("#current_portfolio").append(hr);
 
 				  },
 				  error: function(error) {
@@ -100,5 +104,5 @@ var populate_portfolio = function(portfolioName) {
 	}
 };
 
-$(document).ready(populate_portfolio());
+$(document).ready(populate_portfolio(""));
 
