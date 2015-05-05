@@ -4,6 +4,8 @@ $(document).on("click", ".home_button", function(){
 });
 
 $(document).on("click", ".logout_button", function(){
+	Parse.initialize("wS5FBQCauFezsFutdFGGMrZMgEs3XADKfTvULhMb", "jy5VORCXKwEErZvFUHMKIsvD55YEYtfYLZIpc0JD");
+	Parse.User.logOut();
 	localStorage.removeItem("currentUser");
 	window.location = './index.html';
 });

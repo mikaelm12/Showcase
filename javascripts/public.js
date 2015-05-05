@@ -8,7 +8,7 @@ findMatchingUsers = function(){
     	for (var i = users.length - 1; i >= 0; i--) {
     		
     		var currentUser = users[i]
-    		var user_full_name = currentUser.attributes.first_name + " "+ currentUser.attributes.last_name;
+    		var user_full_name = currentUser.attributes.first_name + " " + currentUser.attributes.last_name;
     		userFullNames.push(user_full_name);
     		
     	};
