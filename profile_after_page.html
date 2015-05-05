@@ -1,22 +1,37 @@
  <!DOCTYPE html>
-<html>
-  <head>
-  	<title>Profile Page</title>
-  	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
-    <script src="./javascripts/button_actions.js"></script>
-    <script src="./javascripts/public.js"></script>
-   	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
-        <script>
-        $(document).ready(function() {
-            var availableTags = ["Super Man"];
+ <html>
+ <head>
+   <title>Profile Page</title>
+   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+   <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+   <script src="./javascripts/button_actions.js"></script>
+   <script src="./javascripts/public.js"></script>
+   <link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
+   <script>
+   //filling in the portfolio creation modal
+
+    var fill_portfolio_creation_modal = function(album_dictionaryARG) {
+
+    }
+    $(document).ready(function() {
+      var availableTags = ["Super Man"];
+
+      //filling in the portfolio creation modal
+      var album_dictionary={ 
+       1:["Album1", "images/mona_lisa.jpg", "images/superman_album_one.jpg"], 
+       2:["Album2", "images/mona_lisa.jpg", "images/superman_album_one.jpg"],
+       3:["Album3", "images/mona_lisa.jpg", "images/superman_album_one.jpg"]
+     };
+
+     fill_portfolio_creation_modal(album_dictionary);
+
           //for pressing enter
-         $(document).on('keypress',function(e){
+          $(document).on('keypress',function(e){
             //console.log("Click");
             //enter is 13
             if(e.which == 13){
@@ -41,7 +56,7 @@
           });
 
              //autocomplete widjet
-            $("#artistSearchBar").autocomplete({
+             $("#artistSearchBar").autocomplete({
               autoFocus: true,
               source: availableTags,
               minLength: 1,
@@ -54,33 +69,65 @@
               }
 
 
-             });
-        });
-      </script>
-  </head>
+            });
+           });
+</script>
+</head>
 
 <!-- Modal  Export-->
-  <div class="modal fade" id="myExport" tabindex="-1" role="dialog" aria-labelledby="myExportLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header" >
-          <button  type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myExportLabel">Export Portfolio</h4>
-        </div>
-        <div class="modal-body">
-            
+<div class="modal fade" id="myExport" tabindex="-1" role="dialog" aria-labelledby="myExportLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" >
+        <button  type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myExportLabel">Export Portfolio</h4>
+      </div>
+      <div class="modal-body">
+
+        <label>
+          <input type="checkbox" name="select-all" class="select-all" checked="checked"> Select All
+        </label> 
+        <br><br>
+
+        <!--SELECT ALBUMS DIV-->
+        <div id="select-albums-div">
+        
+        <div class="album_title">
           <label>
-            <input type="checkbox" name="select-all" class="select-all"checked="checked"> Select All
-          </label> 
-          <br>
-          <label>
-            <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1" checked="checked"> GR4 Test Album
+            <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-album1" checked="checked"> GR4 Test Album1
 
           </label> 
           <br>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-image1" checked="checked"> 
           <img class='border' src='./images/mona_lisa.jpg' width='80px' height='80px'>
-          <br>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-image1" checked="checked"> 
+          <img class='border' src='./images/mona_lisa.jpg' width='80px' height='80px'>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-image1" checked="checked"> 
+          <img class='border' src='./images/mona_lisa.jpg' width='80px' height='80px'>
+          
+          
+          <br><br>
+
         </div>
+
+        <div>
+          <label>
+            <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-album2" checked="checked"> GR4 Test Album2
+
+          </label> 
+          <br>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-image2" checked="checked"> 
+          <img class='border' src='./images/mona_lisa.jpg' width='80px' height='80px'>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-image2" checked="checked"> 
+          <img class='border' src='./images/mona_lisa.jpg' width='80px' height='80px'>
+          <input type="checkbox" name="checkbox-1" id="checkbox-1" class="checkbox-1 check-image2" checked="checked"> 
+          <img class='border' src='./images/mona_lisa.jpg' width='80px' height='80px'>
+          
+
+        </div>
+
+        </div>
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -93,18 +140,18 @@
 
 
 <!-- Modal  Add Pictures-->
-  <div class="modal fade" id="myAddPictures" tabindex="-1" role="dialog" aria-labelledby="myAddPictureLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myAddPictureLabel">Create New Album</h4>
-        </div>
-        <div class="modal-body">
-          <!--<label for="exampleInputFile">Select Pictures</label>-->
-          <input type="file" id="exampleInputFile">
-          <p class="help-block">Browse for pictures to add.</p>   
-        </div>
+<div class="modal fade" id="myAddPictures" tabindex="-1" role="dialog" aria-labelledby="myAddPictureLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myAddPictureLabel">Create New Album</h4>
+      </div>
+      <div class="modal-body">
+        <!--<label for="exampleInputFile">Select Pictures</label>-->
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Browse for pictures to add.</p>   
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -115,48 +162,48 @@
 </div>
 
 <!-- Modal  Share-->
-  <div class="modal fade" id="myShare" tabindex="-1" role="dialog" aria-labelledby="myShareLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" >
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myShareLabel">Share</h4>
+<div class="modal fade" id="myShare" tabindex="-1" role="dialog" aria-labelledby="myShareLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myShareLabel">Share</h4>
 
-        </div> <span style="padding-left:33%">This will post a link to your profile</span>
-          <div id = "share_buttons" style="padding-left:18%">
-                       <!-- Facebook -->
-            <!--<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html&redirect_uri=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html"-->
-            <a href="https://developers.facebook.com/docs/plugins/"
-            target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/></a>
-            <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>-->
-               
-            <!-- Twitter -->
-            <a href="http://twitter.com/share" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
-               
-            <!-- Google+ -->
-            <a href="https://plus.google.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/google.png" alt="Google" /></a>
-               
-            <!-- Digg -->
-            <a href="http://www.digg.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a>
-               
-            <!-- Reddit -->
-            <a href="http://reddit.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
-               
+      </div> <span style="padding-left:33%">This will post a link to your profile</span>
+      <div id = "share_buttons" style="padding-left:18%">
+       <!-- Facebook -->
+       <!--<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html&redirect_uri=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html"-->
+       <a href="https://developers.facebook.com/docs/plugins/"
+       target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/></a>
+       <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>-->
 
-            <!-- Pinterest -->
-            <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="http://www.simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" /></a>
-               
-               
-            <!-- Email -->
-            <a href="mailto:?Subject=Simple Share Buttons&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.simplesharebuttons.com"><img src="http://www.simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a>
+       <!-- Twitter -->
+       <a href="http://twitter.com/share" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
 
-          </div>
-          <br>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-      </div>
+       <!-- Google+ -->
+       <a href="https://plus.google.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/google.png" alt="Google" /></a>
+
+       <!-- Digg -->
+       <a href="http://www.digg.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a>
+
+       <!-- Reddit -->
+       <a href="http://reddit.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
+
+
+       <!-- Pinterest -->
+       <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="http://www.simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" /></a>
+
+
+       <!-- Email -->
+       <a href="mailto:?Subject=Simple Share Buttons&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.simplesharebuttons.com"><img src="http://www.simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a>
+
+     </div>
+     <br>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -165,125 +212,125 @@
 <div class="modal fade bs-example-modal-lg" id = "portfolioPDF" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-    <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <a href="profile_after_page_portfolio.html"><button type="button" class="btn btn-default">Add Portfolio</button></a>
-        </div>
-     <iframe src="myPortfolio.pdf" style="width:900px; height:500px;" ></iframe>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <a href="profile_after_page_portfolio.html"><button type="button" class="btn btn-default">Add Portfolio</button></a>
+      </div>
+      <iframe src="myPortfolio.pdf" style="width:900px; height:500px;" ></iframe>
     </div>
   </div>
 </div>
 
 
-  <body>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
 
-          <!-- Navigation Bar -->
+      <!-- Navigation Bar -->
 
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="./index.html">Showcase</a>
-          </div>
-          
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <div id='search'>
-              <form class="navbar-form navbar-left" role="search">
-                <div class="input-group">
-                    <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-              </form>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./index.html">Showcase</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div id='search'>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="input-group">
+              <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
+              <div class="input-group-btn">
+                <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-              <button type="button" class="btn btn-default navbar-btn account home_button_after" data-toggle="modal" data-target="#myModal">
-                Profile
-              </button>
-              <button type="button" class="btn btn-default navbar-btn account logout_button" data-toggle="modal" data-target="#myModal">
-                Log Out
-              </button>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
+          </form>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <button type="button" class="btn btn-default navbar-btn account home_button_after" data-toggle="modal" data-target="#myModal">
+            Profile
+          </button>
+          <button type="button" class="btn btn-default navbar-btn account logout_button" data-toggle="modal" data-target="#myModal">
+            Log Out
+          </button>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
-    <div class='container' id='main_container'>  <!-- Main Container -->
-      <div class='row'> <!-- ROW -->
-         <div class='col-md-5'> <!-- COL 1 -->
-          <div id = "profile_container">
-            <img id='profile_pic' class='grid_image img-responsive' align="middle" src='./images/blank_profile.jpg'>
-            <div id='artist_name'><h2>Your Name</h2></div>
-            <div id='bio_div'>
-              <h3>Bio <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
-              <!--<textarea class="form-control" rows="3"> Add biography info...</textarea><br>-->
-              <p>Edit this to include some information about yourself.</p>
-            </div>
-            
-            <div id='email_div'>
-              <h3>Email <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
-              <a href="mailto:#">yourEmail@email.com</a><br>
-              <br>
-              
-            </div>
+  <div class='container' id='main_container'>  <!-- Main Container -->
+    <div class='row'> <!-- ROW -->
+     <div class='col-md-5'> <!-- COL 1 -->
+      <div id = "profile_container">
+        <img id='profile_pic' class='grid_image img-responsive' align="middle" src='./images/blank_profile.jpg'>
+        <div id='artist_name'><h2>Your Name</h2></div>
+        <div id='bio_div'>
+          <h3>Bio <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
+          <!--<textarea class="form-control" rows="3"> Add biography info...</textarea><br>-->
+          <p>Edit this to include some information about yourself.</p>
+        </div>
 
-            <div id='portfolio_div'>
-              <h3>Portfolios</h3>
-              You have no portfolio available
-            </div>
-          </div>
-        </div> <!-- COL 1 END -->
-        <div class='col-md-7'> <!-- COL 2 -->
-          <div id ="album_container">
-            <div id='export_button_div'> <!-- Export Button -->
+        <div id='email_div'>
+          <h3>Email <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
+          <a href="mailto:#">yourEmail@email.com</a><br>
+          <br>
 
-                  <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <button class="btn btn-default large_button " type="button" data-toggle="modal" data-target="#myShare" style="font-size:150%"><span class="glyphicon glyphicon-share" aria-hidden="true"  ></span>&nbspShare</button>
-          
-                      
-             <button id = "exportButton" type="button" class="btn btn-default large_button" data-toggle="modal" data-target="#myExport" style="font-size:150%">Export to Portfolio</button>
-            </div>
-            <div class='row'>
-                <div class='col-md-4' ></div>
-                <div class='col-md-4'>
-                  <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <h1 id='album_name_input'>Albums</h1>
-                </div>
-                <div class='col-md-4'>
-                  <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
-                  <button class="btn btn-default btn-large btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+        </div>
 
-                </div>
-            </div>
-            <hr>
-            <div id='photo_grid'> <!-- Album Grid -->
-            	<div id='table_div' class='col-md-12'>	
-        	    	<table>
-        	    		<tbody>
-        	    			<tr>
-        	    				<td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive go_to_album' src='./images/mona_lisa.jpg'></a></td>
-        	    				<td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
-        	    			</tr>
-        	    			<tr>
-        	    				<td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
-        	    				<td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
-        	    			</tr>
-        	    		</tbody>
-        	    	</table>
-        	    </div>
-            </div> <!-- Album Grid -->
-          	 
-
-          </div><!--End Album Container-->
+        <div id='portfolio_div'>
+          <h3>Portfolios</h3>
+          You have no portfolio available
         </div>
       </div>
-    </div>  <!-- Main Container -->
-  </body>
+    </div> <!-- COL 1 END -->
+    <div class='col-md-7'> <!-- COL 2 -->
+      <div id ="album_container">
+        <div id='export_button_div'> <!-- Export Button -->
+
+          <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
+          <button class="btn btn-default large_button " type="button" data-toggle="modal" data-target="#myShare" style="font-size:150%"><span class="glyphicon glyphicon-share" aria-hidden="true"  ></span>&nbspShare</button>
+          
+
+          <button id = "exportButton" type="button" class="btn btn-default large_button" data-toggle="modal" data-target="#myExport" style="font-size:150%">Export to Portfolio</button>
+        </div>
+        <div class='row'>
+          <div class='col-md-4' ></div>
+          <div class='col-md-4'>
+            <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
+            <h1 id='album_name_input'>Albums</h1>
+          </div>
+          <div class='col-md-4'>
+            <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
+            <button class="btn btn-default btn-large btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+
+          </div>
+        </div>
+        <hr>
+        <div id='photo_grid'> <!-- Album Grid -->
+         <div id='table_div' class='col-md-12'>	
+          <table>
+           <tbody>
+            <tr>
+             <td class='grid_cell'><a href="#"><img class='grid_image change_opacity img-responsive go_to_album' src='./images/mona_lisa.jpg'></a></td>
+             <td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
+           </tr>
+           <tr>
+             <td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
+             <td class='grid_cell'><a href="#"><img data-toggle="modal" data-target="#myAddPictures" class='grid_image change_opacity img-responsive' src='./images/addalbum.png'></a></td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </div> <!-- Album Grid -->
+
+
+ </div><!--End Album Container-->
+</div>
+</div>
+</div>  <!-- Main Container -->
+</body>
