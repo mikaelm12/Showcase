@@ -72,8 +72,19 @@ $(document).ready(function(){
 
 
 	$(document).on("click", "#login_button", function(){
-		var username = $("#email_login").val();
-		var password = $("#password_login").val();
+			var username = $("#email_login").val();
+			var password = $("#password_login").val();
+			if(username == ''){
+				//enter username and password
+				$('#login_help').css('color','red'); 
+			}
+			
+			else if(password == ''){
+				//enter password
+				$('#login_help').css('color','red'); 
+				$('#login_help').value = 'Enter your password.'
+			}
+			
 		Parse.User.logIn(username, password, {
 			success: function(user) {
 			// Do stuff after successful login.
@@ -83,7 +94,9 @@ $(document).ready(function(){
 			error: function(user, error) {
 			// The login failed. Check error to see why.
 
-			alert("Failed to login");
+
+				alert("Failed to login");
+				//$('#login_help').css('color','red'); 
 			}
 		});
 	});
@@ -92,6 +105,17 @@ $(document).ready(function(){
 		if(event.keyCode == 13){
 			var username = $("#email_login").val();
 			var password = $("#password_login").val();
+			if(username == ''){
+				//enter username and password
+				$('#login_help').css('color','red'); 
+			}
+			
+			else if(password == ''){
+				//enter password
+				$('#login_help').css('color','red'); 
+				$('#login_help').value = 'Enter your password.'
+			}
+			
 			Parse.User.logIn(username, password, {
 				success: function(user) {
 				// Do stuff after successful login.
@@ -100,7 +124,9 @@ $(document).ready(function(){
 				},
 				error: function(user, error) {
 				// The login failed. Check error to see why.
+
 				alert("Failed to login");
+				//$('#login_help').css('color','red'); 
 				}
 			});
 		}
@@ -110,6 +136,17 @@ $(document).ready(function(){
 		if(event.keyCode == 13){
 			var username = $("#email_login").val();
 			var password = $("#password_login").val();
+			if(username == ''){
+				//enter username and password
+				$('#login_help').css('color','red'); 
+			}
+			
+			else if(password == ''){
+				//enter password
+				$('#login_help').css('color','red'); 
+				$('#login_help').value = 'Enter your password.'
+			}
+			
 			Parse.User.logIn(username, password, {
 				success: function(user) {
 				// Do stuff after successful login.
@@ -118,7 +155,9 @@ $(document).ready(function(){
 				},
 				error: function(user, error) {
 				// The login failed. Check error to see why.
+
 				alert("Failed to login");
+				//$('#login_help').css('color','red'); 
 				}
 			});
 		}
@@ -148,7 +187,7 @@ $(document).ready(function(){
 
 		var reEmail = /\w+@\w+\.\w+/;
 		if (reEmail.exec(email) == null){
-			alert("Please a valid email address");
+			alert("Please enter a valid email address");
 			return;
 		}
 

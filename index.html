@@ -47,20 +47,25 @@
           });
 
           var query = new Parse.Query(Parse.User);
-          query.notEqualTo('profile_picture','undefined');
+          query.notEqualTo('profile_picture',null);
           query.find({
             success:function(list) {
 
               var length = list.length;
-
+/*
               if (length > 4){
                   length = 4;
-              }
+              }*/
 
               for (var i =0; i < length; i++){
-                picture = list[i].get('profile_picture');
-                console.log(picture);
-                $('#trending_container').append("<img  class='border'  width='110px' height='110px'" + "id:pic" + String(i) + "source:" + String(picture) + ">");
+                var picture = list[i].get('profile_picture');
+                var name = list[i].get('full_name');
+                var id = list[i].id;
+                //console.log(name);
+                //console.log(id);
+                var fullname = list[i].get('full_name');
+                var bio = list[i].get('bio');
+                $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(i) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
               }
             }
           });
@@ -165,13 +170,10 @@
         <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" aria-describedby="sizing-addon1" autofocus>
       </div>
       <br>
-      <div id="trending_container">
-          <h3 style='text-align:center'>Who's Trending</h3>
-          <br>
+      <div id="trending_container" style='text-align:left'>
+          <h3 style='text-align:center'>Trending Artist Portfolios</h3>
+          
 
-          
-          
-          <br>
 
 
       </div>
