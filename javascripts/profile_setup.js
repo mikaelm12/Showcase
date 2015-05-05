@@ -82,13 +82,15 @@ $(document).ready(function(){
 				    			// console.log("HERE: " + album.get("name"));
 				    			for (var i = 0; i < results.length; i++) {
 				    				var photo = results[i];
-				    				var checkBox = $("<input type='checkbox' name='checkbox-1' id='" + photo.id + "' class='check_all check_image_" + album.id + "' selected' checked='checked'>");
+				    				var checkBox = $("<input type='checkbox' name='checkbox_" + photo.id + "' id='" + photo.id + "' class='imageCheckBox check_all check_image_" + album.id + " selected' checked='checked'>");
 				    				var image = $("<img class='border' width='80px' height='80px'>");
 				    				image.attr("src", photo.get("photoUrl"));
 				    				albumDiv.append(checkBox);
 				    				albumDiv.append(image);
 				    			}
 				    			exportModal.append(albumDiv);
+				    			exportModal.append($("<br>"));
+
 				    		},
 				    		error: function(error) {
 				    			alert("Error: " + error.code + " " + error.message);
@@ -97,51 +99,79 @@ $(document).ready(function(){
 		    	})(albumDiv, album);
 				    	
 		    }
-
-		    // var albumDivs = [];
-		    // var selectAlbumsDiv = $("<br><div id='select-albums-div'>");
-		    // for (var i = 0; i < userAlbums.length; i++){
-		    // 	var album = userAlbums[i];
-		    // 	var albumDiv = $("<div id='album_title_" + album.id + "'>");
-		    // 	var albumTitleDiv  = $("<label><input type='checkbox' name='checkbox-1' id='checkbox-1' class='checkbox-1 check-album1' checked='checked'> " + album.get("name") + " </label><br>");
-		    // 	albumDiv.append(albumTitleDiv);
-		    // 	albumDivs.push(albumDiv);
-		    // 	var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
-		    // 	var query = new Parse.Query(ShowcasePhoto);
-		    // 	query.equalTo("album", album.id);
-		    // 	query.find({
-		    // 		success: function(results) {
-		    // 			// console.log("HERE: " + album.get("name"));
-		    			
-		    // 			var albumDiv = albumDivs[i];
-		    // 			console.log(albumDivs[i]);
-		    // 			for (var i = 0; i < results.length; i++) {
-		    // 				var photo = results[i];
-		    // 				var checkBox = $("<input type='checkbox' name='checkbox-1' id='" + photo.id + "' class='checkbox-1 check-image1 selected' checked='checked'>");
-		    // 				var image = $("<img class='border' width='80px' height='80px'>");
-		    // 				image.attr("src", photo.get("photoUrl"));
-		    // 				albumDiv.append(checkBox);
-		    // 				albumDiv.append(image);
-		    // 			}
-		    // 			selectAlbumsDiv.append(albumDiv);
-		    // 		},
-		    // 		error: function(error) {
-		    // 			alert("Error: " + error.code + " " + error.message);
-		    // 		}
-		    // 	});
-		    // 	// selectAlbumsDiv.append(albumDiv);
-
-		    // };
-
-		    // $("#beforeSelected").after(selectAlbumsDiv);
-
 		},
 		error: function(error) {
 			alert("Error: " + error.code + " " + error.message);
 		}
 	});
 }
+$(document).on("click", "#selectAll", function(){
+	var checked = $(this).prop('checked');
+	if (checked){
+		$(".imageCheckBox").addClass("selected");
+	} else {
+		$(".imageCheckBox").removeClass("selected");
+	}
+	$(".check_all").prop('checked', checked);
+});
 
+$(document).on("click", ".check_album", function(){
+	var id = this.id;
+	var checked = $(this).prop("checked");
+	if (checked){
+		$(".check_image_" + id).addClass("selected");
+	} else {
+		$(".check_image_" + id).removeClass("selected");
+		$("#selectAll").prop("checked", false);
+	}
+	$(".check_image_" + id).prop("checked", checked);
+});
+
+$(document).on("click", ".imageCheckBox", function(){
+	var checked = $(this).prop("checked");
+	if (checked){
+		$(this).addClass("selected");
+	} else {
+		$(this).removeClass("selected");
+		$("#selectAll").prop("checked", false);
+	}
+});
+
+$(document).on("click", "#createPortfolioButton", function(){
+	console.log("HERE")
+	var portfolioName = $("#portfolioName").val();
+	if (portfolioName == ""){
+		alert("Please give your portfolio a name!");
+		return;
+	}
+	var ShowcasePortfolio = Parse.Object.extend("ShowcasePortfolio");
+	var portfolio = new ShowcasePortfolio();
+	portfolio.set("owner", currentUser.objectId);
+	portfolio.set("name", portfolioName);
+	portfolio.save(null, {
+			  success: function(portfolio) {
+			  		var portfolioId = portfolio.id;
+					$( ".selected" ).each(function(index) {
+						var photoId = $(this).attr('id');
+						var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
+				    	var query = new Parse.Query(ShowcasePhoto);
+				    	query.equalTo("objectId", photoId);
+				    	query.find({
+							success:function(list) {
+								var photo = list[0];
+								photo.set("portfolio", portfolioId);
+								photo.save();
+							}
+						});
+					}); 
+			  },
+			  error: function(portfolio, error) {
+			    alert('Failed to create new portfolio!');
+			  }
+	});
+	$("#myExport").modal("hide");
+
+});
 
 
 $(document).on("click", ".album", function(){
@@ -203,52 +233,50 @@ $(document).on("click", "#upload_profile_button", function(){
 		alert("Please select a file!");
 		return;
 	}
-	for (var i=0; i < files.length ; i++){
-		file= files[i];
-		var file_name = file.name;
-		var serverUrl = 'https://api.parse.com/1/files/' + encodeURIComponent(file_name.replace(/\s+/g, ''));
-		if (!file.type.match('image.*')) {
-			break;
-			$("#myAddProfile").modal("hide");
-		}
-
-		var query = new Parse.Query(Parse.User);
-		query.equalTo("objectId", currentUser.objectId);
-		query.find({
-			success: function(users) {
-				console.log(currentUser.objectId);
-				var user = users[0];
-				$.ajax({
-					type: "POST",
-					beforeSend: function(request) {
-						request.setRequestHeader("X-Parse-Application-Id", 'd2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH');
-						request.setRequestHeader("X-Parse-REST-API-Key", 'MhIrAO8s3irJdIHTYX5AFBIAtZ95K7uCN02rx4U4');
-						request.setRequestHeader("Content-Type", file.type);
-					},
-					url: serverUrl,
-					data: file,
-					processData: false,
-					contentType: false,
-					success: function(data) {
-						user.set("profile_picture", data.url);
-						user.save();
-						currentUser.profile_picture =  data.url;
-						localStorage.setItem('currentUser', JSON.stringify(currentUser));
-						$("#profile_pic").attr("src", data.url);
-						$("#myAddProfile").modal("hide");
-					},
-					error: function(user, error) {
-						alert("Failed to find user!");
-					}
-				});
-			}, error: function(user, error){
-				console.log("ERROR");
+		for (var i=0; i < files.length ; i++){
+			file= files[i];
+			var file_name = file.name;
+			var serverUrl = 'https://api.parse.com/1/files/' + encodeURIComponent(file_name.replace(/\s+/g, ''));
+			if (!file.type.match('image.*')) {
+				break;
+				$("#myAddProfile").modal("hide");
 			}
 
-		});
+			var query = new Parse.Query(Parse.User);
+			query.equalTo("objectId", currentUser.objectId);
+			query.find({
+				success: function(users) {
+					console.log(currentUser.objectId);
+					var user = users[0];
+					$.ajax({
+						type: "POST",
+						beforeSend: function(request) {
+							request.setRequestHeader("X-Parse-Application-Id", 'd2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH');
+							request.setRequestHeader("X-Parse-REST-API-Key", 'MhIrAO8s3irJdIHTYX5AFBIAtZ95K7uCN02rx4U4');
+							request.setRequestHeader("Content-Type", file.type);
+						},
+						url: serverUrl,
+						data: file,
+						processData: false,
+						contentType: false,
+						success: function(data) {
+							user.set("profile_picture", data.url);
+							user.save();
+							currentUser.profile_picture =  data.url;
+							localStorage.setItem('currentUser', JSON.stringify(currentUser));
+							$("#profile_pic").attr("src", data.url);
+							$("#myAddProfile").modal("hide");
+						},
+						error: function(user, error) {
+							alert("Failed to find user!");
+						}
+					});
+				}, error: function(user, error){
+					console.log("ERROR");
+				}
 
-	}
+			});
+		}
 
-});
-
+	});
 });

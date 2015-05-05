@@ -23,43 +23,6 @@ $(document).on("click", ".select-all", function(){
 	$(".check_all").prop('checked', $(this).prop('checked'));
 });
 
-// var clickHandler = function(arg) {
-// 	return function() {
-// 		$(".check-image"+arg).prop('checked', $(this).prop('checked'));
-// 	};
-// }
-
-// listen for click on album, check all photos in that album
-// for (var i=1; i<=10; i++) {
-// 	$(document).on("click", ".check-album"+i, clickHandler(i));
-// }
-
-
-
-$(document).on("click", ".check_album", function(){
-	console.log("HERE");
-	var id = this.id;
-	console.log(id);
-	$(".check_image_" + id).prop("checked", $(this).prop("checked"));
-});
-
-
-// function checkHandler(num) {
-// 		$(".check-album"+num).click (
-// 			function() {$(".check_image"+num).prop('checked', $(this).prop('checked'));}
-// 			)
-// 	}
-
-
-
-// $(document).on("click", ".check-album"+1, function(){
-// 	$(".check-image"+1).prop('checked', $(this).prop('checked'));
-// });	
-// $(document).on("click", ".check-album"+2, function(){
-// 	$(".check-image"+2).prop('checked', $(this).prop('checked'));
-// });	
-
-
 
 // Listen for click on toggle checkbox
 $(document).on("click", ".checkbox-1", function(){

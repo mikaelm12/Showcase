@@ -218,14 +218,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myExportLabel">Export Portfolio</h4>
+        <h4 class="modal-title" id="myExportLabel">Create Portfolio</h4>
       </div>
       <div class="modal-body">
+        Portfolio Name: <input type="text" id='portfolioName' placeHolder='Portfolio Name'>
+        <br>
+        <br>
         <div id='beforeSelected'>
-          <input type="checkbox" name="select-all" class="select-all" checked="checked"> Select All
+          <input id='selectAll' type="checkbox" name="select-all" checked="checked"> Select All
         </div>
         <br>
         <div id='select-albums-div'></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id='createPortfolioButton' type="button" class="btn btn-default">Create</button>
       </div>
     </div>
   </div>
@@ -352,7 +359,7 @@
         </div>
 
         <textarea rows="4" cols="50" id = "about_edit" hidden style="width:100%;margin:0;"></textarea>
-        <div id = "about_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "about_edit_accept" >Accept</button><button id = "about_edit_cancel">Cancel</button></div>
+        <div id = "about_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "about_edit_accept" class="btn btn-default">Accept</button> <button id = "about_edit_cancel" class="btn btn-default">Cancel</button></div>
       </div>       
     </div>  
     <div class = 'row'>
@@ -363,7 +370,7 @@
       </div>
 
       <textarea rows="1" cols="50" id = "email_edit" hidden style="width:100%;margin:0;"></textarea>
-      <div id = "email_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "email_edit_accept" >Accept</button><button id = "email_edit_cancel">Cancel</button></div>
+      <div id = "email_edit_buttons" hidden style="width:100%;margin:0;text-align:left;"><button id = "email_edit_accept" class="btn btn-default">Accept</button> <button id = "email_edit_cancel" class="btn btn-default">Cancel</button></div>
     </div>
   </div>
   <div class='row'>
