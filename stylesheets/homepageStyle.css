@@ -12,7 +12,7 @@ body .btn {
 
 #searchBarDiv{
 	max-width: 600px;
-	margin-top: 20%;
+	margin-top: 40px;
 }
 
 
@@ -125,10 +125,10 @@ h3.centre {
 	font-family: 'Lobster', cursive;
 }
 
-#main_content {
+/*#main_content {
     text-align: center;
 }
 
 .centerContent {
     text-align: center;
-}
+}*/
