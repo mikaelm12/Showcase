@@ -18,34 +18,7 @@
       <script>
         $(document).ready(function() {
           
-           findMatchingUsers();
-
-
-          //for pressing enter
-         $(document).on('keypress',function(e){
-            //console.log("Click");
-            //enter is 13
-            if(e.which == 13){
-
-              //do this
-              // Does the element have focus:
-              var hasFocus = $('#artistSearchBar').is(':focus');
-              if($("#artistSearchBar").val() != "" && hasFocus){
-                e.preventDefault();
-                //input = $("#artistSearchBar"); //gets input text
-                //inputValue = $(input).val(); //gets value
-                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-                
-                //console.log("Enter");
-                //$( "#input_text" ).autocomplete("close");
-                $( "#artistSearchBar" ).autocomplete("close");
-                window.location = "./profilepage.html";
-
-              }
-
-            }
-          });
-
+          findMatchingUsers();
           var query = new Parse.Query(Parse.User);
           query.notEqualTo('profile_picture',null);
           query.find({
