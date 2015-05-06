@@ -55,6 +55,7 @@ $(document).ready(function(){
 		user.set("last_name", last_name);
 		user.set("full_name",first_name + " " + last_name);
 		user.set("bio","");
+		user.set("profile_picture", "http://files.parsetfss.com/0fc14c5b-74f9-402d-9b1e-69320ee1698c/tfss-53c354b7-db2f-4b08-92e3-0d1bad7ea01a-blank_profile.jpg");
 
 		user.signUp(null, {
 			success: function(user) {
@@ -241,14 +242,13 @@ findMatchingUsers = function(prefix){
     	console.log(users);
     	var userFullNames = []
     	for (var i = users.length - 1; i >= 0; i--) {
-    		console.log(users[i])
     		var currentUser = users[i]
     		var user_full_name = currentUser.attributes.first_name + " "+ currentUser.attributes.last_name;
     		userFullNames.push(user_full_name);
     		
     	};
     	console.log(prefix);
+    	return userFullNames;
 		}
 	});
-	return userFullNames;
 }
