@@ -28,6 +28,8 @@
             $('#upload_button').prop('disabled', true);
 
           });
+
+
           $('#fileselect').click(function(){
               numFiles=0;
             });
@@ -37,12 +39,14 @@
 
                  console.log(numFiles);
                   if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1) > numFiles){
-                    //console.log('enable');
+                    // console.log('enable');
                     
                     $('#upload_button').prop('disabled', false);
+                    $('#upload_button').focus();
+
                     //console.log('disabled');
                   }else{
-                    //console.log('disable');
+                    // console.log('disable');
                     $('#upload_button').prop('disabled', true);
                   }
 

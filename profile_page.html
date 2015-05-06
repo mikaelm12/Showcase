@@ -157,6 +157,25 @@
 
 
 
+                $('#myExport').on('shown.bs.modal', function () {
+                    $('#portfolioName').focus();
+                });
+
+                $('#myDelete').on('shown.bs.modal', function () {
+                    $('#deleteAlbumButton').focus();
+                });
+
+                $('#removePortfolioModal').on('shown.bs.modal', function () {
+                    $('#confirm_delete_portfolio').focus();
+                });
+
+                $('#portfolioName').keyup(function(e){
+                  if (e.keyCode == 13){
+                    $('#createPortfolioButton').focus();
+                  } 
+                });
+
+
  //about_edit_cancel
 
                 $('#email_edit_button').click(function(){
@@ -264,7 +283,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button id='createPortfolioButton' type="button" class="btn btn-default">Create</button>
+        <button id='createPortfolioButton' type="button" class="btn btn-default" autofocus>Create</button>
       </div>
     </div>
   </div>

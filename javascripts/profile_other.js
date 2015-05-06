@@ -3,12 +3,13 @@ var populate_other_portfolio = function(currentUserId, selectedPortfolio) {
 	var ShowcasePortfolio = Parse.Object.extend("ShowcasePortfolio");
 	var query = new Parse.Query(ShowcasePortfolio);
 	query.equalTo("owner", currentUserId);
+	query.descending("createdAt");
 	if (selectedPortfolio!==null) {
 		query.equalTo("name", selectedPortfolio);
 	}
 	query.find({
 		success: function(portfolioResults) {
-							console.log("portfolios found:"+portfolioResults.length);
+							// console.log("portfolios found:"+portfolioResults.length);
 
 			if (portfolioResults.length === 0) {
 				return;

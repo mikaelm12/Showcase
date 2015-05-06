@@ -58,7 +58,7 @@ $(document).ready(function(){
 							photoTitle = "** No Title Available **";
 						}
 						var photoTitle = $("<h2 class='photoTitle' id='title_" + photo.id + "'>" + photoTitle + "</h2>");
-						var editButton = $("<div class='input-group-btn'><button type='submit' class='btn btn-sm btn-default edit' id='" + photo.id + "'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></div>");
+						var editButton = $("<div class='input-group-btn'><button type='submit' class='btn btn-md btn-default edit' id='" + photo.id + "'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></div>");
 						var image = $("<img class='grid_image img-responsive' src='" + photo.get("photoUrl") + "' id='grid_image_" + photo.id + "'>");
 						var removeButton = $("<div class='input-group-btn'><button type='submit' class='btn btn-sm btn-default remove' id='" + photo.id + "'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></div>");
 						var titleField = $("<div class='input-group'></div>");
@@ -174,8 +174,12 @@ $(document).ready(function(){
 	    	descEditBox = $("<input class='editBoxDesc' value='" + descText + "' id='desc_" + this.id  + "'>")
 	    	desc.remove();
 	    	$("#grid_image_" + this.id).after(descEditBox);
+	    	$(this).children().removeClass('glyphicon-pencil').addClass('glyphicon-floppy-disk');
 
      	} else {
+     		$(this).children().removeClass('glyphicon-floppy-disk').addClass('glyphicon-pencil');
+
+
      		titleText = title.val();
      		textField = $("<h2 class='photoTitle' id='title_" + this.id + "'>" + titleText + "</h2>");
      		title.remove();

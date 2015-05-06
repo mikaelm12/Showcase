@@ -28,6 +28,7 @@ var populate_portfolio = function(portfolioNameARG) {
 		if (portfolioNameARG!==""&& portfolioNameARG !==null && portfolioNameARG !== undefined) { //selecting specific portfolio
 			query.equalTo("name", portfolioNameARG);
 		}
+		query.descending("createdAt");
 		query.find({
 			success: function(portfolioResults) {
 				if (portfolioResults.length === 0) {
