@@ -131,7 +131,11 @@ $(document).ready(function(){
 	    	editBox = $("<input class='editBoxTitle' value='" + titleText + "' id='album_title_" + this.id  + "'>");
 	    	title.remove();
 	    	$("#album_title_wrapper").append(editBox);
+	    	$(this).children().removeClass('glyphicon-pencil').addClass('glyphicon-floppy-disk');
+
      	} else {
+     		$(this).children().removeClass('glyphicon-floppy-disk').addClass('glyphicon-pencil');
+
      		titleText = title.val();
      		textField = $("<h1 id='album_title_" + this.id + "' class='album_title'>" + titleText + "</h1>");
      		title.remove();

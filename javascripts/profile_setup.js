@@ -105,6 +105,18 @@ $(document).ready(function(){
 		}
 	});
 }
+
+var checkNumSelected = function() {
+	var numberOfImages = $(".selected").length;
+  console.log("numselected:"+numberOfImages);
+  if (numberOfImages>0) {
+    $('#createPortfolioButton').prop('disabled', false);
+    $('#createPortfolioButton').focus();
+  } else {
+    $('#createPortfolioButton').prop('disabled', true);
+  }
+};
+
 $(document).on("click", "#selectAll", function(){
 	var checked = $(this).prop('checked');
 	if (checked){
@@ -113,6 +125,7 @@ $(document).on("click", "#selectAll", function(){
 		$(".imageCheckBox").removeClass("selected");
 	}
 	$(".check_all").prop('checked', checked);
+	checkNumSelected();
 });
 
 $(document).on("click", ".check_album", function(){
@@ -125,6 +138,8 @@ $(document).on("click", ".check_album", function(){
 		$("#selectAll").prop("checked", false);
 	}
 	$(".check_image_" + id).prop("checked", checked);
+	checkNumSelected();
+
 });
 
 $(document).on("click", ".imageCheckBox", function(){
@@ -135,6 +150,8 @@ $(document).on("click", ".imageCheckBox", function(){
 		$(this).removeClass("selected");
 		$("#selectAll").prop("checked", false);
 	}
+	checkNumSelected();
+
 });
 
 $(document).on("click", "#createPortfolioButton", function(){

@@ -129,12 +129,16 @@
   aboutEdit = false;
 });
 
+
+ $('#createPortfolioButton').prop('disabled',true);
+
  $('#upload_modal').hover(function(){
   console.log('files');
   console.log($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1);
 
   if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1)> 0){
     $('#upload_profile_button').prop('disabled', false);
+    $('#upload_profile_button').focus();
                     //console.log('disabled');
                   }else{
                     $('#upload_profile_button').prop('disabled', true);
