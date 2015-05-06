@@ -117,7 +117,7 @@ $(document).ready(function(){
                //var newArtistRow = table.insertRow(0);
                //var artistNamecell = newArtistRow.insertCell(0);
                alert(error.message);
-               console.log('stuff'); 
+               //console.log('stuff'); 
                //artistNamecell.innerHTML =  "<strong>No artists matched your search!</strong>";
               $("#artistSearchResults").append("<strong>No artists matched your search!</strong>");
               $("#artistSearchBar").focus();
