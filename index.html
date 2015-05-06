@@ -56,16 +56,30 @@
               if (length > 4){
                   length = 4;
               }
+              var indexUsed = [];
 
               for (var i =0; i < length; i++){
-                var picture = list[i].get('profile_picture');
-                var name = list[i].get('full_name');
-                var id = list[i].id;
+                var index;
+                if(list.length > 4){
+                  
+                  do{
+                    //try again
+                    index = Math.floor(Math.random() * (list.length)) + 0;
+                  }while($.inArray(index,indexUsed)>-1);
+                }else{
+                  index = i;
+                }
+
+                
+                indexUsed.push(index);
+                var picture = list[index].get('profile_picture');
+                var name = list[index].get('full_name');
+                var id = list[index].id;
                 //console.log(name);
                 //console.log(id);
-                var fullname = list[i].get('full_name');
-                var bio = list[i].get('bio');
-                $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(i) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
+                var fullname = list[index].get('full_name');
+                var bio = list[index].get('bio');
+                $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(index) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
               }
             }
           });

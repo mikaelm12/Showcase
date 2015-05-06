@@ -37,8 +37,8 @@ h3.centre {
 	padding: 10px;
 	width:70%;
 	height:auto;
-	border: 2px solid #E0E0E0;
 	
+
 	/*background-color: #F8F8F8;
 	*/
 }
@@ -92,7 +92,7 @@ h3.centre {
 .caption_overlay_title {
     margin: 0;
     padding: 0 0 4px;
-    font-size: 1.3em;
+    font-size: 1.4em;
     text-align:left;
     font-family: 'Lobster', cursive;
     text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
@@ -114,6 +114,13 @@ h3.centre {
 }
 .trendingTitle{
 	color:white;
+	width:30%;
+	height:auto;
+	border-radius:10px;
+	margin-left: auto;
+    margin-right: auto;
+	border: 2px solid #E0E0E0;
+	background:#B8B8B8;
 
 	font-family: 'Lobster', cursive;
 }

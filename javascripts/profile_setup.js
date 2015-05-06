@@ -159,6 +159,11 @@ $(document).on("click", "#createPortfolioButton", function(){
 				    	query.find({
 							success:function(list) {
 								var photo = list[0];
+
+								photo.set("portfolio", portfolioId);
+								photo.save();
+								window.location = "./profile_page.html";
+
 								var PortfolioPhoto = Parse.Object.extend("PortfolioPhoto");
 				    			var portfolioPhoto = new PortfolioPhoto();
 								portfolioPhoto.set("title", photo.get("title"));
@@ -166,6 +171,7 @@ $(document).on("click", "#createPortfolioButton", function(){
 								portfolioPhoto.set("portfolio", portfolioId);
 								portfolioPhoto.set("description", photo.get("description"));
 								portfolioPhoto.save();
+
 							}
 						});
 					}); 
