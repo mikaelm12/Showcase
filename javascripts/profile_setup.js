@@ -174,7 +174,7 @@ $(document).on("click", "#createPortfolioButton", function(){
 								portfolioPhoto.save(null, {
 								  success: function(object) {
 								  	if (imageCount == numberOfImages){
-								  		window.location = "./profile_page.html#new_portfolio";
+								  		window.location = "./profile_page.html";
 								  	}
 								  },
 								  error: function(object, error) {

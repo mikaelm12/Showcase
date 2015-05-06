@@ -268,5 +268,9 @@ a:hover{
 	cursor: pointer;
 }
 
+#dropdownMenu1 {
+	min-width: 250px;
+}
+
 
 
