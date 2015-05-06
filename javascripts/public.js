@@ -17,11 +17,8 @@ $(document).ready(function(){
       findMatchingUsers();
 
       var userPrefixFromURL = getParameterByName( "name", document.URL);
-      if (!(userPrefixFromURL === "")){
-          findMatchedUsersOnParseUpdateTable(userPrefixFromURL);
-      }
+      findMatchedUsersOnParseUpdateTable(userPrefixFromURL);
       
-
       $(document).on("click", ".searchButton", function(){
         var searchParam = $("#artistSearchBar").val();
         var queryParam = "?name=" + searchParam;
