@@ -48,18 +48,19 @@ $(document).ready(function(){
       }
 
       $(document).on("click", ".searchButton", function(){
-        var searchParam = $("#artistSearchBar").val() 
-        var queryParam = "?name=" + searchParam 
+        var searchParam = $("#artistSearchBar").val();
+        var queryParam = "?name=" + searchParam;
         $("#artistSearchBar").val("");
         window.location = "./search_results.html" + queryParam;
       });
 
-      $(document).on("keyup", "#artistSearchBar", function(){
-
+      $("#artistSearchBar").keyup(function(event){
+        console.log("HERE");
         if (event.keyCode == 13){
-          var searchParam = $("#artistSearchBar").val() 
-          var queryParam = "?name=" + searchParam 
-          $("#artistSearchBar").val("");
+          console.log("ENTER");
+          var searchParam = $(this).val();
+          var queryParam = "?name=" + searchParam;
+          // $("#artistSearchBar").val("");
           window.location = "./search_results.html" + queryParam;
         }    
       });
