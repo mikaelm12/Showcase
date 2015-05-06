@@ -171,7 +171,7 @@ $(document).on("click", "#createPortfolioButton", function(){
 								portfolioPhoto.set("description", photo.get("description"));
 								portfolioPhoto.save(null, {
 								  success: function(object) {
-								    window.location = "./profile_page.html#new_portfolio";
+								    window.location = "./profile_page.html";
 								  },
 								  error: function(object, error) {
 								    // Execute any logic that should take place if the save fails.

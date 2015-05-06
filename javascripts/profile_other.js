@@ -27,7 +27,7 @@ var populate_other_portfolio = function(currentUserObject) {
 				for (var p=0; p<portfolioResults.length; p++) {
 					var portfolio = portfolioResults[p];
 					var portfolioName = portfolio.get("name");
-					$(".dropdown-menu").append('<li role="presentation" id="list-items"><a role="menuitem" tabindex="-1" id="select_portfolio">'+portfolioName+'</a></li>');
+					$(".dropdown-menu").append('<li role="presentation" id="list-items"><a role="menuitem" tabindex="-1" id="select_other_portfolio">'+portfolioName+'</a></li>');
 				}
 				
 				
