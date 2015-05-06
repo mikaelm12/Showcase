@@ -36,33 +36,10 @@
               });
 
                 findMatchingUsers("");
-                console.log("HI");
 
                 $('#about_edit_button').hide();
                 $('#portfolio_edit_button').hide();
                 $('#email_edit_button').hide();
-            //for pressing enter
-                $(document).on('keypress',function(e){
-                //console.log("Click");
-                //enter is 13
-                    if(e.which == 13){
-
-                      //do this
-                      // Does the element have focus:
-                      var hasFocus = $('#artistSearchBar').is(':focus');
-                      if($("#artistSearchBar").val() != "" && hasFocus){
-                        e.preventDefault();
-                        //input = $("#artistSearchBar"); //gets input text
-                        //inputValue = $(input).val(); //gets value
-                        
-                        //console.log("Enter");
-                        //$( "#input_text" ).autocomplete("close");
-                        $( "#artistSearchBar" ).autocomplete("close");
-                        window.location = "./profilepage.html";
-
-                      }
-                    }
-                });
 
                 var aboutEdit= false;
                 var emailEdit= false;
