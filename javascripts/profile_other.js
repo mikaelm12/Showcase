@@ -112,6 +112,7 @@ $(document).ready(function(){
 	    var currentUser = results[0];
 	    $("#artist_name").html("<h2>" + currentUser.get('first_name') + " " + currentUser.get("last_name") + "</h2>");
 	    $("#emailLink").html(currentUser.get("email"));
+	    $("#emailLink").attr("href", "mailto:"+currentUser.get("email"));
 	    $("#profile_pic_other").attr("src", currentUser.get("profile_picture"));
 	    $("#user-about").text(currentUser.attributes.bio);
 	    $("#firstName").html(currentUser.get('first_name'));
