@@ -131,6 +131,31 @@
                     aboutEdit = false;
                 });
 
+                $('#upload_modal').hover(function(){
+                  console.log('files');
+                  console.log($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1);
+
+                  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1)== 0){
+                    $('#upload_profile_button').prop('disabled', true);
+                    //console.log('disabled');
+                  }else{
+                    $('#upload_profile_button').prop('disabled', false);
+                  }
+
+                });
+                $('#upload_modal').mouseout(function(){
+                  console.log('files');
+                  console.log($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1);
+
+                  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1)== 0){
+                    $('#upload_profile_button').prop('disabled', true);
+                    //console.log('disabled');
+                  }else{
+                    $('#upload_profile_button').prop('disabled', false);
+                  }
+
+                });
+
 
 
  //about_edit_cancel
@@ -207,7 +232,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myAddProfileLabel">Change Profile Picture</h4>
       </div>
-      <div class="modal-body">
+      <div id = 'upload_modal' class="modal-body">
         <!--<label for="exampleInputFile">Select Pictures</label>-->
         <input type="file" multiple name="fileselect" id="fileselect" accept='image/*'>
         <p class="help-block">Browse for picture to add.</p>   
