@@ -57,10 +57,13 @@ var populate_portfolio = function(portfolioNameARG) {
 					}
 				}
 				
-
-				var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
-				var query = new Parse.Query(ShowcasePhoto);
+				var PortfolioPhoto = Parse.Object.extend("PortfolioPhoto");
+				var query = new Parse.Query(PortfolioPhoto);
 				query.equalTo("portfolio", portfolioId );
+
+				// var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
+				// var query = new Parse.Query(ShowcasePhoto);
+				// query.equalTo("portfolio", portfolioId );
 				query.find({ //photos that belong to this portfolio
 				  success: function(results) {
 				  	console.log("num pics in portfolio:"+results.length);
@@ -80,7 +83,6 @@ var populate_portfolio = function(portfolioNameARG) {
 							photo_description = "No description available";
 						}
 
-		
 						var photoStuff = '<br><br><div class="row image_div" align="middle">'
 						+'<div class="col-md-12"><div class="thumb">'+image
 						+'<div class="thumb_meta"><span style="font-size:150%"><b>'+photoTitle+'</b></span><br>'
@@ -120,7 +122,7 @@ $(document).on("click", "#confirm_delete_portfolio", function(){
 			portfolio.destroy({
 				success: function(myObject) {
 			    // The object was deleted from the Parse Cloud.
-				window.location = "./profile_page.html"; //add portfolio url param !*!
+			    window.location = "./profile_page.html"; //add #new_portfolios
 
 			},
 			error: function(myObject, error) {

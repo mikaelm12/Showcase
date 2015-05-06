@@ -14,13 +14,13 @@
    	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
     <script src="./javascripts/button_actions.js"></script>
     <script src="./javascripts/home_page.js"></script>
-    <script src="./javascripts/home_page.js"></script>
     <script src="./javascripts/public.js"></script>
     <script>
         $(document).ready(function() {
                 findMatchingUsers("");
         });
     </script>
+
   </head>
   <body>
 
@@ -123,7 +123,7 @@
                   <div id='artist_name'><h2>Your Name</h2></div>
                 </div>
             </div>
-            <img id='profile_pic_other' class='img-responsive' align="middle" src='./images/blank_profile.jpg'>
+            <img id='profile_pic_other' class='img-responsive' align="middle">
           </div> <!-- COL 1 END -->
         </div>
         <div class='col-md-8'>
@@ -145,16 +145,36 @@
                   </div>
               </div>
             </div> 
-            <div class='row'>
-              <div class='col-md-12'>
-                  <div id='portfolio_div'>
-                    <h3>Portfolios</h3>
-                      You have no portfolio available
-                   </div>
-                </div>
-            </div>  
+             
         </div>
       </div>
       <hr>
+
+      <div class="dropdown">
+        <h3><span id="firstName"></span>'s portfolios</h3>
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="font-size:150%">
+          <span id="current_text">No portfolios</span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1"></ul>
+      </div>
+      <br>
+      <!--START PORTFOLIO-->
+      <div class='row portfolio_row'>
+        
+        <div id='current_portfolio'>
+        
+
+          <div id='portfolio_container'>
+
+          <!--PORTFOLIO STUFF GOES HERE-->
+
+          </div>
+        
+        </div>
+      </div>
+      <!--END PORTFOLIO-->
+
+
     </div>  <!-- Main Container -->
   </body>
