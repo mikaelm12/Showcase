@@ -66,10 +66,10 @@ a {
 }
 
 #artist_name {
-	text-align: center;
+	text-align: left;
 	margin-bottom: 10px;
-/*	margin-left: 12px;
-*/}
+	margin-left: 20px;
+}
 
 #bio_div, #portfolio_div, #email_div {
 	padding: 1px;
@@ -85,7 +85,7 @@ a {
 
 
 #bio_div {
-	margin-top: 80px;
+	margin-top: 60px;
 }
 
 #email_div {
@@ -164,8 +164,8 @@ a {
 
 #profile_pic {
 	border-radius: 10px;
-	width: 348px;
-	height: 348px;
+	width: 228px;
+	height: 228px;
 	margin: 5px;
 }
 
