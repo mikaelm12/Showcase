@@ -120,7 +120,7 @@ $(document).on("click", "#confirm_delete_portfolio", function(){
 			portfolio.destroy({
 				success: function(myObject) {
 			    // The object was deleted from the Parse Cloud.
-				window.location = "./profile_page.html";
+				window.location = "./profile_page.html"; //add portfolio url param !*!
 
 			},
 			error: function(myObject, error) {
