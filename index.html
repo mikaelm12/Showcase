@@ -26,14 +26,14 @@
 
               var length = list.length;
 
-              if (length > 4){
-                  length = 4;
+              if (length > 3){
+                  length = 3;
               }
               var indexUsed = [];
 
               for (var i =0; i < length; i++){
                 var index;
-                if(list.length > 4){
+                if(list.length > 3){
                   
                   do{
                     //try again
@@ -52,7 +52,9 @@
                 //console.log(id);
                 var fullname = list[index].get('full_name');
                 var bio = list[index].get('bio');
-                $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(index) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
+                // $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(index) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
+
+                $('.new_trending_container').append("<div class='col-md-4'><a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(index) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a></div>");
               }
             }
           });
@@ -146,20 +148,23 @@
       </div><!-- /.container-fluid -->
     </nav>
     <center>
-      <div class = 'row'>
-        <div class='col-md-12'>
+      
       <!-- Trending container -->
         <br>
         <br>
         <div id="trending_container" style='text-align:center'>
           <div class = 'trendingTitle'> <h3 style='text-align:center'>Showcased Artists</h3></div>
+          <div class='row new_trending_container'>
+          
+          </div>
         </div>
-        </div>
-      </div>
+      
+        
+
       <!--The search bar -->
       <div class = 'row'>
         <div class='col-md-12'>
-          <div  id= "searchBarDiv"class="input-group input-group-lg" >
+          <div  id= "searchBarDiv" class="input-group input-group-lg" >
             <div class="input-group-btn">
                     <button id= "searchButton" class="btn btn-default searchButton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
@@ -168,6 +173,7 @@
           <br>
         </div>
       </div>
+
     </center>
   </body>
 </html>
