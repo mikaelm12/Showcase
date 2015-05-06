@@ -1,14 +1,16 @@
 
-var populate_other_portfolio = function(currentUserObject) {
+var populate_other_portfolio = function(currentUserId, selectedPortfolio) {
 	var ShowcasePortfolio = Parse.Object.extend("ShowcasePortfolio");
 	var query = new Parse.Query(ShowcasePortfolio);
-	console.log("current user object id:"+currentUserObject.id);
-	query.equalTo("owner", currentUserObject.id);
+	query.equalTo("owner", currentUserId);
+	if (selectedPortfolio!==null) {
+		query.equalTo("name", selectedPortfolio);
+	}
 	query.find({
 		success: function(portfolioResults) {
-			console.log("results:"+portfolioResults.length);
+							console.log("portfolios found:"+portfolioResults.length);
+
 			if (portfolioResults.length === 0) {
-				$("#current_portfolio").append('<p>This user has no portfolio</p>');
 				return;
 			} else {
 
@@ -24,11 +26,14 @@ var populate_other_portfolio = function(currentUserObject) {
 				//fill in the dropdown
 				$(document.getElementById('current_text')).text(portfolioName);
 				
-				for (var p=0; p<portfolioResults.length; p++) {
-					var portfolio = portfolioResults[p];
-					var portfolioName = portfolio.get("name");
-					$(".dropdown-menu").append('<li role="presentation" id="list-items"><a role="menuitem" tabindex="-1" id="select_other_portfolio">'+portfolioName+'</a></li>');
+				if (selectedPortfolio===null) {
+					for (var p=0; p<portfolioResults.length; p++) {
+						var portfolio = portfolioResults[p];
+						var portfolioName = portfolio.get("name");
+						$(".dropdown-menu").append('<li role="presentation" id="list-items"><a role="menuitem" tabindex="-1" id="select_other_portfolio">'+portfolioName+'</a></li>');
+					}
 				}
+				
 				
 				
 				var PortfolioPhoto = Parse.Object.extend("PortfolioPhoto");
@@ -36,7 +41,6 @@ var populate_other_portfolio = function(currentUserObject) {
 				query.equalTo("portfolio", portfolioId );
 				query.find({ //photos that belong to this portfolio
 					success: function(results) {
-						console.log("num pics in portfolio:"+results.length);
 						for (var i = 0; i < results.length; i++) { 
 							var photo = results[i];				    	
 							var photoTitle = photo.get("title");
@@ -78,6 +82,22 @@ var populate_other_portfolio = function(currentUserObject) {
 
 };
 
+var switch_portfolio = function(selectedPortfolio) {
+	var userId = getParameterByName( "id", document.URL );
+	var query = new Parse.Query(Parse.User);
+	query.equalTo("objectId", userId);
+	query.find({
+		success: function(results) {
+	    // Do something with the returned Parse.Object values
+	    var currentUser = results[0];
+	    populate_other_portfolio(currentUser.id, selectedPortfolio);
+	},
+	error: function(error) {
+		alert("Error: " + error.code + " " + error.message);
+	}
+});	
+};
+
 
 $(document).ready(function(){
 	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
@@ -87,7 +107,6 @@ $(document).ready(function(){
 	query.equalTo("objectId", userId);
 	query.find({
 		success: function(results) {
-		console.log("results size:"+results.length);
 	    // Do something with the returned Parse.Object values
 	    var currentUser = results[0];
 	    $("#artist_name").html("<h2>" + currentUser.get('first_name') + " " + currentUser.get("last_name") + "</h2>");
@@ -96,7 +115,7 @@ $(document).ready(function(){
 	    $("#user-about").text(currentUser.attributes.bio);
 	    $("#firstName").html(currentUser.get('first_name'));
 	    findMatchingUsers("");
-	    populate_other_portfolio(currentUser);
+	    populate_other_portfolio(currentUser.id, null);
 	},
 	error: function(error) {
 		alert("Error: " + error.code + " " + error.message);
@@ -108,7 +127,6 @@ $(document).ready(function(){
 		console.log("HERE");
 		var profileButton = $(".home_button");
 		profileButton.removeClass("home_button");
-		console.log(profileButton);
 		profileButton.html("Log In");
 		profileButton.attr("data-toggle", "modal");
 		profileButton.attr("data-target", "#myModal");

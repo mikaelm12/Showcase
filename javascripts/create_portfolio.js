@@ -32,7 +32,6 @@ var populate_portfolio = function(portfolioNameARG) {
 			success: function(portfolioResults) {
 				if (portfolioResults.length === 0) {
 					$(".removePortfolio").hide();
-					console.log("no portfolios");
 					return;
 				} else {
 			
@@ -66,7 +65,6 @@ var populate_portfolio = function(portfolioNameARG) {
 				// query.equalTo("portfolio", portfolioId );
 				query.find({ //photos that belong to this portfolio
 				  success: function(results) {
-				  	console.log("num pics in portfolio:"+results.length);
 				    for (var i = 0; i < results.length; i++) { 
 				    	var photo = results[i];				    	
 						var photoTitle = photo.get("title");
