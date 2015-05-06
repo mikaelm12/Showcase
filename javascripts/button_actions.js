@@ -10,9 +10,7 @@ $(document).on("click", ".logout_button", function(){
 	window.location = './index.html';
 });
 
-	$(document).on("click", ".searchButton", function(){
-	window.location = "./profilepage.html"
-});
+
 
 $(document).on("click", ".portfolioClick", function(){
 	$('#portfolioPDF').modal('show');
