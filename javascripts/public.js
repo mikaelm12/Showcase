@@ -60,8 +60,9 @@ $(document).ready(function(){
           console.log("ENTER");
           var searchParam = $(this).val();
           var queryParam = "?name=" + searchParam;
+          console.log(queryParam);
           // $("#artistSearchBar").val("");
-          window.location = "./search_results.html" + queryParam;
+          //window.location = "./search_results.html" + queryParam;
         }    
       });
 
