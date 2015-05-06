@@ -168,6 +168,9 @@ $(document).ready(function(){
 	    	title.remove();
 	    	$("#" + this.id).parent().after(editBox);
 	    	descText = desc.html().substring(20, desc.html().length);
+	    	if (descText == "** No description available **"){
+	    		descText = "";
+	    	}
 	    	descEditBox = $("<input class='editBoxDesc' value='" + descText + "' id='desc_" + this.id  + "'>")
 	    	desc.remove();
 	    	$("#grid_image_" + this.id).after(descEditBox);
@@ -178,6 +181,9 @@ $(document).ready(function(){
      		title.remove();
      		$("#" + this.id).parent().after(textField);
      		descText = desc.val();
+     		if (descText == ""){
+     			descText = "** No description available **";
+     		}
      		paragraph = $("<p class='desc' id='desc_" + this.id + "'>" + "<b>Description</b>: " + descText + '</p>');
      		desc.remove();
      		$("#grid_image_" + this.id).after(paragraph);
