@@ -94,6 +94,10 @@ $(document).ready(function(){
 		$("#myAddPictures").modal("hide");
     
 	});
+
+	$(document).on('click', '#cancel_album_button', function() {
+		window.location = "./profile_page.html";
+	});
       	
 	$(document).on('click', '#save_album_button', function() {
 		var album_name = $("#album_name_input").val();
