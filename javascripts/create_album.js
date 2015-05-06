@@ -104,6 +104,11 @@ $(document).ready(function(){
 			return;
 		}
 
+		if (photos_array.length == 0){
+			alert("Please upload at least one photo!");
+			return;
+		}
+
 		album_name = $("#album_name_input").val();
 
 		var photo_count = 0;
