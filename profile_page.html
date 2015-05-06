@@ -123,6 +123,18 @@
                     aboutEdit = false;
                 });
 
+                $('#about_edit_cancel').click(function(){
+                  $('#user-about').show();
+                  $("#about_edit").val($("#user-about").text())
+                  $('#about_edit_buttons').hide();
+                   $("#about_edit").hide();
+                    aboutEdit = false;
+                });
+
+
+
+ //about_edit_cancel
+
                 $('#email_edit_button').click(function(){
                       $('#email_edit').show();  
                       $('#email_edit').val($("#emailLink").text())
@@ -167,6 +179,16 @@
                     $('#email_edit').hide(); 
                     $('#email_edit_buttons').hide();
 
+                });
+
+
+            $('#email_edit_cancel').click(function(){
+                  $('#emailLink').show();
+                   $('#email_edit').val($("#emailLink").text())
+                  
+                   $('#email_edit').hide(); 
+                    $('#email_edit_buttons').hide();
+                     emailEdit = false;
                 });
 
       });         
