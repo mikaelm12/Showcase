@@ -161,8 +161,7 @@ $(document).on("click", "#createPortfolioButton", function(){
 								var photo = list[0];
 								photo.set("portfolio", portfolioId);
 								photo.save();
-								window.location = "./profile_page.html"; //add portfolio variables !*!
-
+								window.location = "./profile_page.html";
 							}
 						});
 					}); 

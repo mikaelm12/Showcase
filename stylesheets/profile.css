@@ -82,6 +82,9 @@ a {
 	border-radius: 5px;
 }
 
+#current_text {
+	width: 300px;
+}
 
 
 #bio_div {
