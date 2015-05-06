@@ -16,51 +16,43 @@
       <script src="./javascripts/home_page.js"></script>
       <script src="./javascripts/public.js"></script>
       <script>
-        $(document).ready(function() {
-          
-          findMatchingUsers();
-          var query = new Parse.Query(Parse.User);
-          query.notEqualTo('profile_picture',null);
-          query.find({
-            success:function(list) {
+          $(document).ready(function() {
+            
+                var query = new Parse.Query(Parse.User);
+                query.notEqualTo('profile_picture',null);
+                query.find({
+                  success:function(list) {
 
-              var length = list.length;
+                    var length = list.length;
 
-              if (length > 4){
-                  length = 4;
-              }
-              var indexUsed = [];
+                    if (length > 4){
+                        length = 4;
+                    }
+                    var indexUsed = [];
 
-              for (var i =0; i < length; i++){
-                var index;
-                if(list.length > 4){
-                  
-                  do{
-                    //try again
-                    index = Math.floor(Math.random() * (list.length)) + 0;
-                  }while($.inArray(index,indexUsed)>-1);
-                }else{
-                  index = i;
-                }
+                    for (var i =0; i < length; i++){
+                      var index;
+                      if(list.length > 4){
+                        
+                        do{
+                          //try again
+                          index = Math.floor(Math.random() * (list.length)) + 0;
+                        }while($.inArray(index,indexUsed)>-1);
+                      }else{
+                        index = i;
+                      }
 
-                
-                indexUsed.push(index);
-                var picture = list[index].get('profile_picture');
-                var name = list[index].get('full_name');
-                var id = list[index].id;
-                //console.log(name);
-                //console.log(id);
-                var fullname = list[index].get('full_name');
-                var bio = list[index].get('bio');
-                $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(index) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
-              }
-            }
+                      indexUsed.push(index);
+                      var picture = list[index].get('profile_picture');
+                      var name = list[index].get('full_name');
+                      var id = list[index].id;
+                      var fullname = list[index].get('full_name');
+                      var bio = list[index].get('bio');
+                      $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(index) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
+                    }
+                  }
+                });
           });
-
-
-
-
-        });
       </script>
     <title>Showcase</title>
   </head>
@@ -140,7 +132,6 @@
             <button id='indexRegister' type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginModal">
               Register
             </button>
-
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

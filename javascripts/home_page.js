@@ -244,22 +244,3 @@ $(document).ready(function(){
 		}
 	});
 });
-
-findMatchingUsers = function(prefix){
-	var query = new Parse.Query(Parse.User);
-	
-	query.find({
-	success: function(users) {
-    	console.log(users);
-    	var userFullNames = []
-    	for (var i = users.length - 1; i >= 0; i--) {
-    		var currentUser = users[i]
-    		var user_full_name = currentUser.attributes.first_name + " "+ currentUser.attributes.last_name;
-    		userFullNames.push(user_full_name);
-    		
-    	};
-    	console.log(prefix);
-    	return userFullNames;
-		}
-	});
-}
