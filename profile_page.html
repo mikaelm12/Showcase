@@ -17,11 +17,11 @@
    <script src="./javascripts/button_actions.js"></script>
    
    <script>
-   $(document).ready(function() {
-              currentUser = JSON.parse(localStorage.getItem('currentUser'));
-              shareURL = document.URL.substring(0,document.URL.length - 9) + "other.html?id=" + currentUser.objectId 
-              $("#fb-share").attr("href", "http://www.facebook.com/sharer.php?u=" + shareURL);
-              $("#twitter-share").attr("href", "http://twitter.com/share?text=Check%20out%20my%20Showcase!&url=" + shareURL);
+     $(document).ready(function() {
+      currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      shareURL = document.URL.substring(0,document.URL.length - 9) + "other.html?id=" + currentUser.objectId 
+      $("#fb-share").attr("href", "http://www.facebook.com/sharer.php?u=" + shareURL);
+      $("#twitter-share").attr("href", "http://twitter.com/share?text=Check%20out%20my%20Showcase!&url=" + shareURL);
 
               //"http://twitter.com/share?text=Check%20out%20my%20Showcase!&url=http://www.google.com"
               console.log(shareURL);
@@ -40,14 +40,14 @@
                 }
               });
 
-                $('#about_edit_button').hide();
-                $('#portfolio_edit_button').hide();
-                $('#email_edit_button').hide();
+              $('#about_edit_button').hide();
+              $('#portfolio_edit_button').hide();
+              $('#email_edit_button').hide();
 
-                var aboutEdit= false;
-                var emailEdit= false;
+              var aboutEdit= false;
+              var emailEdit= false;
 
-                $('#about_div').hover(function() {
+              $('#about_div').hover(function() {
                     // mouseOver function
                     //console.log("hovering about");
                     if (aboutEdit){
@@ -56,45 +56,45 @@
                       $('#about_edit_button').show();
                     }
 
-                    }, function() {
+                  }, function() {
                     // mouseOut function
                     $('#about_edit_button').hide();
-                });
+                  });
 
-                $('#email_div').hover(function() {
+              $('#email_div').hover(function() {
                     // mouseOver function
                     //console.log("hovering email");
                     if (emailEdit){
                     //do nothing
-                    }else{
+                  }else{
                     $('#email_edit_button').show();
-                    }
+                  }
 
-                    }, function() {
+                }, function() {
                     // mouseOut function
                     $('#email_edit_button').hide();
-                });
+                  });
 
-                $('#portfolio_div').hover(function() {
+              $('#portfolio_div').hover(function() {
                     // mouseOver function
                     //console.log("hovering portfolio");
                     $('#portfolio_edit_button').show();
-                    }, function() {
+                  }, function() {
                     // mouseOut function
                     $('#portfolio_edit_button').hide();
-                });
+                  });
 
 
-                $('#about_edit_button').click(function(){
-                    $("#about_edit").show()
-                    $("#about_edit_buttons").show()
-                    $("#about_edit").val($("#user-about").text())
-                    $('#user-about').hide();
-                    $('#about_edit_button').hide();
-                    aboutEdit = true;
-                });
+              $('#about_edit_button').click(function(){
+                $("#about_edit").show()
+                $("#about_edit_buttons").show()
+                $("#about_edit").val($("#user-about").text())
+                $('#user-about').hide();
+                $('#about_edit_button').hide();
+                aboutEdit = true;
+              });
 
-                $('#about_edit_accept').click(function(){
+              $('#about_edit_accept').click(function(){
                     //Take the text from the about-edit and save into the current users bio attribute
                     $('#user-about').show();
                     $("#user-about").text($("#about_edit").val());
@@ -106,7 +106,7 @@
                     console.log(currentUser.objectId)
                     query.equalTo("full_name", currentUser.full_name);  // find all the women
                     query.find({
-                        success: function(Users) {
+                      success: function(Users) {
                             // Do stuff
                             console.log(Users);
                             var thisUser = Users[0];
@@ -116,37 +116,37 @@
 
                             thisUser.save();
 
-                        }
-                    });
+                          }
+                        });
                     aboutEdit = false;
-                });
+                  });
 
-                $('#about_edit_cancel').click(function(){
-                  $('#user-about').show();
-                  $("#about_edit").val($("#user-about").text())
-                  $('#about_edit_buttons').hide();
-                   $("#about_edit").hide();
-                    aboutEdit = false;
-                });
+ $('#about_edit_cancel').click(function(){
+  $('#user-about').show();
+  $("#about_edit").val($("#user-about").text())
+  $('#about_edit_buttons').hide();
+  $("#about_edit").hide();
+  aboutEdit = false;
+});
 
-                $('#upload_modal').hover(function(){
-                  console.log('files');
-                  console.log($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1);
+ $('#upload_modal').hover(function(){
+  console.log('files');
+  console.log($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1);
 
-                  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1)> 0){
-                    $('#upload_profile_button').prop('disabled', false);
+  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1)> 0){
+    $('#upload_profile_button').prop('disabled', false);
                     //console.log('disabled');
                   }else{
                     $('#upload_profile_button').prop('disabled', true);
                   }
 
                 });
-                $('#upload_modal').mouseout(function(){
-                  console.log('files');
-                  console.log($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1);
+ $('#upload_modal').mouseout(function(){
+  console.log('files');
+  console.log($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1);
 
-                  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1) > 0){
-                    $('#upload_profile_button').prop('disabled', false);
+  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1) > 0){
+    $('#upload_profile_button').prop('disabled', false);
                     //console.log('disabled');
                   }else{
                     $('#upload_profile_button').prop('disabled', true);
@@ -157,51 +157,51 @@
 
 
 
-                $('#myExport').on('shown.bs.modal', function () {
-                    $('#portfolioName').focus();
-                });
+ $('#myExport').on('shown.bs.modal', function () {
+  $('#portfolioName').focus();
+});
 
-                $('#myDelete').on('shown.bs.modal', function () {
-                    $('#deleteAlbumButton').focus();
-                });
+ $('#myDelete').on('shown.bs.modal', function () {
+  $('#deleteAlbumButton').focus();
+});
 
-                $('#removePortfolioModal').on('shown.bs.modal', function () {
-                    $('#confirm_delete_portfolio').focus();
-                });
+ $('#removePortfolioModal').on('shown.bs.modal', function () {
+  $('#confirm_delete_portfolio').focus();
+});
 
-                $('#portfolioName').keyup(function(e){
-                  if (e.keyCode == 13){
-                    $('#createPortfolioButton').focus();
-                  } 
-                });
+ $('#portfolioName').keyup(function(e){
+  if (e.keyCode == 13){
+    $('#createPortfolioButton').focus();
+  } 
+});
 
 
  //about_edit_cancel
 
-                $('#email_edit_button').click(function(){
-                      $('#email_edit').show();  
-                      $('#email_edit').val($("#emailLink").text())
+ $('#email_edit_button').click(function(){
+  $('#email_edit').show();  
+  $('#email_edit').val($("#emailLink").text())
 
-                      $('#email_edit_button').hide();
-                      emailEdit = true;
-                      $('#emailLink').hide();
-                      $('#email_edit_buttons').show();
-                      $('#email_edit_button').hide();
-                      emailEdit = true;
-                      $('#emailLink').hide();
-                      $('#email_edit').show();
-                      $('#email_edit_buttons').show();
-                });
+  $('#email_edit_button').hide();
+  emailEdit = true;
+  $('#emailLink').hide();
+  $('#email_edit_buttons').show();
+  $('#email_edit_button').hide();
+  emailEdit = true;
+  $('#emailLink').hide();
+  $('#email_edit').show();
+  $('#email_edit_buttons').show();
+});
 
-                $('#email_edit_accept').click(function(){
+ $('#email_edit_accept').click(function(){
 
 
-                    $('#emailLink').show();
-                    $("#emailLink").text($('#email_edit').val());
+  $('#emailLink').show();
+  $("#emailLink").text($('#email_edit').val());
 
-                    var query = new Parse.Query(Parse.User);
-                    console.log("User id");
-                    console.log(currentUser.objectId);
+  var query = new Parse.Query(Parse.User);
+  console.log("User id");
+  console.log(currentUser.objectId);
                     query.equalTo("full_name", currentUser.full_name);  // find all the women
                     query.find({
                       success: function(Users) {
@@ -222,20 +222,20 @@
                     $('#email_edit').hide(); 
                     $('#email_edit_buttons').hide();
 
-                });
+                  });
 
 
-            $('#email_edit_cancel').click(function(){
-                  $('#emailLink').show();
-                   $('#email_edit').val($("#emailLink").text())
-                  
-                   $('#email_edit').hide(); 
-                    $('#email_edit_buttons').hide();
-                     emailEdit = false;
-                });
+ $('#email_edit_cancel').click(function(){
+  $('#emailLink').show();
+  $('#email_edit').val($("#emailLink").text())
 
-      });         
- </script>
+  $('#email_edit').hide(); 
+  $('#email_edit_buttons').hide();
+  emailEdit = false;
+});
+
+});         
+</script>
 </head>
 
 <body>
@@ -330,36 +330,39 @@
 
 <!-- Modal  Share-->
 <div class="modal fade" id="myShare" tabindex="-1" role="dialog" aria-labelledby="myShareLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" >
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myShareLabel">Share</h4>
-
-        </div> <span style="padding-left:33%">This will post a link to your portfolio</span>
-          <div id = "share_buttons" style="padding-left:18%">
-                       <!-- Facebook -->
-            <!--<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html&redirect_uri=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html"-->
-          
-
-            <a id ="fb-share" href="http://www.facebook.com/sharer.php?u=http://www.google.com"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/></a>
-          
-            <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>-->
-               
-            <!-- Twitter -->
-            <a id ="twitter-share"href=""target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
-
-
-
-   
-
-          </div>
-          <br>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+  <div class="modal-dialog">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myShareLabel">Share a link to your profile</h4>
       </div>
+
+      <div class='row' id='share_buttons'>
+      
+
+      <div class='col-md-2'>
+      <!-- Facebook -->
+      <!--<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html&redirect_uri=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html"-->
+      <a id ="fb-share" href="http://www.facebook.com/sharer.php?u=http://www.google.com"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/></a>
+
+      <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>-->
+      </div>
+
+      <div class='col-md-2'>
+      <!-- Twitter -->
+      <a id ="twitter-share"href=""target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
+      </div>
+
+      </div>
+
+      <!-- <div id = "share_buttons" style="padding-left:18%"></div> -->
+
+     <br>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
     </div>
   </div>
+</div>
 </div>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -431,7 +434,7 @@
       <div class='col-md-6'>
        <div id='email_div'>
         <h3>Email<button type="submit" class="btn btn-sm btn-default editButton" id="email_edit_button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button></h3>
-        <a id='emailLink' href="mailto:#" aria-hidden="true" class = 'link'>yourEmail@email.com </a> 
+        <span id='emailLink' aria-hidden="true">yourEmail@email.com </span> 
       </div>
 
       <textarea rows="1" cols="50" id = "email_edit" hidden style="width:100%;margin:0;"></textarea>
@@ -443,10 +446,10 @@
 
     <div class='col-md-12'>
       <div id='portfolio_div'>
-             <a id = "scroll_to_albums" ><h3 ><u>Albums</u></h3></a>
-            </div>
-    </div>
-  </div>  
+       <a id = "scroll_to_albums" ><h3 ><u>Albums</u></h3></a>
+     </div>
+   </div>
+ </div>  
 </div>
 </div>
 <hr>
@@ -464,12 +467,12 @@
       <span class="caret"></span>
     </button>
     <button type='submit' class='btn btn-default btn-sm removePortfolio'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>
-  
+
 
     <button id = "exportButton" type="button" class="btn btn-default large_button" data-toggle="modal" data-target="#myExport" style="font-size:150%">Create portfolio</button>
 
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-      
+
 
     </ul>
 
@@ -482,16 +485,16 @@
 
 <!--START PORTFOLIO-->
 <div class='row portfolio_row'>
-  
+
   <div id='current_portfolio'>
-  
+
 
     <div id='portfolio_container'>
 
-    <!--PORTFOLIO STUFF GOES HERE-->
+      <!--PORTFOLIO STUFF GOES HERE-->
 
     </div>
-  
+
   </div>
 </div>
 <!--END PORTFOLIO-->
@@ -505,7 +508,7 @@
   <div class='col-md-4'>
     <!-- <input id='album_name_input' placeholder="Album Name" type='text'> -->
     <h1 id='album_name_input'>Albums
-    <button class="btn btn-default btn-sm btn-circle" type="button" id='create_album_button'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+      <button class="btn btn-default btn-sm btn-circle" type="button" id='create_album_button'><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     </h1>
   </div>
   
