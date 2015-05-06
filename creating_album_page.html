@@ -15,49 +15,11 @@
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="./javascripts/create_album.js"></script>
     <script src="./javascripts/button_actions.js"></script>
+    <script src="./javascripts/home_page.js"></script>
+    <script src="./javascripts/public.js"></script>
     <script>
         $(document).ready(function() {
-            var availableTags = ["Super Man"];
-          //for pressing enter
-         $(document).on('keypress',function(e){
-            //console.log("Click");
-            //enter is 13
-            if(e.which == 13){
-
-              //do this
-              // Does the element have focus:
-              var hasFocus = $('#artistSearchBar').is(':focus');
-              if($("#artistSearchBar").val() != "" && hasFocus){
-                e.preventDefault();
-                //input = $("#artistSearchBar"); //gets input text
-                //inputValue = $(input).val(); //gets value
-                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-                
-                //console.log("Enter");
-                //$( "#input_text" ).autocomplete("close");
-                $( "#artistSearchBar" ).autocomplete("close");
-                window.location = "./profilepage.html";
-
-              }
-
-            }
-          });
-
-             //autocomplete widjet
-            $("#artistSearchBar").autocomplete({
-              autoFocus: true,
-              source: availableTags,
-              minLength: 1,
-              select: function(event,ui){
-                var inputValue = ui.item.value;
-                //console.log(inputValue);
-                $("#artistSearchBar").val(inputValue);
-                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-                event.preventDefault();
-              }
-
-
-             });
+            findMatchingUsers("");
         });
       </script>
   </head>
@@ -148,10 +110,10 @@
     <div class='container' id='main_container'>  <!-- Main Container -->
       <center>
     	<div class='row' id='albume_title_field'>  <!-- Ablum Title -->
-    		<div class='col-md-10'>
+    		<div class='col-md-11'>
     			<input id='album_name_input' placeholder="Album Name" type='text'>
     		</div>
-    		<div class='col-md-2' id='add_photo_button'>
+    		<div class='col-md-1' id='add_photo_button'>
     			<button class="btn btn-large btn-default btn-circle" type="button" data-toggle="modal" data-target="#myAddPictures"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
     		</div>
     	</div>  <!-- Album Title -->

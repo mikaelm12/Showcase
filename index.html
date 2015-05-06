@@ -8,7 +8,8 @@
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
       <script src="./javascripts/button_actions.js"></script>
       <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
@@ -18,34 +19,7 @@
       <script>
         $(document).ready(function() {
           
-           findMatchingUsers();
-
-
-          //for pressing enter
-         $(document).on('keypress',function(e){
-            //console.log("Click");
-            //enter is 13
-            if(e.which == 13){
-
-              //do this
-              // Does the element have focus:
-              var hasFocus = $('#artistSearchBar').is(':focus');
-              if($("#artistSearchBar").val() != "" && hasFocus){
-                e.preventDefault();
-                //input = $("#artistSearchBar"); //gets input text
-                //inputValue = $(input).val(); //gets value
-                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-                
-                //console.log("Enter");
-                //$( "#input_text" ).autocomplete("close");
-                $( "#artistSearchBar" ).autocomplete("close");
-                window.location = "./profilepage.html";
-
-              }
-
-            }
-          });
-
+          findMatchingUsers();
           var query = new Parse.Query(Parse.User);
           query.notEqualTo('profile_picture',null);
           query.find({
@@ -56,16 +30,30 @@
               if (length > 4){
                   length = 4;
               }
+              var indexUsed = [];
 
               for (var i =0; i < length; i++){
-                var picture = list[i].get('profile_picture');
-                var name = list[i].get('full_name');
-                var id = list[i].id;
+                var index;
+                if(list.length > 4){
+                  
+                  do{
+                    //try again
+                    index = Math.floor(Math.random() * (list.length)) + 0;
+                  }while($.inArray(index,indexUsed)>-1);
+                }else{
+                  index = i;
+                }
+
+                
+                indexUsed.push(index);
+                var picture = list[index].get('profile_picture');
+                var name = list[index].get('full_name');
+                var id = list[index].id;
                 //console.log(name);
                 //console.log(id);
-                var fullname = list[i].get('full_name');
-                var bio = list[i].get('bio');
-                $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(i) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
+                var fullname = list[index].get('full_name');
+                var bio = list[index].get('bio');
+                $('#trending_container').append("<a href ="+ "./profile_other.html?id=" + id + ">" + "<div class = 'caption'> " + "<img  class='border trending' id='pic" + String(index) + "' src='" + String(picture) + "'/>" + "<div class = 'caption_overlay'>" + "<p class = 'caption_overlay_title'>" + String(fullname) + "</p>" + "<p class = 'caption_overlay_content'>" + String(bio) + "</p></div>"+ "</div>" + "</a>");
               }
             }
           });
@@ -147,10 +135,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-default navbar-btn account" data-toggle="modal" data-target="#myModal">
+            <button id='indexLogin' type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">
               Log in
             </button>
-            <button type="button" class="btn btn-default navbar-btn account" data-toggle="modal" data-target="#loginModal">
+            <button id='indexRegister' type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginModal">
               Register
             </button>
 
@@ -158,28 +146,29 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    
     <center>
+      <div class = 'row'>
+        <div class='col-md-12'>
       <!-- Trending container -->
-      <br>
-      <br>
-      <div id="trending_container" style='text-align:left'>
-          <div class = 'trendingTitle'> <h3 style='text-align:center'>Artists on Showcase</h3></div>
-
-          
+        <br>
+        <br>
+        <div id="trending_container" style='text-align:center'>
+          <div class = 'trendingTitle'> <h3 style='text-align:center'>Showcased Artists</h3></div>
+        </div>
+        </div>
       </div>
       <!--The search bar -->
-      <div  id= "searchBarDiv"class="input-group input-group-lg" >
-        <div class="input-group-btn">
-                <button id= "searchButton" class="btn btn-default searchButton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      <div class = 'row'>
+        <div class='col-md-12'>
+          <div  id= "searchBarDiv"class="input-group input-group-lg" >
+            <div class="input-group-btn">
+                    <button id= "searchButton" class="btn btn-default searchButton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+            <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" aria-describedby="sizing-addon1" autofocus>
+          </div>
+          <br>
         </div>
-        <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" aria-describedby="sizing-addon1" autofocus>
       </div>
-      <br>
-
     </center>
-
-
-
   </body>
 </html>

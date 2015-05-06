@@ -12,7 +12,7 @@ body .btn {
 
 #searchBarDiv{
 	max-width: 600px;
-	margin-top: 20%;
+	margin-top: 40px;
 }
 
 
@@ -37,8 +37,8 @@ h3.centre {
 	padding: 10px;
 	width:70%;
 	height:auto;
-	border: 2px solid #E0E0E0;
 	
+
 	/*background-color: #F8F8F8;
 	*/
 }
@@ -71,15 +71,14 @@ h3.centre {
 .caption_overlay {
     position: absolute;
     text-align:left;
-		font-family: 'Lobster', cursive;
-		font-size: 0.8em;
+		/*font-family: 'Cabin', Helvetica, Arial, sans-serif;*/
+	font-size: 0.7em;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     padding: 8px;
-    
-    color: white;;
+    color: white;
     transform: translateY(100%);
     transition: transform .35s ease-out;
 }
@@ -92,9 +91,10 @@ h3.centre {
 .caption_overlay_title {
     margin: 0;
     padding: 0 0 4px;
-    font-size: 1.3em;
+    font-size: 1.4em;
     text-align:left;
     font-family: 'Lobster', cursive;
+    /*line-leading:120%;*/
     text-shadow: -1px 0 black, 0 2px black, 1px 0 black, 0 -1px black;
 
     transform: translateY( calc(-100% - 10px) ); /* +10px overlay padding */
@@ -109,11 +109,26 @@ h3.centre {
 }
 
 .caption:hover .trending{
-	opacity:0.4;
+	opacity:0.5;
 
 }
 .trendingTitle{
 	color:white;
+	width:100%;
+	height:auto;
+	border-radius:10px;
+	margin-left: auto;
+    margin-right: auto;
+	border: 2px solid #E0E0E0;
+	/*background:#B8B8B8;*/
 
 	font-family: 'Lobster', cursive;
 }
+
+/*#main_content {
+    text-align: center;
+}
+
+.centerContent {
+    text-align: center;
+}*/

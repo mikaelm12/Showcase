@@ -185,15 +185,15 @@ a {
 }
 
 .grid_image {
-	width: 355px;
-	height: 355px;
+	width: 268px;
+	height: 268px;
 	margin: 5px;
 	border-radius: 5px;
 }
 
 .grid_cell {
-	width: 410px;
-	height: 395px;
+	width: 270px;
+	height: 270px;
 	border: 10px solid rgba(0, 0, 0, 0);
 	border: 1px solid black;
 }
@@ -239,7 +239,7 @@ a {
 	background: #d7d7d7;
 	padding: 2px;
 	margin: 3px 0px 0px 3px;
-	width: 326px;
+	width: 240px;
 	font-size: 20px;
 	border-radius: 5px 0px 0px 5px;
 }
