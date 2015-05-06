@@ -87,7 +87,10 @@ findMatchedUsersOnParseUpdateTable = function(prefix){
             
 
          };
-         return;
+         if(usersWithPrefix.length >= 1){
+          return;
+         }
+         
          //var newArtistRow = table.insertRow(0);
          //var artistNamecell = newArtistRow.insertCell(0); 
          //artistNamecell.innerHTML =  "<strong>No artists matched your search!</strong>";
