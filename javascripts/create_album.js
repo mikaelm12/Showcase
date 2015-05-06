@@ -101,6 +101,7 @@ $(document).ready(function(){
 
 		if (re.exec(album_name) === null){
 			alert("Please enter an album title!");
+			return;
 		}
 
 		album_name = $("#album_name_input").val();
