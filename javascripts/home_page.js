@@ -65,7 +65,7 @@ $(document).ready(function(){
 		user.set("first_name", first_name);
 		user.set("last_name", last_name);
 		user.set("full_name",first_name + " " + last_name);
-		user.set("bio","");
+		user.set("bio","No biography available");
 		user.set("profile_picture", "http://files.parsetfss.com/0fc14c5b-74f9-402d-9b1e-69320ee1698c/tfss-53c354b7-db2f-4b08-92e3-0d1bad7ea01a-blank_profile.jpg");
 
 		user.signUp(null, {

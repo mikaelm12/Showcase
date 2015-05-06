@@ -151,6 +151,8 @@ $(document).on("click", "#createPortfolioButton", function(){
 	portfolio.save(null, {
 			  success: function(portfolio) {
 			  		var portfolioId = portfolio.id;
+			  		var numberOfImages = $(".selected").length;
+			  		var imageCount = 0
 					$( ".selected" ).each(function(index) {
 						var photoId = $(this).attr('id');
 						var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
@@ -162,7 +164,7 @@ $(document).on("click", "#createPortfolioButton", function(){
 
 								photo.set("portfolio", portfolioId);
 								photo.save();
-								
+								imageCount++;
 								var PortfolioPhoto = Parse.Object.extend("PortfolioPhoto");
 				    			var portfolioPhoto = new PortfolioPhoto();
 								portfolioPhoto.set("title", photo.get("title"));
@@ -171,7 +173,9 @@ $(document).on("click", "#createPortfolioButton", function(){
 								portfolioPhoto.set("description", photo.get("description"));
 								portfolioPhoto.save(null, {
 								  success: function(object) {
-								    window.location = "./profile_page.html#new_portfolio";
+								  	if (imageCount == numberOfImages){
+								  		window.location = "./profile_page.html#new_portfolio";
+								  	}
 								  },
 								  error: function(object, error) {
 								    // Execute any logic that should take place if the save fails.
