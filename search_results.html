@@ -14,13 +14,45 @@
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="./javascripts/profile_setup.js"></script>
     <script src="./javascripts/public.js"></script>
-   	<link rel='stylesheet' type="text/css" href='./stylesheets/search.css' />
+   	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
+    <link rel='stylesheet' type="text/css" href='./stylesheets/search.css' />
   <script>
       $(document).ready(function() {
 
         findMatchingUsers("");
         var userPrefixFromURL = getParameterByName( "name",document.URL )
-        findMatchedUsersOnParseUpdateTable(userPrefixFromURL); 
+
+        findMatchedUsersOnParseUpdateTable(userPrefixFromURL);
+
+
+   
+        //for pressing enter
+       $(document).on('keypress',function(e){
+          //console.log("Click");
+          //enter is 13
+          if(e.which == 13){
+
+            //do this
+            // Does the element have focus:
+            var hasFocus = $('#artistSearchBar').is(':focus');
+            if($("#artistSearchBar").val() != "" && hasFocus){
+              e.preventDefault();
+              //input = $("#artistSearchBar"); //gets input text
+              //inputValue = $(input).val(); //gets value
+              
+              //console.log("Enter");
+              //$( "#input_text" ).autocomplete("close");
+              $( "#artistSearchBar" ).autocomplete("close");
+              window.location = "./profilepage.html";
+
+            }
+
+          }
+        });
+
+        
+
+
       });
     </script>
   </head>
@@ -66,10 +98,10 @@
       </nav>
 
     <div class='container' id='main_container'>  <!-- Main Container -->
+    <div class = 'row'>
+      <div id="artistSearchResults" style="width:100%;height:100%" class='col-md-12'>
 
-      <table id="artistSearchResults" style="width:100%">
-
-      </table>
-
+      </div>
+    </div>
     </div>  <!-- Main Container -->
   </body>

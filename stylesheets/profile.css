@@ -171,8 +171,8 @@ a {
 
 #profile_pic_other {
 	border-radius: 10px;
-	width: 348px;
-	height: 348px;
+	width: 228px;
+	height: 228px;
 	margin: 5px;
 }
 
@@ -266,6 +266,10 @@ a {
 
 a:hover{
 	cursor: pointer;
+}
+
+#dropdownMenu1 {
+	min-width: 250px;
 }
 
 
