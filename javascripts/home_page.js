@@ -1,6 +1,17 @@
 $(document).ready(function(){
 
 	Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
+
+	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+	if (currentUser){
+		var loginButton = $("#indexLogin");
+		loginButton.addClass("home_button");
+		loginButton.html("Profile");
+		var registerButton = $("#indexRegister");
+		registerButton.addClass("logout_button");
+		registerButton.html("Log Out");
+	}
+
 	$(document).on('click', "#register_button", function(){
 		var re = /\w+/;
 		var first_name = $("#first_name").val();

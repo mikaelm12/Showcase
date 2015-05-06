@@ -75,10 +75,12 @@ findMatchedUsersOnParseUpdateTable = function(prefix){
                 artistInfoCell.innerHTML = "No Artist Description"
             }
             
-
+            return;
 
          };
- 
+         var newArtistRow = table.insertRow(0);
+         var artistNamecell = newArtistRow.insertCell(0); 
+         artistNamecell.innerHTML =  "<strong>No artists matched your search!</strong>"
         }
 
     });

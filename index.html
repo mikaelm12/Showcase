@@ -18,34 +18,7 @@
       <script>
         $(document).ready(function() {
           
-           findMatchingUsers();
-
-
-          //for pressing enter
-         $(document).on('keypress',function(e){
-            //console.log("Click");
-            //enter is 13
-            if(e.which == 13){
-
-              //do this
-              // Does the element have focus:
-              var hasFocus = $('#artistSearchBar').is(':focus');
-              if($("#artistSearchBar").val() != "" && hasFocus){
-                e.preventDefault();
-                //input = $("#artistSearchBar"); //gets input text
-                //inputValue = $(input).val(); //gets value
-                //I reuse this code because javascript compilation/execution was a problem...needs to be inside the function
-                
-                //console.log("Enter");
-                //$( "#input_text" ).autocomplete("close");
-                $( "#artistSearchBar" ).autocomplete("close");
-                window.location = "./profilepage.html";
-
-              }
-
-            }
-          });
-
+          findMatchingUsers();
           var query = new Parse.Query(Parse.User);
           query.notEqualTo('profile_picture',null);
           query.find({
@@ -161,10 +134,10 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-default navbar-btn account" data-toggle="modal" data-target="#myModal">
+            <button id='indexLogin' type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#myModal">
               Log in
             </button>
-            <button type="button" class="btn btn-default navbar-btn account" data-toggle="modal" data-target="#loginModal">
+            <button id='indexRegister' type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#loginModal">
               Register
             </button>
 
