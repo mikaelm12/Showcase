@@ -19,7 +19,12 @@
    <script>
    $(document).ready(function() {
               currentUser = JSON.parse(localStorage.getItem('currentUser'));
+              shareURL = document.URL.substring(0,document.URL.length - 9) + "other.html?id=" + currentUser.objectId 
+              $("#fb-share").attr("href", "http://www.facebook.com/sharer.php?u=" + shareURL);
+              $("#twitter-share").attr("href", "http://twitter.com/share?text=Check%20out%20my%20Showcase!&url=" + shareURL);
 
+              //"http://twitter.com/share?text=Check%20out%20my%20Showcase!&url=http://www.google.com"
+              console.log(shareURL);
               var query = new Parse.Query(Parse.User);
               console.log("User id")
               console.log(currentUser.objectId)
@@ -118,6 +123,18 @@
                     aboutEdit = false;
                 });
 
+                $('#about_edit_cancel').click(function(){
+                  $('#user-about').show();
+                  $("#about_edit").val($("#user-about").text())
+                  $('#about_edit_buttons').hide();
+                   $("#about_edit").hide();
+                    aboutEdit = false;
+                });
+
+
+
+ //about_edit_cancel
+
                 $('#email_edit_button').click(function(){
                       $('#email_edit').show();  
                       $('#email_edit').val($("#emailLink").text())
@@ -164,11 +181,23 @@
 
                 });
 
+
+            $('#email_edit_cancel').click(function(){
+                  $('#emailLink').show();
+                   $('#email_edit').val($("#emailLink").text())
+                  
+                   $('#email_edit').hide(); 
+                    $('#email_edit_buttons').hide();
+                     emailEdit = false;
+                });
+
       });         
  </script>
 </head>
 
 <body>
+
+
 
  <!-- Modal  Add Profile Pic-->
  <div class="modal fade" id="myAddProfile" tabindex="-1" role="dialog" aria-labelledby="myAddProfileLabel" aria-hidden="true">
@@ -268,27 +297,18 @@
           <div id = "share_buttons" style="padding-left:18%">
                        <!-- Facebook -->
             <!--<a href="https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html&redirect_uri=http://web.mit.edu/kkatongo/www/Showcase/profile_after_page.html"-->
-            <a href="https://developers.facebook.com/docs/plugins/"
-            target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/></a>
+          
+
+            <a id ="fb-share" href="http://www.facebook.com/sharer.php?u=http://www.google.com"><img src="http://www.simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook"/></a>
+          
             <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>-->
                
             <!-- Twitter -->
-            <a href="http://twitter.com/share" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
-               
-            <!-- Google+ -->
-            <a href="https://plus.google.com" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/google.png" alt="Google" /></a>
-               
-            <!-- Digg -->
-            <a href="http://www.digg.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/diggit.png" alt="Digg" /></a>
-               
-            <!-- Reddit -->
-            <a href="http://reddit.com/submit" target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/reddit.png" alt="Reddit" /></a>
-               
-            <!-- Pinterest -->
-            <a href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','http://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());"><img src="http://www.simplesharebuttons.com/images/somacro/pinterest.png" alt="Pinterest" /></a>
-               
-            <!-- Email -->
-            <a href="mailto:?Subject=Simple Share Buttons&Body=I%20saw%20this%20and%20thought%20of%20you!%20 http://www.simplesharebuttons.com"><img src="http://www.simplesharebuttons.com/images/somacro/email.png" alt="Email" /></a>
+            <a id ="twitter-share"href=""target="_blank"><img src="http://www.simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" /></a>
+
+
+
+   
 
           </div>
           <br>
