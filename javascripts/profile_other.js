@@ -11,7 +11,7 @@ $(document).ready(function(){
 	   	var currentUser = results[0];
 	   	$("#artist_name").html("<h2>" + currentUser.get('first_name') + " " + currentUser.get("last_name") + "</h2>");
 		$("#emailLink").html(currentUser.get("email"));
-		$("#profile_pic").attr("src", currentUser.get("profile_picture"));
+		$("#profile_pic_other").attr("src", currentUser.get("profile_picture"));
 		$("#user-about").text(currentUser.attributes.bio);
 		findMatchingUsers("");
 	  },
@@ -20,9 +20,20 @@ $(document).ready(function(){
 	  }
 	});	
 
-
-
-
-
+	var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+	if (!currentUser){
+		console.log("HERE");
+		var profileButton = $(".home_button");
+		profileButton.removeClass("home_button");
+		console.log(profileButton);
+		profileButton.html("Log In");
+		profileButton.attr("data-toggle", "modal");
+		profileButton.attr("data-target", "#myModal");
+		var logoutButton = $(".logout_button");
+		logoutButton.removeClass("logout_button");
+		logoutButton.html("Register");
+		logoutButton.attr("data-toggle", "modal");
+		logoutButton.attr("data-target", "#loginModal");
+	}
 
 });

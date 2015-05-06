@@ -14,8 +14,59 @@
     <script src="./javascripts/public.js"></script>
    	<link rel='stylesheet' type="text/css" href='./stylesheets/profile.css' />
     <script src="./javascripts/button_actions.js"></script>
+    <script src="./javascripts/home_page.js"></script>
   </head>
   <body>
+
+     <!-- Modal  New User-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Log In to Showcase</h4>
+          </div>
+          <div class="modal-body">
+            Email 
+              <input id='email_login' type="email" class="form-control" placeHolder='Email Address' >
+            Password
+              <input id='password_login' type="password" class="form-control" placeHolder='Password'>
+              <span id = 'login_help' class="help-block">Enter your username and password.</span>
+          </div>
+          <div class="modal-footer">
+            <button id='login_button' type="button" class="btn btn-default" data-dismiss="modal">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Log In-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Register</h4>
+          </div>
+          <div class="modal-body">
+              <input id='first_name' type="text" class="form-control form_box" placeholder='First Name' required>
+              <br>
+              <input id='last_name' type="text" class="form-control form_box" placeholder='Last Name' required>
+              <br>
+              <input id='email' type="email" class="form-control form_box" placeholder='Email' required>
+              <br>
+              <input id='password' type="password" class="form-control form_box" placeholder='Password' required>
+              <br>
+              <input id='confirmed_password' type="password" class="form-control form_box" placeholder='Confirm password' required>
+
+          </div>
+          <div class="modal-footer">
+
+            <button id='register_button' type="button" class="btn btn-default">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -46,10 +97,10 @@
             </form>
           </div>
           <ul class="nav navbar-nav navbar-right">
-            <button type="button" class="btn btn-default navbar-btn account home_button" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-default navbar-btn account home_button">
               Profile
             </button>
-            <button type="button" class="btn btn-default navbar-btn account logout_button" data-toggle="modal" data-target="#myModal">
+            <button type="button" class="btn btn-default navbar-btn account logout_button">
               Log Out
             </button>
           </ul>
@@ -66,7 +117,7 @@
                   <div id='artist_name'><h2>Your Name</h2></div>
                 </div>
             </div>
-            <img id='profile_pic' class='img-responsive' align="middle" src='./images/blank_profile.jpg'>
+            <img id='profile_pic_other' class='img-responsive' align="middle" src='./images/blank_profile.jpg'>
           </div> <!-- COL 1 END -->
         </div>
         <div class='col-md-8'>

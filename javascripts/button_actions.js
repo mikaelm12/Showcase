@@ -10,18 +10,14 @@ $(document).on("click", ".logout_button", function(){
 	window.location = './index.html';
 });
 
-	$(document).on("click", ".searchButton", function(){
-	window.location = "./profilepage.html"
-});
+
 
 $(document).on("click", ".portfolioClick", function(){
 	$('#portfolioPDF').modal('show');
 });
 
 // Listen for click on toggle checkbox
-$(document).on("click", ".select-all", function(){
-	$(".check_all").prop('checked', $(this).prop('checked'));
-});
+
 
 
 // Listen for click on toggle checkbox
