@@ -125,3 +125,11 @@ h3.centre {
 
 	font-family: 'Lobster', cursive;
 }
+
+#main_content {
+    text-align: center;
+}
+
+.centerContent {
+    text-align: center;
+}
