@@ -20,7 +20,55 @@
     <script>
         $(document).ready(function() {
             findMatchingUsers("");
+
+           var numFiles =0;
+          $('#upload_button').prop('disabled', true);
+          $('#upload_button').click(function(){
+            numFiles = $('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1;
+          });
+          $('#upload_button').unload(function(){
+            $('#upload_button').prop('disabled', true);
+
+          });
+          $('#fileselect').click(function(){
+              numFiles=0;
+            });
+          $('#upload_modal').hover(function(){
+                  console.log('files');
+                  
+
+                 console.log(numFiles);
+                  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1) > numFiles){
+                    //console.log('enable');
+                    
+                    $('#upload_button').prop('disabled', false);
+                    //console.log('disabled');
+                  }else{
+                    //console.log('disable');
+                    $('#upload_button').prop('disabled', true);
+                  }
+
+                });
+                    $('#upload_modal').mouseout(function(){
+                  console.log('files');
+                  
+
+                 console.log(numFiles);
+                  if(($('#fileselect').get(0).files ? $('#fileselect').get(0).files.length : 1) > numFiles){
+                    //console.log('enable');
+                    
+                    $('#upload_button').prop('disabled', false);
+                    //console.log('disabled');
+                  }else{
+                    //console.log('disable');
+                    $('#upload_button').prop('disabled', true);
+                  }
+
+                });
+
         });
+
+
       </script>
   </head>
   <body>
@@ -75,7 +123,7 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title" id="myAddPictureLabel">Add Pictures</h4>
             </div>
-            <div class="modal-body">
+            <div id = "upload_modal" class="modal-body">
               <!--<label for="exampleInputFile">Select Pictures</label>-->
               <input type="file" multiple name="fileselect" id="fileselect" accept='image/*'>
               <p class="help-block">Browse for pictures to add.</p>   
