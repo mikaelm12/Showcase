@@ -1,4 +1,18 @@
 $(document).ready(function(){
+      Parse.initialize("d2fQK58HUnwBBqhiIOOXLkXiP84UmGyut4RRqazH", "VjZOZZqGxX1ZlavV2mMsirKcChshCshKn6X39qVf");
+      var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (!currentUser){
+          var profileButton = $(".home_button");
+          profileButton.removeClass("home_button");
+          profileButton.html("Log In");
+          profileButton.attr("data-toggle", "modal");
+          profileButton.attr("data-target", "#myModal");
+          var logoutButton = $(".logout_button");
+          logoutButton.removeClass("logout_button");
+          logoutButton.html("Register");
+          logoutButton.attr("data-toggle", "modal");
+          logoutButton.attr("data-target", "#loginModal");
+      }
 
       findMatchingUsers = function(){
         var query = new Parse.Query(Parse.User);
@@ -43,7 +57,6 @@ $(document).ready(function(){
       $(document).on("keyup", "#artistSearchBar", function(){
 
         if (event.keyCode == 13){
-          console.log("ENTER");
           var searchParam = $("#artistSearchBar").val() 
           var queryParam = "?name=" + searchParam 
           $("#artistSearchBar").val("");
@@ -59,8 +72,7 @@ $(document).ready(function(){
           query.find({
           success: function(usersWithPrefix) {
           // Do stuff
-              console.log("The matched Users");
-              console.log(usersWithPrefix);
+              
               $("#artistSearchResults tr").remove();
               //var search_results = document.getElementById("artistSearchResults");
               for (var i = usersWithPrefix.length - 1; i >= 0; i--) {
@@ -71,7 +83,6 @@ $(document).ready(function(){
                   //console.log(id);
                   var fullname = usersWithPrefix[i].get('full_name');
                   var bio = usersWithPrefix[i].get('bio');
-                  console.log(currentUser);
                   if(currentUser.attributes.bio){
                       bio = currentUser.attributes.bio;
 
@@ -127,8 +138,7 @@ findMatchedUsersOnParseUpdateTable = function(prefix){
     query.find({
     success: function(usersWithPrefix) {
     // Do stuff
-        console.log("The matched Users");
-        console.log(usersWithPrefix);
+        
         $("#artistSearchResults tr").remove();
         //var search_results = document.getElementById("artistSearchResults");
         for (var i = usersWithPrefix.length - 1; i >= 0; i--) {
@@ -139,7 +149,6 @@ findMatchedUsersOnParseUpdateTable = function(prefix){
             //console.log(id);
             var fullname = usersWithPrefix[i].get('full_name');
             var bio = usersWithPrefix[i].get('bio');
-            console.log(currentUser);
             if(currentUser.attributes.bio){
                 bio = currentUser.attributes.bio;
 
