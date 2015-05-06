@@ -162,15 +162,23 @@ $(document).on("click", "#createPortfolioButton", function(){
 
 								photo.set("portfolio", portfolioId);
 								photo.save();
-								window.location = "./profile_page.html";
-
+								
 								var PortfolioPhoto = Parse.Object.extend("PortfolioPhoto");
 				    			var portfolioPhoto = new PortfolioPhoto();
 								portfolioPhoto.set("title", photo.get("title"));
 								portfolioPhoto.set("photoUrl", photo.get("photoUrl"));
 								portfolioPhoto.set("portfolio", portfolioId);
 								portfolioPhoto.set("description", photo.get("description"));
-								portfolioPhoto.save();
+								portfolioPhoto.save(null, {
+								  success: function(object) {
+								    window.location = "./profile_page.html#new_portfolio";
+								  },
+								  error: function(object, error) {
+								    // Execute any logic that should take place if the save fails.
+								    // error is a Parse.Error with an error code and message.
+								    alert('Failed to save portfolio photos');
+								  }
+								});
 
 							}
 						});
