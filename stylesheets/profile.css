@@ -185,23 +185,23 @@ a {
 }
 
 .grid_image {
-	width: 408px;
-	height: 408px;
+	width: 355px;
+	height: 355px;
 	margin: 5px;
 	border-radius: 5px;
 }
 
 .grid_cell {
 	width: 410px;
-	height: 410px;
+	height: 395px;
 	border: 10px solid rgba(0, 0, 0, 0);
 	border: 1px solid black;
 }
 
 .btn-circle {
 	border-radius: 100%;
-	width: 50px;
-	height: 50px;	
+	width: 40px;
+	height: 40px;	
 }
 
 .large_button {
@@ -239,7 +239,7 @@ a {
 	background: #d7d7d7;
 	padding: 2px;
 	margin: 3px 0px 0px 3px;
-	width: 240px;
+	width: 326px;
 	font-size: 20px;
 	border-radius: 5px 0px 0px 5px;
 }
