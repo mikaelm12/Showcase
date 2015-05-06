@@ -1,7 +1,7 @@
  <!DOCTYPE html>
 <html>
   <head>
-  	<title>Profile Page</title>
+  	<title id="profile_name">Profile Page</title>
   	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css">
@@ -33,11 +33,9 @@
             <h4 class="modal-title" id="myModalLabel">Log In to Showcase</h4>
           </div>
           <div class="modal-body">
-            Email 
               <input id='email_login' type="email" class="form-control" placeHolder='Email Address' >
-            Password
+              <br>
               <input id='password_login' type="password" class="form-control" placeHolder='Password'>
-              <span id = 'login_help' class="help-block">Enter your username and password.</span>
           </div>
           <div class="modal-footer">
             <button id='login_button' type="button" class="btn btn-default" data-dismiss="modal">Login</button>
@@ -95,7 +93,7 @@
           <div id='search'>
             <form class="navbar-form navbar-left" role="search">
               <div class="input-group">
-                  <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" name="srch-term" id="srch-term">
+                  <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist">
                   <div class="input-group-btn">
                       <button class="btn btn-default searchButton" type="button"><i class="glyphicon glyphicon-search"></i></button>
                   </div>
@@ -140,7 +138,7 @@
             <div class = 'row'>
               <div class='col-md-12'>
                  <div id='email_div'>
-                    <h3>Email</h3>
+                  <h3>Email</h3>
                     <a id='emailLink' href="mailto:#" aria-hidden="true" class="link">yourEmail@email.com </a> 
                   </div>
               </div>
