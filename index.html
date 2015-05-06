@@ -52,10 +52,10 @@
             success:function(list) {
 
               var length = list.length;
-/*
+
               if (length > 4){
                   length = 4;
-              }*/
+              }
 
               for (var i =0; i < length; i++){
                 var picture = list[i].get('profile_picture');
@@ -162,6 +162,14 @@
     </nav>
     
     <center>
+      <!-- Trending container -->
+      <br>
+      <br>
+      <div id="trending_container" style='text-align:left'>
+          <div class = 'trendingTitle'> <h3 style='text-align:center'>Artists on Showcase</h3></div>
+
+          
+      </div>
       <!--The search bar -->
       <div  id= "searchBarDiv"class="input-group input-group-lg">
         <div class="input-group-btn">
@@ -170,13 +178,7 @@
         <input id = "artistSearchBar" type="text" class="form-control" placeholder="Search for artist" aria-describedby="sizing-addon1" autofocus>
       </div>
       <br>
-      <div id="trending_container" style='text-align:left'>
-          <div class = 'trendingTitle'> <h3 style='text-align:center'>Trending Artist Portfolios</h3></div>
-          
 
-
-
-      </div>
     </center>
 
 
