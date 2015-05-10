@@ -213,6 +213,10 @@ a {
 	width: 250px;
 }
 
+#albumContent {
+	display: inline-block;
+}
+
 .modal-content{
 	margin: 0 auto;
 }
@@ -280,4 +284,18 @@ a:hover{
 .link{
 	color:#3B5998;
 }
+
+.underline {
+	text-decoration: underline;
+	color: blue;
+}
+
+#portfolioName {
+	margin-left: 30%;
+	margin-right: 30%;
+	width: 40%;
+	text-align: center;
+	font-size: 20px;
+}
+
 

@@ -71,8 +71,9 @@ $(document).ready(function(){
 		    	colCount++;
 
 		    	var albumDiv = $("<div id='album_title_" + album.id + "'>");
-		    	var albumTitleDiv  = $("<label><input type='checkbox' name='checkbox_" + album.id + "' id='" + album.id + "' class='check_all check_album' checked='checked'> " + album.get("name") + " </label><br>");
+		    	var albumTitleDiv  = $("<input type='checkbox' name='checkbox_" + album.id + "' id='" + album.id + "' class='check_all check_album' checked='checked'><a class='underline' data-toggle='collapse' data-target='#albumContent_" + album.id + "'> " + album.get("name") + " </a><br>");
 		    	albumDiv.append(albumTitleDiv);
+		    	$("#portfolioName").focus();
 		    	var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
 		    	var query = new Parse.Query(ShowcasePhoto);
 		    	query.equalTo("album", album.id);
@@ -80,14 +81,16 @@ $(document).ready(function(){
 		    			query.find({
 				    		success: function(results) {
 				    			// console.log("HERE: " + album.get("name"));
+				    			var albumContent = $("<div id='albumContent_" + album.id + "' class='collapse out'>");
 				    			for (var i = 0; i < results.length; i++) {
 				    				var photo = results[i];
 				    				var checkBox = $("<input type='checkbox' name='checkbox_" + photo.id + "' id='" + photo.id + "' class='imageCheckBox check_all check_image_" + album.id + " selected' checked='checked'>");
 				    				var image = $("<img class='border' width='80px' height='80px'>");
 				    				image.attr("src", photo.get("photoUrl"));
-				    				albumDiv.append(checkBox);
-				    				albumDiv.append(image);
+				    				albumContent.append(checkBox);
+				    				albumContent.append(image);
 				    			}
+				    			albumDiv.append(albumContent);
 				    			exportModal.append(albumDiv);
 				    			exportModal.append($("<br>"));
 
