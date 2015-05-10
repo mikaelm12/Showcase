@@ -168,7 +168,10 @@ $(document).ready(function(){
      	var descEditBox;
      	if (title.is("h2")){
      		titleText = title.html();
-	    	editBox = $("<input class='editBox' value='" + titleText + "' id='title_" + this.id  + "'>");
+     		if (titleText == "** No Title Available **"){
+	    		titleText = "";
+	    	}
+	    	editBox = $("<input class='editBox' value='" + titleText + "' id='title_" + this.id  + "' onfocus='this.value = this.value;'>");
 	    	title.remove();
 	    	$("#" + this.id).parent().after(editBox);
 	    	descText = desc.html().substring(20, desc.html().length);
@@ -179,12 +182,15 @@ $(document).ready(function(){
 	    	desc.remove();
 	    	$("#grid_image_" + this.id).after(descEditBox);
 	    	$(this).children().removeClass('glyphicon-pencil').addClass('glyphicon-floppy-disk');
-
+	    	$("#title_" + this.id).focus();
      	} else {
      		$(this).children().removeClass('glyphicon-floppy-disk').addClass('glyphicon-pencil');
 
 
      		titleText = title.val();
+     		if (titleText == ""){
+     			titleText = "** No Title Available **";
+     		}
      		textField = $("<h2 class='photoTitle' id='title_" + this.id + "'>" + titleText + "</h2>");
      		title.remove();
      		$("#" + this.id).parent().after(textField);
@@ -212,6 +218,94 @@ $(document).ready(function(){
 			});
      	}
 	 });
+
+	$(document).on("keyup", ".editBox", function(e){
+			if (e.keyCode == 13){
+				var id = this.id.substring(6, this.id.length);
+				var title = $("#title_" + id);
+		     	var titleText;
+		     	var editBox;
+		     	var textField;
+		     	var desc = $("#desc_" + id);
+		     	var descText;
+		     	var descEditBox;
+				$("#"+id).children().removeClass('glyphicon-floppy-disk').addClass('glyphicon-pencil');
+	     		titleText = title.val();
+	     		if (titleText == ""){
+	     			titleText = "** No Title Available **";
+	     		}
+	     		textField = $("<h2 class='photoTitle' id='title_" + id + "'>" + titleText + "</h2>");
+	     		title.remove();
+	     		$("#" + id).parent().after(textField);
+	     		descText = desc.val();
+	     		if (descText == ""){
+	     			descText = "** No description available **";
+	     		}
+	     		paragraph = $("<p class='desc' id='desc_" + id + "'>" + "<b>Description</b>: " + descText + '</p>');
+	     		desc.remove();
+	     		$("#grid_image_" + id).after(paragraph);
+
+	     		var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
+				var query = new Parse.Query(ShowcasePhoto);
+				query.equalTo("objectId", id);
+				query.find({
+					success: function(results) {
+						var photo = results[0];
+						photo.set("title", titleText);
+						photo.set("description", descText);
+						photo.save();
+					},
+					error: function(error) {
+					alert("Error: " + error.code + " " + error.message);
+					}
+				});
+
+			}
+	});	
+
+	$(document).on("keyup", ".editBoxDesc", function(e){
+				if (e.keyCode == 13){
+					var id = this.id.substring(5, this.id.length);
+					var title = $("#title_" + id);
+			     	var titleText;
+			     	var editBox;
+			     	var textField;
+			     	var desc = $("#desc_" + id);
+			     	var descText;
+			     	var descEditBox;
+					$("#"+id).children().removeClass('glyphicon-floppy-disk').addClass('glyphicon-pencil');
+		     		titleText = title.val();
+		     		if (titleText == ""){
+		     			titleText = "** No Title Available **";
+		     		}
+		     		textField = $("<h2 class='photoTitle' id='title_" + id + "'>" + titleText + "</h2>");
+		     		title.remove();
+		     		$("#" + id).parent().after(textField);
+		     		descText = desc.val();
+		     		if (descText == ""){
+		     			descText = "** No description available **";
+		     		}
+		     		paragraph = $("<p class='desc' id='desc_" + id + "'>" + "<b>Description</b>: " + descText + '</p>');
+		     		desc.remove();
+		     		$("#grid_image_" + id).after(paragraph);
+
+		     		var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
+					var query = new Parse.Query(ShowcasePhoto);
+					query.equalTo("objectId", id);
+					query.find({
+						success: function(results) {
+							var photo = results[0];
+							photo.set("title", titleText);
+							photo.set("description", descText);
+							photo.save();
+						},
+						error: function(error) {
+						alert("Error: " + error.code + " " + error.message);
+						}
+					});
+
+				}
+	});	
 
 	$(document).on("click", "#deletePhotoButton", function(){
 		console.log("HERE DELETE");
