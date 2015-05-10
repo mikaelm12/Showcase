@@ -80,6 +80,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="./index.html">Showcase</a>
+          <a name="about-anchor"></a>
         </div>
         
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -142,6 +143,25 @@
       </div>
       <hr>
 
+      <style>
+        div.floating-menu {
+          position:fixed;
+          background:#D3D3D3; 
+          border:1px solid #D3D3D3;
+          border-radius: 10px;
+          width:70px;
+          z-index:100;
+          left: 50px;
+          top: 70px;
+        }
+      div.floating-menu a, div.floating-menu h3 {display:block;margin:0 0.5em; padding: 5px}
+      </style>
+      <div class="floating-menu">
+        <a href="#about-anchor"><img src="./images/profile.png" width='50px' height='50px'></a>
+        <br>
+        <a href="#portfolios-anchor"><img src="./images/portfolio.gif" width='50px' height='50px'></a>
+      </div>
+      <a name="portfolios-anchor"></a>
       <div class="dropdown">
         <h3><span id="firstName"></span>'s portfolios</h3>
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true" style="font-size:150%">
