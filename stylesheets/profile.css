@@ -299,3 +299,10 @@ a:hover{
 }
 
 
+.dropdown:hover {
+	cursor: pointer;
+}
+
+.imageCheckBox {
+	margin-right: 5px;
+}

@@ -71,7 +71,7 @@ $(document).ready(function(){
 		    	colCount++;
 
 		    	var albumDiv = $("<div id='album_title_" + album.id + "'>");
-		    	var albumTitleDiv  = $("<input type='checkbox' name='checkbox_" + album.id + "' id='" + album.id + "' class='check_all check_album' checked='checked'><a class='underline' data-toggle='collapse' data-target='#albumContent_" + album.id + "'> " + album.get("name") + " </a><br>");
+		    	var albumTitleDiv  = $("<input type='checkbox' name='checkbox_" + album.id + "' id='" + album.id + "' class='check_all check_album' checked='checked'> " + album.get("name") + " <span data-toggle='collapse' data-target='#albumContent_" + album.id + "' class='glyphicon glyphicon-chevron-down dropdown' aria-hidden='true'></span><br>");
 		    	albumDiv.append(albumTitleDiv);
 		    	$("#portfolioName").focus();
 		    	var ShowcasePhoto = Parse.Object.extend("ShowcasePhoto");
