@@ -6,6 +6,7 @@ body {
 }
 
 .body-ovserlay {
+    /*correct spelling if you want it to work, makes home page darker*/
     position:absolute;
     bottom:0;
     left:0;
